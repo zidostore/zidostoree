@@ -749,7 +749,7 @@
       box-shadow: 0 10px 32px rgba(37, 211, 102, 0.5);
     }
 
-    /* تجاوبية محسنة */
+    /* تجاوبية محسنة للصفحة الرئيسية */
     @media (max-width: 1100px) {
       .testimonial-box {
         flex-basis: 50%;
@@ -758,6 +758,7 @@
     }
     
     @media (max-width: 768px) {
+      /* تحسينات الهيدر للجوال */
       header {
         padding: 10px 16px;
       }
@@ -771,50 +772,34 @@
         width: 40px;
       }
       
-      .store {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 18px;
+      .menu-btn {
+        font-size: 16px;
+        padding: 6px 10px;
       }
       
-      .item img {
-        width: 120px;
-        height: 120px;
-      }
-      
-      section h2 {
-        font-size: 28px;
-      }
-      
-      .intro-text h1 {
-        font-size: 30px;
-      }
-      
-      .testimonial-box {
-        flex-basis: 100%;
-        max-width: 100%;
-      }
-      
-      .slider-btn {
-        padding: 10px 14px;
+      .cart-icon {
         font-size: 18px;
+        padding: 6px;
       }
       
-      .cart-popup {
-        max-width: 100%;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .store {
-        grid-template-columns: 1fr;
-      }
-      
-      .item {
-        padding: 16px;
-      }
-      
+      /* تحسينات البانر الرئيسي */
       .hero {
-        min-height: 240px;
+        min-height: 220px;
+      }
+      
+      .hero .hero-content h2 {
+        font-size: 28px !important;
+        margin: 0 0 8px !important;
+      }
+      
+      .hero .hero-content p {
+        font-size: 16px !important;
+      }
+      
+      /* تحسينات النص التقديمي */
+      .intro-text {
+        padding: 16px;
+        margin: 16px auto 8px;
       }
       
       .intro-text h1 {
@@ -823,6 +808,122 @@
       
       .intro-text p {
         font-size: 16px;
+      }
+      
+      /* تحسينات عناوين الأقسام */
+      section h2 {
+        font-size: 26px;
+        margin: 16px 0 20px;
+      }
+      
+      /* تحسينات شبكة المنتجات */
+      .store {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+      }
+      
+      .item {
+        padding: 16px;
+      }
+      
+      .item img {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .item h3 {
+        font-size: 18px;
+      }
+      
+      .price {
+        font-size: 16px;
+      }
+      
+      /* تحسينات سلايدر التقييمات */
+      .testimonial-box {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 8px;
+        padding: 20px;
+      }
+      
+      .slider-btn {
+        padding: 10px 14px;
+        font-size: 18px;
+      }
+      
+      /* تحسينات السلة المنبثقة */
+      .cart-popup {
+        max-width: 100%;
+      }
+      
+      .cart-header {
+        padding: 14px 16px;
+      }
+      
+      .cart-item {
+        padding: 12px;
+        gap: 10px;
+      }
+      
+      .cart-item img {
+        width: 48px;
+        height: 48px;
+      }
+      
+      .payment-btn {
+        padding: 12px;
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      /* تحسينات إضافية للشاشات الصغيرة */
+      .store {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        min-height: 180px;
+        border-radius: 14px;
+      }
+      
+      .hero .hero-content h2 {
+        font-size: 24px !important;
+      }
+      
+      .hero .hero-content p {
+        font-size: 14px !important;
+      }
+      
+      .intro-text h1 {
+        font-size: 22px;
+      }
+      
+      section h2 {
+        font-size: 22px;
+      }
+      
+      .item {
+        padding: 14px;
+      }
+      
+      .item img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .btn {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+      
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 18px;
+        right: 18px;
       }
     }
 
@@ -840,6 +941,20 @@
     
     .fade-in {
       animation: fadeIn 0.6s ease forwards;
+    }
+    
+    /* تأثير اهتزاز للسلة */
+    .shake {
+      animation: shake 0.5s;
+    }
+    
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
     }
   </style>
 </head>
@@ -1043,7 +1158,7 @@
       <div class="total"><strong>المجموع:</strong> <span id="total">0</span> ريال</div>
       <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i> الدفع عبر واتساب (فيزا/ماستركارد/ابل بي)</button>
       <button class="payment-btn stc-btn" onclick="checkout('STC Pay')"><i class="fas fa-mobile-alt"></i> الدفع عبر STC Pay</button>
-      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق/يوربي</button>
+      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> /سوا الدفع عبر برق/يوربي</button>
       <button class="payment-btn mada-btn" onclick="checkout('paypal')"><i class="fab fa-paypal"></i> الدفع عبر paypal</button>
       <p class="note">⚠️ يوجد رسوم إضافية عند الدفع بالفيزا — برجاء التأكد قبل الإتمام.</p>
       <button class="btn" style="margin-top:10px;background:#2d3647;color:#fff" onclick="toggleCart()"><i class="fas fa-arrow-left"></i> متابعة التسوق</button>
@@ -1193,7 +1308,7 @@ function prevSlide() {
   showSlide(currentSlide - 1); 
 }
 
-// تهيئة السلايدر حسب حجم الشاشة
+// تهيئة السلاider حسب حجم الشاشة
 window.addEventListener('resize', () => {
   showSlide(currentSlide);
 });
@@ -1252,4 +1367,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-
