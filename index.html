@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>متجر ZiDo   </title>
+  <title>متجر ZiDo — نسخة فاخرة</title>
   <meta name="description" content="متجر ZiDo يقدم خدمات رقمية مع سلة منبثقة ودفع سريع عبر واتساب وطرق متعددة." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -171,7 +171,17 @@
       padding-top: 70px;
       box-shadow: var(--shadow);
     }
-    
+    {
+    {@media(max-width:768px)
+    front-size :14px;}
+    container{ width: 100%;
+    padding: 10px;}
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+    }
+
     .side-menu.open {
       width: 300px;
     }
@@ -1367,4 +1377,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-
