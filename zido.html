@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>متجر ZiDo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #00cfff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+    header img { height: 50px; }
+    header h1 { color: white; margin: 0; }
+    .cart-icon { position: relative; font-size: 28px; color: white; cursor: pointer; }
+    .cart-count { position: absolute; top: -8px; right: -10px; background: red; color: white; font-size: 14px; padding: 2px 6px; border-radius: 50%; }
+    .banner { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; color: #555; font-size: 20px; background-size: cover; background-position: center; }
+    .store { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; }
+    .item { border: 1px solid #ddd; border-radius: 8px; padding: 10px; text-align: center; background: #fff; }
+    .item img { width: 100px; height: 100px; object-fit: cover; margin-bottom: 5px; }
+    button { padding: 6px 10px; border: none; background: #00cfff; color: white; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #009acc; }
+    .cart { margin: 20px; padding: 15px; border: 2px solid #333; border-radius: 8px; background: #fff; }
+    .cart li { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+    .remove-btn { background: red; border: none; color: white; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+    .remove-btn:hover { background: darkred; }
+    #checkout { background: #007bff; }
+    #checkout:hover { background: #0056b3; }
+
+    /* المودال الخاص بطرق الدفع */
+    .payment-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 1000; }
+    .payment-content { background: #fff; padding: 20px; border-radius: 10px; text-align: center; max-width: 420px; width: 90%; }
+    .payment-content button { margin: 6px 0; width: 100%; }
+
+    /* بانر طرق الدفع تحت السلة */
+    .payment-banner { text-align: center; margin: 30px auto; }
+    .payment-banner img { max-width: 400px; width: 100%; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <img src="logo.jpg" alt="اللوجو">
+    <h1>متجر ZiDo</h1>
+  </div>
+  <div class="cart-icon" onclick="toggleCart()">🛒
+    <span class="cart-count" id="cart-count">0</span>
+  </div>
+</header>
+
+<div class="banner" style="background-image: url('piner.jpg');"></div>
+
+<!-- المنتجات (صف أول) -->
+<div class="store">
+  <div class="item">
+    <img src="crew.png" alt="">
+    <h3>الطاقم الشهري</h3>
+    <p>25 ريال</p>
+    <button onclick="addToCart('الطاقم الشهري',25)">إضافة للسلة</button>
+  </div>
+
+  <div class="item">
+    <img src="5400vb.png" alt="">
+    <h3>حساب 5400 فيبوكس</h3>
+    <p>70 ريال</p>
+    <button onclick="addToCart('حساب 5400 فيبوكس',70)">إضافة للسلة</button>
+  </div>
+
+  <div class="item">
+    <img src="متابعين تيك توك.png" alt="">
+    <h3>متابعين تيك توك</h3>
+    <select id="followers-options">
+      <option value="0">اختر العدد</option>
+      <option value="1000-13">1000 متابع - 13 ريال</option>
+      <option value="2000-21">2000 متابع - 21 ريال</option>
+      <option value="3000-29">3000 متابع - 29 ريال</option>
+      <option value="1000-13">4000 متابع - 36 ريال</option>
+      <option value="1000-13">5000 متابع - 40 ريال</option>
+    </select>
+    <button onclick="addCustomProduct('followers-options','متابعين تيك توك')">إضافة للسلة</button>
+  </div>
+</div>
+
+<!-- المنتجات (صف ثاني) -->
+<div class="store">
+  <div class="item">
+    <img src="لايكات تيك توك.png" alt="">
+    <h3>لايكات تيك توك</h3>
+    <select id="likes-options">
+      <option value="0">اختر العدد</option>
+      <option value="1000-5">1000 لايك - 3 ريال</option>
+      <option value="2000-9">2000 لايك - 5 ريال</option>
+      <option value="1000-5">3000 لايك - 6 ريال</option>
+      <option value="1000-5">4000 لايك - 7 ريال</option>
+      <option value="1000-5">5000 لايك - 8 ريال</option>
+      <option value="1000-5">10000 لايك - 14 ريال</option>
+    </select>
+    <button onclick="addCustomProduct('likes-options','لايكات تيك توك')">إضافة للسلة</button>
+  </div>
+
+  <div class="item">
+    <img src="insta store.jpg" alt="">
+    <h3>رقم لتفعيل الواتساب</h3>
+    <p>7 ريال</p>
+    <button onclick="addToCart('رقم لتفعيل الواتساب ',7)">إضافة للسلة</button>
+  </div>
+
+  <div class="item">
+    <img src="مشاهدات تيك توك.png" alt="">
+    <h3> مشاهدات تيك توك</h3>
+    <select id="service-options">
+      <option value="0">اختر الباقة</option>
+      <option value="أساسية-30">10 الاف مشاهدة - 2 ريال</option>
+       <option value="أساسية-30">15 الاف مشاهدة - 3 ريال</option>
+        <option value="أساسية-30">20 الاف مشاهدة - 4 ريال</option>
+         <option value="أساسية-30">30 الاف مشاهدة - 5 ريال</option>
+          <option value="أساسية-30">50 الاف مشاهدة - 6 ريال</option>
+           <option value="أساسية-30">100 الف مشاهدة - 7 ريال</option>
+            <option value="أساسية-30">200 الف مشاهدة - 8 ريال</option>
+             <option value="أساسية-30">300 الف مشاهدة - 9 ريال</option>
+              <option value="أساسية-30">400 الف مشاهدة - 10 ريال</option>
+               <option value="أساسية-30">500 الف مشاهدة - 11 ريال</option>
+                <option value="أساسية-30">600 الف مشاهدة - 12 ريال</option>\
+                 <option value="أساسية-30">700 الف مشاهدة - 13 ريال</option>
+                  <option value="أساسية-30">800 الف مشاهدة - 15 ريال</option>
+                   <option value="أساسية-30">900 الف مشاهدة - 17 ريال</option>
+                    <option value="أساسية-30">1 مليون مشاهدة - 20 ريال</option>
+                    
+    </select>
+    <button onclick="addCustomProduct('service-options','خدمة خاصة')">إضافة للسلة</button>
+  </div>
+</div>
+
+<!-- السلة -->
+<div class="cart" id="cart-box">
+  <h2>سلة التسوق</h2>
+  <ul id="cart-list"></ul>
+  <p><strong>المجموع: </strong><span id="total">0</span> ريال</p>
+  <button id="checkout">شراء الآن</button>
+</div>
+
+<!-- بنر طرق الدفع تحت السلة -->
+<div class="payment-banner">
+  <h3>طرق الدفع المتوفرة</h3>
+  <img src="طرق الدفع.jpg" alt="طرق الدفع">
+</div>
+
+<!-- نافذة اختيار طريقة الدفع -->
+<div class="payment-modal" id="payment-modal">
+  <div class="payment-content">
+    <h3>اختر طريقة الدفع</h3>
+    <button onclick="pay('فيزا/ماستركارد')">💳 فيزا / ماستركارد</button>
+    <button onclick="pay('التحويل البنكي / STC Pay / urpay / برق / راجحي')">🏦 تحويل بنكي / STC Pay / urpay / برق / راجحي</button>
+    <button onclick="pay('PayPal')">🌍 PayPal</button>
+    <p style="margin-top:8px;color:#666">بعد الاختيار سيتم فتح واتساب لإكمال الطلب.</p>
+  </div>
+</div>
+
+<script>
+  let cart = [];
+
+  function addToCart(name, price) {
+    cart.push({name, price});
+    renderCart();
+  }
+
+  function addCustomProduct(selectId, productName) {
+    const select = document.getElementById(selectId);
+    const value = select.value;
+    if(value === "0") { alert("الرجاء اختيار العدد/الخيار"); return; }
+    const [label, price] = value.split("-");
+    addToCart(`${productName} (${label})`, parseFloat(price));
+    // يرجّع السلكت لأول خيار
+    select.value = "0";
+  }
+
+  function renderCart() {
+    const cartList = document.getElementById("cart-list");
+    const totalEl = document.getElementById("total");
+    const countEl = document.getElementById("cart-count");
+    cartList.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - ${item.price} ريال`;
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "❌";
+      removeBtn.className = "remove-btn";
+      removeBtn.onclick = () => removeFromCart(index);
+      li.appendChild(removeBtn);
+      cartList.appendChild(li);
+      total += item.price;
+    });
+
+    totalEl.textContent = total;
+    countEl.textContent = cart.length;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    renderCart();
+  }
+
+  function toggleCart() {
+    const cartBox = document.getElementById("cart-box");
+    cartBox.style.display = (cartBox.style.display === "block") ? "none" : "block";
+  }
+
+  // إظهار نافذة الدفع عند الشراء
+  const checkoutBtn = document.getElementById("checkout");
+  const paymentModal = document.getElementById("payment-modal");
+
+  checkoutBtn.addEventListener("click", () => {
+    if(cart.length === 0){ alert("سلتك فارغة!"); return; }
+    paymentModal.style.display = "flex";
+  });
+
+  // الدفع وفتح واتساب
+  function pay(method) {
+    let message = "مرحبا، أود شراء:\n";
+    let total = 0;
+    cart.forEach(item => {
+      message += `- ${item.name} (${item.price} ريال)\n`;
+      total += item.price;
+    });
+
+    // تنبيه ورسوم الفيزا
+    if(method.includes("فيزا") || method.includes("ماستركارد")){
+      alert("⚠️ يوجد رسوم إضافية عند الدفع بالفيزا / ماستركارد (+تحسب حسب قيمة السعلة المشراه ).");
+      total += 5;
+    }
+
+    message += `\nالمجموع الكلي: ${total} ريال\nطريقة الدفع: ${method}`;
+    const phone = "966537029503"; // رقمك بدون +
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+
+    paymentModal.style.display = "none";
+  }
+
+  // إغلاق المودال عند الضغط على الخلفية
+  window.addEventListener("click", (e) => {
+    if (e.target === paymentModal) paymentModal.style.display = "none";
+  });
+</script>
+</body>
+</html>
