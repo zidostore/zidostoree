@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>متجر ZiDo — نسخة فاخرة</title>
-  <meta name="description" content="متجر ZiDo يقدم خدمات رقمية مع سلة منبثقة ودفع سريع عبر واتساب وطرق متعددة." />
+  <title>متجر ZiDo - شحن الألعاب وخدمات التواصل الاجتماعي</title>
+  <meta name="description" content="متجر ZiDo متخصص في شحن الألعاب مثل فورتنايت وخدمات التواصل الاجتماعي مثل تيك توك، انستغرام، واتساب. أسعار تنافسية وخدمة مميزة." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -12,8 +12,8 @@
   <style>
     :root {
       --bg: #0a0c10;
-      --panel: #161a25;
-      --panel-2: #1d2333;
+      --panel: rgba(22, 26, 37, 0.85);
+      --panel-2: rgba(29, 35, 51, 0.9);
       --text: #f6f7fb;
       --muted: #a0abc0;
       --brand: #00cfff;
@@ -26,6 +26,8 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       --radius: 18px;
       --transition: all 0.3s ease;
+      --glass: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.15);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +35,7 @@
     html, body {
       height: 100%;
       scroll-behavior: smooth;
-      overflow-x: hidden; /* منع السحب الأفقي على الجوال */
+      overflow-x: hidden;
       -webkit-text-size-adjust: 100%;
     }
 
@@ -43,6 +45,18 @@
       color: var(--text);
       position: relative;
       line-height: 1.6;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -56,19 +70,20 @@
       z-index: -1;
     }
 
-    /* الهيدر */
+    /* الهيدر - تصميم زجاجي */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(22, 26, 37, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(22, 26, 37, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       box-shadow: var(--shadow);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid var(--glass-border);
     }
 
     header .brand { display: flex; gap: 14px; align-items: center; }
@@ -76,7 +91,7 @@
     header img {
       height: 46px; width: 46px; object-fit: cover; border-radius: 14px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--glass-border);
     }
 
     header h1 {
@@ -89,13 +104,17 @@
 
     .menu-btn {
       cursor: pointer; font-size: 20px; color: #fff; padding: 8px 12px; border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1); transition: var(--transition); display: flex; align-items: center; gap: 8px;
+      background: var(--glass); transition: var(--transition); display: flex; align-items: center; gap: 8px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .menu-btn:hover { background: rgba(255, 255, 255, 0.2); }
 
     .cart-icon {
       position: relative; font-size: 22px; color: #fff; cursor: pointer; user-select: none;
-      padding: 8px; border-radius: 12px; background: rgba(255, 255, 255, 0.1); transition: var(--transition);
+      padding: 8px; border-radius: 12px; background: var(--glass); transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .cart-icon:hover { background: rgba(255, 255, 255, 0.2); }
 
@@ -105,16 +124,54 @@
       box-shadow: 0 2px 8px rgba(225, 29, 72, 0.4);
     }
 
-    /* القائمة الجانبية */
+    /* البحث */
+    .search-container {
+      position: relative;
+      display: none; /* سيتم إظهاره عبر JavaScript عند الحاجة */
+      margin: 15px 20px;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 12px 45px 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--text);
+      font-family: inherit;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 2px rgba(0, 207, 255, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    /* القائمة الجانبية - تصميم زجاجي */
     .side-menu {
-      height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; right: 0; background: var(--panel-2);
+      height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; right: 0; 
+      background: rgba(29, 35, 51, 0.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       overflow-x: hidden; transition: width 0.4s ease; padding-top: 70px; box-shadow: var(--shadow);
+      border-left: 1px solid var(--glass-border);
     }
     .side-menu.open { width: 300px; }
 
     .side-menu h3 {
       color: #fff; margin: 0 20px 16px; font-weight: 800; font-size: 20px; padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--glass-border);
     }
 
     .side-menu a {
@@ -125,7 +182,30 @@
 
     .side-menu .closebtn {
       position: absolute; top: 18px; left: 18px; font-size: 32px; color: #fff; text-decoration: none; padding: 6px;
-      border-radius: 50%; background: rgba(255, 255, 255, 0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: var(--glass); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* زر البحث في القائمة */
+    .search-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 20px;
+      padding: 10px;
+      background: var(--glass);
+      border-radius: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .search-menu-btn:hover {
+      background: rgba(0, 207, 255, 0.15);
+      color: #fff;
     }
 
     main {
@@ -143,19 +223,27 @@
       width: 80px; height: 4px; background: var(--brand-gradient); border-radius: 2px;
     }
 
-    /* البانر */
+    /* البانر - تصميم عصري */
     .hero {
       position: relative; display: grid; place-items: center; border-radius: var(--radius); overflow: hidden;
       min-height: 300px;
-      background: url('piner.jpg') center/cover no-repeat, linear-gradient(135deg, #0b0e14, #0f1218);
+      background: url('piner.jpg;utf8,<svg xmlns="piner.jpg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><text x="50" y="50" font-family="Arial" font-size="10" fill="%23333" text-anchor="middle">Placeholder</text></svg>') center/cover no-repeat, linear-gradient(135deg, #0b0e14, #0f1218);
       box-shadow: var(--shadow); margin-bottom: 10px;
     }
-    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); }
-    .hero .hero-content { position: relative; z-index: 1; text-align: center; padding: 30px 20px; }
+    .hero::after { 
+      content: ""; position: absolute; inset: 0; 
+      background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    }
+    .hero .hero-content { 
+      position: relative; z-index: 1; text-align: center; padding: 30px 20px; 
+    }
 
     .intro-text {
       text-align: center; margin: 20px auto 10px; padding: 20px; background: var(--panel);
       border-radius: var(--radius); box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
     }
     .intro-text h1 {
       font-size: 36px; margin: 10px 0; color: #fff; background: var(--brand-gradient);
@@ -163,7 +251,7 @@
     }
     .intro-text p { font-size: 18px; color: var(--muted); margin: 0; }
 
-    /* المنتجات */
+    /* المنتجات - تصميم زجاجي */
     .store {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -171,8 +259,10 @@
     }
 
     .item {
-      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius); padding: 18px; text-align: center;
+      border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 18px; text-align: center;
       background: var(--panel); box-shadow: var(--shadow); position: relative; transition: var(--transition); overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .item::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--brand-gradient);
@@ -191,7 +281,7 @@
     .price { color: var(--brand); font-weight: 800; margin: 8px 0 14px; font-size: 18px; }
 
     .item select {
-      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--glass-border);
       background: rgba(0, 0, 0, 0.2); color: #d7dee9; margin-bottom: 12px; transition: var(--transition); cursor: pointer;
     }
     .item select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 2px rgba(0, 207, 255, 0.2); }
@@ -208,13 +298,15 @@
     .btn:hover::before { left: 100%; }
     .btn:active { transform: translateY(1px); }
 
-    /* سلايدر التقييمات */
+    /* سلايدر التقييمات - تصميم زجاجي */
     .testimonials { position: relative; overflow: hidden; max-width: 100%; margin: 30px auto; padding: 10px 0; }
     .slider { display: flex; transition: transform 0.5s ease; will-change: transform; }
     .testimonial-box {
       flex: 0 0 33.33%; max-width: 33.33%;
       background: var(--panel); border-radius: var(--radius); padding: 24px; margin: 12px; text-align: center; box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition);
+      border: 1px solid var(--glass-border); transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .testimonial-box:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
     .testimonial-box img {
@@ -232,7 +324,7 @@
     .slider-btn:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); transform: translateY(-50%) scale(1.1); }
     .prev { left: 10px; } .next { right: 10px; }
 
-    /* السلة المنبثقة */
+    /* السلة المنبثقة - تصميم زجاجي */
     .cart-overlay {
       position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
       display: none; align-items: flex-start; justify-content: flex-end; z-index: 3000; opacity: 0; transition: opacity 0.3s ease;
@@ -242,23 +334,26 @@
     .cart-popup {
       width: 100%; max-width: 420px; background: var(--panel-2); height: 100vh; box-shadow: var(--shadow);
       display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.4s ease;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-left: 1px solid var(--glass-border);
     }
     .cart-overlay.active .cart-popup { transform: translateX(0); }
 
     .cart-header {
       display: flex; align-items: center; justify-content: space-between; padding: 18px 20px;
-      background: rgba(0, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.2); border-bottom: 1px solid var(--glass-border);
     }
     .cart-header h3 { margin: 0; font-size: 20px; font-weight: 800; color: #fff; }
     .close-cart {
       cursor: pointer; font-size: 26px; color: #fff; background: none; border: none; padding: 6px; border-radius: 50%; width: 36px; height: 36px;
       display: flex; align-items: center; justify-content: center; transition: var(--transition);
     }
-    .close-cart:hover { background: rgba(255, 255, 255, 0.1); }
+    .close-cart:hover { background: var(--glass); }
 
     .cart-list { padding: 16px 18px; overflow-y: auto; flex: 1; -webkit-overflow-scrolling: touch; }
     .cart-item {
-      display: flex; align-items: center; gap: 14px; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex; align-items: center; gap: 14px; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--glass-border);
       border-radius: 14px; padding: 14px; margin-bottom: 14px; transition: var(--transition);
     }
     .cart-item:hover { border-color: rgba(0, 207, 255, 0.3); }
@@ -266,17 +361,30 @@
     .cart-item .meta { flex: 1; }
     .cart-item .meta .name { font-weight: 700; color: #fff; }
     .cart-item .meta .price { color: var(--brand); font-weight: 700; }
-    .cart-item button {
+    .cart-item .quantity-controls {
+      display: flex; align-items: center; gap: 8px; margin-top: 5px;
+    }
+    .cart-item .quantity-controls button {
+      background: var(--glass); border: none; color: #fff; width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition);
+    }
+    .cart-item .quantity-controls button:hover {
+      background: var(--brand);
+    }
+    .cart-item .quantity-controls span {
+      padding: 0 8px;
+    }
+    .cart-item button.remove-btn {
       background: none; border: none; color: #ff6b6b; cursor: pointer; font-size: 18px; padding: 6px; border-radius: 6px; transition: var(--transition);
     }
-    .cart-item button:hover { background: rgba(255, 107, 107, 0.1); }
+    .cart-item button.remove-btn:hover { background: rgba(255, 107, 107, 0.1); }
 
     .cart-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 18px 20px; background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--glass-border); padding: 18px 20px; background: rgba(0, 0, 0, 0.2);
     }
     .cart-footer .total {
       display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 18px; padding: 10px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
     }
 
     .payment-btn {
@@ -305,6 +413,198 @@
       box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4); z-index: 2600; transition: var(--transition); animation: pulse 2s infinite;
     }
     .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37, 211, 102, 0.5); }
+
+    /* مؤشر التحميل */
+    .loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .loader-content {
+      text-align: center;
+      color: white;
+    }
+    
+    .spinner {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid var(--brand);
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* فلترة المنتجات */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+    
+    .filter-btn {
+      padding: 10px 18px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--brand-gradient);
+      color: #001317;
+      border-color: var(--brand);
+    }
+
+    /* صفحة تأكيد الطلب */
+    .confirmation {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 4000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .confirmation-content {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow);
+      animation: fadeIn 0.5s ease;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+    
+    .confirmation-content h3 {
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+    
+    .confirmation-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* صفحة معلومات المتجر */
+    .about-section {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 20px 0;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+    }
+    
+    .about-section h3 {
+      color: var(--brand);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .faq-item {
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 16px;
+    }
+    
+    .faq-question {
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      color: var(--muted);
+      margin-top: 10px;
+      display: none;
+    }
+    
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* إشعارات */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 15px 20px;
+      background: var(--panel);
+      color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    .notification.success {
+      border-left: 4px solid var(--success);
+    }
+    
+    .notification.error {
+      border-left: 4px solid var(--danger);
+    }
+
+    /* منتجات مميزة */
+    .featured-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--brand-gradient);
+      color: #001317;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      z-index: 1;
+    }
 
     /* تجاوب */
     @media (max-width: 1100px) {
@@ -343,6 +643,11 @@
       .cart-item { padding: 12px; gap: 10px; }
       .cart-item img { width: 48px; height: 48px; }
       .payment-btn { padding: 12px; font-size: 14px; }
+      
+      .filters {
+        flex-direction: column;
+        align-items: center;
+      }
     }
     @media (max-width: 480px) {
       .store { grid-template-columns: 1fr; }
@@ -355,6 +660,14 @@
       .item img { width: 100px; height: 100px; }
       .btn { padding: 10px 12px; font-size: 14px; }
       .whatsapp-float { width: 50px; height: 50px; font-size: 20px; bottom: 18px; right: 18px; }
+      
+      .confirmation-content {
+        padding: 20px;
+      }
+      
+      .confirmation-buttons {
+        flex-direction: column;
+      }
     }
 
     /* مؤثرات */
@@ -378,6 +691,20 @@
 
 <canvas class="bg"></canvas>
 
+<!-- مؤشر التحميل -->
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="spinner"></div>
+    <p>جاري التحميل...</p>
+  </div>
+</div>
+
+<!-- إشعارات -->
+<div class="notification" id="notification">
+  <i class="fas fa-check-circle"></i>
+  <span id="notification-text"></span>
+</div>
+
 <header>
   <div class="brand">
     <img src="logo.jpg" alt="شعار ZiDo" loading="lazy" />
@@ -392,6 +719,12 @@
   </div>
 </header>
 
+<!-- شريط البحث -->
+<div class="search-container" id="searchContainer">
+  <input type="text" class="search-box" id="searchInput" placeholder="ابحث عن منتج..." aria-label="بحث عن منتج">
+  <i class="fas fa-search search-icon"></i>
+</div>
+
 <!-- القائمة الجانبية -->
 <nav id="sideMenu" class="side-menu" aria-label="القائمة الجانبية">
   <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()" aria-label="إغلاق القائمة">×</a>
@@ -401,6 +734,11 @@
   <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
   <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
   <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
+  <a href="#" onclick="showSection('about')"><i class="fas fa-info-circle"></i> عن المتجر</a>
+
+  <div class="search-menu-btn" onclick="toggleSearch()">
+    <i class="fas fa-search"></i> بحث
+  </div>
 </nav>
 
 <main>
@@ -408,7 +746,7 @@
   <section id="home" class="active">
     <div class="hero">
       <div class="hero-content">
-        <h2 style="margin:0 0 12px;font-size:36px">مرحبًا بك 👋</h2>
+      <img src="p" alt="مرحبًا بكم في متجر ZiDo" class="welcome-image">
         <p style="margin:0;color:#e8f6ff;font-size:20px">أفضل العروض والخدمات الرقمية بين يديك</p>
       </div>
     </div>
@@ -419,15 +757,27 @@
     </div>
 
     <h2>🔥 المنتجات الأكثر مبيعًا</h2>
-    <div class="store">
-      <div class="item">
-        <img src="crew.png" alt="الطاقم الشهري">
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="fortnite">فورتنايت</button>
+      <button class="filter-btn" data-filter="tiktok">تيك توك</button>
+      <button class="filter-btn" data-filter="instagram">انستغرام</button>
+      <button class="filter-btn" data-filter="whatsapp">واتساب</button>
+      <button class="filter-btn" data-filter="sale">عروض خاصة</button>
+    </div>
+    
+    <div class="store" id="featured-products">
+      <div class="item" data-category="fortnite sale">
+        <span class="featured-badge">🔥 الأكثر مبيعًا</span>
+        <img src="crew.png" alt="الطاقم الشهري" loading="lazy">
         <h3>الطاقم الشهري</h3>
         <p class="price">25 ريال</p>
         <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
       </div>
-      <div class="item">
-        <img src="متابعين تيك توك.png" alt="متابعين تيك توك">
+      <div class="item" data-category="tiktok">
+        <span class="featured-badge">عرض خاص</span>
+        <img src="متابعين تيك توك.png" alt="متابعين تيك توك" loading="lazy">
         <h3>متابعين تيك توك</h3>
         <select id="best-followers" aria-label="اختيار عدد المتابعين">
           <option value="0">اختر العدد</option>
@@ -439,15 +789,28 @@
         </select>
         <button class="btn" onclick="addCustomProduct('best-followers','متابعين تيك توك','متابعين تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
       </div>
+      <div class="item" data-category="instagram">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة متابعين انستغرام</text></svg>" alt="متابعين انستغرام"><h3>متابعين انستغرام</h3>
+        <select id="insta-followers-featured">
+          <option value="0">اختر العدد</option>
+          <option value="1000-15">1000 متابع - 15 ريال</option>
+          <option value="2000-28">2000 متابع - 28 ريال</option>
+          <option value="3000-40">3000 متابع - 40 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('insta-followers-featured','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="whatsapp">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب"><h3>رقم لتفعيل الواتساب</h3><p class="price">7 ريال</p><button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
     </div>
 
     <h2>💬 آراء العملاء</h2>
     <div class="testimonials">
       <div class="slider" id="slider">
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt=""><h3>سلطان</h3><p>"أفضل متجر!"</p><p>⭐⭐⭐⭐⭐</p></div>
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt=""><h3>عدنان</h3><p>"خدمة ممتازة"</p><p>⭐⭐⭐⭐⭐</p></div>
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt=""><h3>محمد</h3><p>"تعامل راقي"</p><p>⭐⭐⭐⭐⭐</p></div>
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt=""><h3>نواف</h3><p>"تجربة رائعة"</p><p>⭐⭐⭐⭐⭐</p></div>
+        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة سلطان"><h3>سلطان</h3><p>"أفضل متجر!"</p><p>⭐⭐⭐⭐⭐</p></div>
+        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة عدنان"><h3>عدنان</h3><p>"خدمة ممتازة"</p><p>⭐⭐⭐⭐⭐</p></div>
+        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة محمد"><h3>محمد</h3><p>"تعامل راقي"</p><p>⭐⭐⭐⭐⭐</p></div>
+        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة نواف"><h3>نواف</h3><p>"تجربة رائعة"</p><p>⭐⭐⭐⭐⭐</p></div>
       </div>
       <button class="slider-btn prev" onclick="prevSlide()" aria-label="السابق">❮</button>
       <button class="slider-btn next" onclick="nextSlide()" aria-label="التالي">❯</button>
@@ -457,17 +820,34 @@
   <!-- فورتنايت -->
   <section id="fortnite">
     <h2>🕹️ خدمات فورتنايت</h2>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="sale">عروض خاصة</button>
+      <button class="filter-btn" data-filter="vbucks">فيبوكس</button>
+      <button class="filter-btn" data-filter="crew">الطاقم الشهري</button>
+    </div>
+    
     <div class="store">
-      <div class="item"><img src="crew.png" alt=""><h3>الطاقم الشهري</h3><p class="price">25 ريال</p><button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
-      <div class="item"><img src="5400vb.png" alt=""><h3>حساب 5400 فيبوكس</h3><p class="price">70 ريال</p><button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      <div class="item" data-category="crew sale"><img src="crew.png" alt="الطاقم الشهري"><h3>الطاقم الشهري</h3><p class="price">25 ريال</p><button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      <div class="item" data-category="vbucks"><img src="5400vb.png" alt="حساب 5400 فيبوكس"><h3>حساب 5400 فيبوكس</h3><p class="price">70 ريال</p><button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      <div class="item" data-category="vbucks"><img src="13500vb.png" alt="حساب 13500 فيبوكس"><h3>حساب 13500 فيبوكس</h3><p class="price">150 ريال</p><button class="btn" onclick="addToCart('حساب 13500 فيبوكس',150,'13500vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
     </div>
   </section>
 
   <!-- تيك توك -->
   <section id="tiktok">
     <h2>🎵 خدمات تيك توك</h2>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="followers">متابعين</button>
+      <button class="filter-btn" data-filter="likes">لايكات</button>
+      <button class="filter-btn" data-filter="views">مشاهدات</button>
+    </div>
+    
     <div class="store">
-      <div class="item"><img src="متابعين تيك توك.png" alt=""><h3>متابعين تيك توك</h3>
+      <div class="item" data-category="followers"><img src="متابعين تيك توك.png" alt="متابعين تيك توك"><h3>متابعين تيك توك</h3>
         <select id="followers-options">
           <option value="0">اختر العدد</option>
           <option value="1000-13">1000 متابع - 13 ريال</option>
@@ -478,7 +858,7 @@
         </select>
         <button class="btn" onclick="addCustomProduct('followers-options','متابعين تيك توك','متابعين تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
-      <div class="item"><img src="لايكات تيك توك.png" alt=""><h3>لايكات تيك توك</h3>
+      <div class="item" data-category="likes"><img src="لايكات تيك توك.png" alt="لايكات تيك توك"><h3>لايكات تيك توك</h3>
         <select id="likes-options">
           <option value="0">اختر العدد</option>
           <option value="1000-3">1000 لايك - 3 ريال</option>
@@ -490,7 +870,7 @@
         </select>
         <button class="btn" onclick="addCustomProduct('likes-options','لايكات تيك توك','لايكات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
-      <div class="item"><img src="مشاهدات تيك توك.png" alt=""><h3>مشاهدات تيك توك</h3>
+      <div class="item" data-category="views"><img src="مشاهدات تيك توك.png" alt="مشاهدات تيك توك"><h3>مشاهدات تيك توك</h3>
         <select id="views-options">
           <option value="0">اختر الباقة</option>
           <option value="10000-2">10 الاف مشاهدة - 2 ريال</option>
@@ -517,8 +897,16 @@
   <!-- انستغرام -->
   <section id="instagram">
     <h2>📸 خدمات انستغرام</h2>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="followers">متابعين</button>
+      <button class="filter-btn" data-filter="likes">لايكات</button>
+      <button class="filter-btn" data-filter="views">مشاهدات</button>
+    </div>
+    
     <div class="store">
-      <div class="item"><img src="insta1.jpg" alt=""><h3>متابعين انستغرام</h3>
+      <div class="item" data-category="followers"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة متابعين انستغرام</text></svg>" alt="متابعين انستغرام"><h3>متابعين انستغرام</h3>
         <select id="insta-followers">
           <option value="0">اختر العدد</option>
           <option value="1000-15">1000 متابع - 15 ريال</option>
@@ -527,7 +915,7 @@
         </select>
         <button class="btn" onclick="addCustomProduct('insta-followers','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
-      <div class="item"><img src="insta2.jpg" alt=""><h3>لايكات انستغرام</h3>
+      <div class="item" data-category="likes"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة لايكات انستغرام</text></svg>" alt="لايكات انستغرام"><h3>لايكات انستغرام</h3>
         <select id="insta-likes">
           <option value="0">اختر العدد</option>
           <option value="1000-5">1000 لايك - 5 ريال</option>
@@ -536,7 +924,7 @@
         </select>
         <button class="btn" onclick="addCustomProduct('insta-likes','لايكات انستغرام','insta2.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
-      <div class="item"><img src="insta3.jpg" alt=""><h3>مشاهدات انستغرام</h3>
+      <div class="item" data-category="views"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة مشاهدات انستغرام</text></svg>" alt="مشاهدات انستغرام"><h3>مشاهدات انستغرام</h3>
         <select id="insta-views">
           <option value="0">اختر الباقة</option>
           <option value="5000-4">5 الاف مشاهدة - 4 ريال</option>
@@ -552,7 +940,79 @@
   <section id="whatsapp">
     <h2>💬 خدمات واتساب</h2>
     <div class="store">
-      <div class="item"><img src="whatsapp.jpg" alt=""><h3>رقم لتفعيل الواتساب</h3><p class="price">7 ريال</p><button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      <div class="item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب"><h3>رقم لتفعيل الواتساب</h3><p class="price">7 ريال</p><button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+    </div>
+  </section>
+  
+  <!-- عن المتجر -->
+  <section id="about">
+    <h2>ℹ️ عن متجر ZiDo</h2>
+    
+    <div class="about-section">
+      <h3>من نحن</h3>
+      <p>متجر ZiDo هو وجهتك الأولى لشراء جميع الخدمات الرقمية مثل شحن الألعاب وخدمات وسائل التواصل الاجتماعي. نحن نقدم خدمات عالية الجودة بأسعار تنافسية وبدعم فني على مدار الساعة.</p>
+    </div>
+    
+    <div class="about-section">
+      <h3>لماذا تختارنا؟</h3>
+      <ul style="list-style-type: none; padding: 0;">
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          أسعارنا مناسبة للجميع
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          خدمة عملاء على مدار الساعة
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          تشكيلة واسعة من الخدمات
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          توصيل سريع للخدمات
+        </li>
+      </ul>
+    </div>
+    
+    <div class="about-section">
+      <h3>الأسئلة الشائعة</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          كيف يمكنني الدفع؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          ن خيارات دفع \ STC Pay, Visa/Mastercard, Apple Pay, and PayPal/ راجحي/برق/يوربي.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          كم تستغرق وقت التوصيل؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          معظم الخدمات يتم توصيلها فوراً بعد التأكد من الدفع، وبعضها قد يستغرق حتى 24 ساعة كحد أقصى.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          هل الخدمات آمنة؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          نعم، جميع خدماتنا آمنة ولا تؤثر على حساباتكم بالسلب، ونحن نضمن الخدمة لمدة 30 يومًا.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          كيف أتواصل مع الدعم؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          يمكنك التواصل معنا عبر الواتساب على الرقم الموجود في أسفل الموقع، أو عبر رسائل Instagram.
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -572,7 +1032,7 @@
     </div>
     <div class="cart-footer">
       <div class="total"><strong>المجموع:</strong> <span id="total">0</span> ريال</div>
-      <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i> الدفع عبر واتساب (فيزا/ماستركارد/ابل بي)</button>
+      <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i>  (فيزا/ماستركارد/ابل بي)</button>
       <button class="payment-btn stc-btn" onclick="checkout('STC Pay')"><i class="fas fa-mobile-alt"></i> الدفع عبر STC Pay</button>
       <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يوربي</button>
       <button class="payment-btn mada-btn" onclick="checkout('PayPal')"><i class="fab fa-paypal"></i> الدفع عبر PayPal</button>
@@ -582,34 +1042,77 @@
   </div>
 </div>
 
+<!-- صفحة تأكيد الطلب -->
+<div id="confirmation" class="confirmation">
+  <div class="confirmation-content">
+    <h3>تم إرسال طلبك بنجاح! 🎉</h3>
+    <p>سيتم التواصل معك خلال دقائق لتأكيد الطلب وتفاصيل الدفع.</p>
+    <p>رقم الطلب: <strong id="order-number">ZD-12345</strong></p>
+    <div class="confirmation-buttons">
+      <button class="btn" onclick="closeConfirmation()">مواصلة التسوق</button>
+      <button class="btn" style="background: var(--accent);" onclick="closeConfirmation(); showSection('home');">العودة للرئيسية</button>
+    </div>
+  </div>
+</div>
+
 <!-- زر واتساب عائم -->
 <a href="https://wa.me/966537029503" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب"><i class="fab fa-whatsapp"></i></a>
 
 <script>
 /* ====== السلة ====== */
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('zidoCart')) || [];
 
-function addToCart(name, price, img) {
-  cart.push({name, price, img: img || ''});
+function addToCart(name, price, img, quantity = 1) {
+  showLoader();
+  
+  // التحقق إذا كان المنتج موجودًا بالفعل في السلة
+  const existingItemIndex = cart.findIndex(item => item.name === name && item.price === price);
+  
+  if (existingItemIndex > -1) {
+    // إذا كان المنتج موجودًا، نزيد الكمية فقط
+    cart[existingItemIndex].quantity += quantity;
+  } else {
+    // إذا لم يكن موجودًا، نضيفه كمنتج جديد
+    cart.push({name, price, img: img || '', quantity});
+  }
+  
+  saveCart();
   renderCart();
-  toggleCart(); // فتح السلة مباشرة بعد الإضافة
+  
+  // إظهار إشعار
+  showNotification(`تمت إضافة "${name}" إلى السلة`, 'success');
+  
   const cartIcon = document.getElementById('cartIcon');
   cartIcon.classList.add('shake');
-  setTimeout(() => cartIcon.classList.remove('shake'), 500);
+  setTimeout(() => {
+    cartIcon.classList.remove('shake');
+    hideLoader();
+  }, 500);
 }
 
-function addCustomProduct(selectId, name, img) {
-  const sel = document.getElementById(selectId);
-  const v = sel.value;
-  if (v === "0") { alert("اختر العدد/الباقة"); return; }
-  const [label, p] = v.split("-");
-  addToCart(`${name} (${label})`, parseFloat(p), img);
-  sel.value = "0";
+function updateQuantity(index, change) {
+  cart[index].quantity += change;
+  
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+  
+  saveCart();
+  renderCart();
 }
 
 function removeItem(index) {
+  const itemName = cart[index].name;
   cart.splice(index, 1);
+  saveCart();
   renderCart();
+  
+  // إظهار إشعار
+  showNotification(`تمت إزالة "${itemName}" من السلة`, 'error');
+}
+
+function saveCart() {
+  localStorage.setItem('zidoCart', JSON.stringify(cart));
 }
 
 function renderCart() {
@@ -628,22 +1131,29 @@ function renderCart() {
   }
 
   cart.forEach((it, i) => {
-    sum += it.price;
+    const itemTotal = it.price * it.quantity;
+    sum += itemTotal;
+    
     const row = document.createElement('div');
     row.className = 'cart-item fade-in';
     row.innerHTML = `
-      ${it.img ? `<img src="${it.img}" alt="${it.name}">` : ''}
+      ${it.img ? `<img src="${it.img}" alt="${it.name}" loading="lazy">` : ''}
       <div class="meta">
         <div class="name">${it.name}</div>
-        <div class="price">${it.price} ريال</div>
+        <div class="price">${itemTotal.toFixed(2).replace(/\.00$/, '')} ريال (${it.price} × ${it.quantity})</div>
+        <div class="quantity-controls">
+          <button onclick="updateQuantity(${i}, -1)">-</button>
+          <span>${it.quantity}</span>
+          <button onclick="updateQuantity(${i}, 1)">+</button>
+        </div>
       </div>
-      <button title="حذف" onclick="removeItem(${i})"><i class="fas fa-trash"></i></button>
+      <button class="remove-btn" title="حذف" onclick="removeItem(${i})"><i class="fas fa-trash"></i></button>
     `;
     list.appendChild(row);
   });
 
   totalEl.textContent = sum.toFixed(2).replace(/\.00$/, '');
-  countEl.textContent = cart.length;
+  countEl.textContent = cart.reduce((total, item) => total + item.quantity, 0);
 }
 
 function toggleCart() {
@@ -663,28 +1173,99 @@ function toggleMenu() {
 }
 
 function showSection(id) {
+  showLoader();
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.getElementById('sideMenu').classList.remove('open');
   window.scrollTo({top: 0, behavior: 'smooth'});
+  
+  // إعادة تطبيق الفلتر عند تغيير القسم
+  if (id !== 'home' && id !== 'about') {
+    setTimeout(applyFilters, 100);
+  }
+  
+  setTimeout(hideLoader, 300);
+}
+
+/* ====== البحث ====== */
+function toggleSearch() {
+  const searchContainer = document.getElementById('searchContainer');
+  searchContainer.style.display = searchContainer.style.display === 'block' ? 'none' : 'block';
+  if (searchContainer.style.display === 'block') {
+    document.getElementById('searchInput').focus();
+  }
+  document.getElementById('sideMenu').classList.remove('open');
+}
+
+// وظيفة البحث
+document.getElementById('searchInput').addEventListener('keyup', function(e) {
+  if (e.key === 'Enter') {
+    const query = this.value.toLowerCase().trim();
+    if (query) {
+      filterProducts(query);
+      this.value = '';
+      toggleSearch();
+    }
+  }
+});
+
+function filterProducts(query) {
+  const items = document.querySelectorAll('.item');
+  let found = false;
+  
+  items.forEach(item => {
+    const name = item.querySelector('h3').textContent.toLowerCase();
+    if (name.includes(query)) {
+      item.style.display = 'block';
+      found = true;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+  
+  if (!found) {
+    showNotification('لم يتم العثور على منتجات تطابق بحثك', 'error');
+    items.forEach(item => item.style.display = 'block');
+  }
 }
 
 /* ====== الدفع عبر واتساب ====== */
 function checkout(method) {
-  if (cart.length === 0) { alert('سلتك فارغة'); return; }
+  if (cart.length === 0) { 
+    showNotification('سلتك فارغة', 'error');
+    return; 
+  }
 
-  const items = cart.map(it => `• ${it.name} — ${it.price} ريال`).join('%0A');
+  const items = cart.map(it => `• ${it.name} — ${it.price} ريال × ${it.quantity} = ${(it.price * it.quantity).toFixed(2)} ريال`).join('%0A');
   const total = document.getElementById('total').textContent;
   let note = '';
 
   if (method.includes('فيزا')) { note = '%0A%0A⚠️ يوجد رسوم إضافية للفيزا.'; }
 
-  const msg = `طلب جديد ${method}:%0A%0A${items}%0A%0Aالمجموع: ${total} ريال${note}`;
+  const orderNumber = 'ZD-' + Math.floor(10000 + Math.random() * 90000);
+  document.getElementById('order-number').textContent = orderNumber;
+  
+  const msg = `طلب جديد ${method}:%0A%0A${items}%0A%0Aالمجموع: ${total} ريال%0Aرقم الطلب: ${orderNumber}${note}`;
   const link = `https://wa.me/966537029503?text=${msg}`;
+  
+  // تفريغ السلة بعد إتمام الطلب
+  cart = [];
+  saveCart();
+  renderCart();
+  
+  // إظهار تأكيد الطلب
+  document.getElementById('confirmation').style.display = 'flex';
+  
+  // فتح رابط الواتساب
   window.open(link, '_blank');
 }
 
-/* ====== سلايدر التقييمات ====== */
+function closeConfirmation() {
+  document.getElementById('confirmation').style.display = 'none';
+  toggleCart();
+}
+
+/* ====== سلاider التقييمات ====== */
 let currentSlide = 0;
 
 function showSlide(i) {
@@ -704,6 +1285,37 @@ function nextSlide() { showSlide(currentSlide + 1); }
 function prevSlide() { showSlide(currentSlide - 1); }
 
 window.addEventListener('resize', () => showSlide(currentSlide));
+
+/* ====== فلترة المنتجات ====== */
+function applyFilters() {
+  const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+  const items = document.querySelectorAll('.item');
+  
+  items.forEach(item => {
+    const categories = item.dataset.category.split(' ');
+    
+    if (activeFilter === 'all' || categories.includes(activeFilter)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// إضافة event listeners لأزرار الفلترة
+document.querySelectorAll('.filter-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+    applyFilters();
+  });
+});
+
+/* ====== الأسئلة الشائعة ====== */
+function toggleFaq(element) {
+  const faqItem = element.parentElement;
+  faqItem.classList.toggle('active');
+}
 
 /* ====== الخلفية المتحركة ====== */
 const canvas = document.querySelector('canvas.bg');
@@ -741,12 +1353,49 @@ function draw() {
 }
 requestAnimationFrame(draw);
 
-/* ====== تهيئة ====== */
+/* ====== مؤشر التحميل ====== */
+function showLoader() {
+  document.getElementById('loader').style.display = 'flex';
+}
+
+function hideLoader() {
+  document.getElementById('loader').style.display = 'none';
+}
+
+/* ====== الإشعارات ====== */
+function showNotification(message, type = 'success') {
+  const notification = document.getElementById('notification');
+  const notificationText = document.getElementById('notification-text');
+  
+  notificationText.textContent = message;
+  notification.className = `notification ${type}`;
+  notification.classList.add('show');
+  
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 3000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   renderCart();
   showSlide(0);
+  
+  window.addEventListener('load', hideLoader);
 });
+
+function addCustomProduct(selectId, name, img) {
+  const sel = document.getElementById(selectId);
+  const v = sel.value;
+  if (v === "0") { 
+    showNotification("يرجى اختيار العدد/الباقة", 'error'); 
+    return; 
+  }
+  const [label, p] = v.split("-");
+  addToCart(`${name} (${label})`, parseFloat(p), img);
+  sel.value = "0";
+}
 </script>
 </body>
 </html>
+
 
