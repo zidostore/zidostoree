@@ -731,7 +731,7 @@
   <h3>القائمة الرئيسية</h3>
   <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#" onclick="showSection('fortnite')"><i class="fas fa-gamepad"></i> خدمات فورتنايت</a>
-  <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
+  <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك تok</a>
   <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
   <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
   <a href="#" onclick="showSection('about')"><i class="fas fa-info-circle"></i> عن المتجر</a>
@@ -762,7 +762,7 @@
       <button class="filter-btn active" data-filter="all">الكل</button>
       <button class="filter-btn" data-filter="fortnite">فورتنايت</button>
       <button class="filter-btn" data-filter="tiktok">تيك توك</button>
-      <button class="filter-btn" data-filter="instagram">انستغرام</button>
+      <button class="filter-btn" data-filter="instagram">انستغرam</button>
       <button class="filter-btn" data-filter="whatsapp">واتساب</button>
       <button class="filter-btn" data-filter="sale">عروض خاصة</button>
     </div>
@@ -826,12 +826,82 @@
       <button class="filter-btn" data-filter="sale">عروض خاصة</button>
       <button class="filter-btn" data-filter="vbucks">فيبوكس</button>
       <button class="filter-btn" data-filter="crew">الطاقم الشهري</button>
+      <button class="filter-btn" data-filter="account">حسابات</button>
     </div>
     
     <div class="store">
-      <div class="item" data-category="crew sale"><img src="crew.png" alt="الطاقم الشهري"><h3>الطاقم الشهري</h3><p class="price">25 ريال</p><button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
-      <div class="item" data-category="vbucks"><img src="5400vb.png" alt="حساب 5400 فيبوكس"><h3>حساب 5400 فيبوكس</h3><p class="price">70 ريال</p><button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
-      <div class="item" data-category="vbucks"><img src="13500vb.png" alt="حساب 13500 فيبوكس"><h3>حساب 13500 فيبوكس</h3><p class="price">150 ريال</p><button class="btn" onclick="addToCart('حساب 13500 فيبوكس',150,'13500vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      <div class="item" data-category="crew sale">
+        <span class="featured-badge">عرض خاص</span>
+        <img src="crew.png" alt="الطاقم الشهري">
+        <h3>الطاقم الشهري</h3>
+        <p class="price">25 ريال</p>
+        <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+       <div class="item" data-category="sale">
+        <span class="featured-badge">عرض خاص</span>
+        <img src="اهداء فيبوكس.png" alt="إهداء فيبوكس">
+        <h3>إهداء فيبوكس</h3>
+        <select id="profile-pack" aria-label="إهداء فيبوكس">
+          <option value="0">اختر الباقة</option>
+          <option value="basic-15">  800 فيبوكس ب 14 ريال </option>
+          <option value="basic-15">1000 فيبوكس ب 18 ريال </option>
+          <option value="basic-15"> 1200 فيبوكس ب21 ريال</option>
+          <option value="basic-15">1500فيبوكس ب 26 ريال </option>
+          <option value="basic-15"> 1800 فيبوكس ب28 ريال</option>
+        <option value="basic-15">2000 فيبوكس ب34 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('profile-pack','إهداء فيبوكس','profile-pack.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="vbucks">
+        <img src="5400vb.png" alt="حساب 5400 فيبوكس">
+        <h3>حساب 5400 فيبوكس</h3>
+        <p class="price">70 ريال</p>
+        <button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="vbucks">
+           <span class="featured-badge">جديد</span>
+        <img src="حزمه ب 17 ريال.avif" alt="حزمه ب 17 ريال">
+        <h3>حزمة مهام المنفى مع 1000 فيبوكس</h3>
+        <p class="price">17 ريال</p>
+        <button class="btn" onclick="addToCart('حساب 13500 فيبوكس',150,'13500vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      
+      <!-- المنتجات الجديدة -->
+      <div class="item" data-category="vbucks">
+           <span class="featured-badge">جديد</span>
+        <img src="حزمه 1 دولار.jpg" alt="1000 فيبوكس">
+        <h3>حزمة Chill Vibez مع 600 V-Bucks</h3>
+        <p class="price">12 ريال</p>
+        <button class="btn" onclick="addToCart('حزمة فيبوكس 1000',20,'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <!-- المنتجات الجديدة لقسم فورتنايت -->
+<div class="item" data-category="vbucks">
+     <span class="featured-badge">جديد</span>
+  <img src="حزمه 16 ريال.avif" alt="Graffiti Revolution">
+  <h3>حزمة Graffiti Revolution </h3>
+  <p class="price">22 ريال</p>
+  <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+</div>
+
+<div class="item" data-category="vbucks">
+     <span class="featured-badge">جديد</span>
+  <img src="حزمه 20 ريال.avif" alt="حزمة فيبوكس 2500">
+  <h3>حزمة The Wavebreakeمع 600 فيبوكس   </h3>
+  <p class="price">28 ريال</p>
+  <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+</div>
+
+
+     
+      
+      <div class="item" data-category="account">
+        <span class="featured-badge">جديد</span>
+        <img src="حزمة 18 ريال.avif" alt="حزمة النخبة الذهبية">
+        <h3>حزمة النخبة الذهبية</h3>
+        <p class="price">18 ريال</p>
+        <p style="color: var(--muted); font-size: 14px; margin: 8px 0;"></p>
+        <button class="btn" onclick="addToCart('حساب فورتنايت مميز',200,'premium-account.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
     </div>
   </section>
 
@@ -847,7 +917,7 @@
     </div>
     
     <div class="store">
-      <div class="item" data-category="followers"><img src="متابعين تيك توك.png" alt="متابعين تيك توك"><h3>متابعين تيك توك</h3>
+      <div class="item" data-category="followers"><img src="متابعين تيك توك.png"alt="متابعين تيك توك"><h3>متابعين تيك توك</h3>
         <select id="followers-options">
           <option value="0">اختر العدد</option>
           <option value="1000-13">1000 متابع - 13 ريال</option>
@@ -890,6 +960,21 @@
           <option value="1000000-20">1 مليون مشاهدة - 20 ريال</option>
         </select>
         <button class="btn" onclick="addCustomProduct('views-options','مشاهدات تيك توك','مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      
+      <!-- المنتجات الجديدة -->
+      <div class="item" data-category="views">
+        <img src="مشاهدات تيك توك.png" alt="1000 مشاهدة تيك توك">
+        <h3>1000 مشاهدة تيك توك</h3>
+        <p class="price">2 ريال</p>
+        <button class="btn" onclick="addToCart('1000 مشاهدة تيك توك', 2, 'مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      
+      <div class="item" data-category="views">
+        <img src="مشاهدات تيك توك.png" alt="10000 مشاهدة تيك توك">
+        <h3>10000 مشاهدة تيك توك</h3>
+        <p class="price">7 ريال</p>
+        <button class="btn" onclick="addToCart('10000 مشاهدة تيك توك', 7, 'مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
     </div>
   </section>
@@ -941,6 +1026,15 @@
     <h2>💬 خدمات واتساب</h2>
     <div class="store">
       <div class="item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب"><h3>رقم لتفعيل الواتساب</h3><p class="price">7 ريال</p><button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      
+      <!-- المنتج الجديد -->
+      <div class="item">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب أمريكي</text></svg>" 
+             alt="رقم أمريكي لتفعيل الواتساب">
+        <h3>رقم أمريكي لتفعيل الواتساب</h3>
+        <p class="price">10 ريال</p>
+        <button class="btn" onclick="addToCart('رقم أمريكي لتفعيل الواتساب', 10, 'whatsapp-us.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
     </div>
   </section>
   
@@ -1397,5 +1491,6 @@ function addCustomProduct(selectId, name, img) {
 </script>
 </body>
 </html>
+
 
 
