@@ -227,7 +227,7 @@
     .hero {
       position: relative; display: grid; place-items: center; border-radius: var(--radius); overflow: hidden;
       min-height: 300px;
-      background: url('piner.jpg;utf8,<svg xmlns="piner.jpg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><text x="50" y="50" font-family="Arial" font-size="10" fill="%23333" text-anchor="middle">Placeholder</text></svg>') center/cover no-repeat, linear-gradient(135deg, #0b0e14, #0f1218);
+      background: linear-gradient(135deg, #0b0e14, #0f1218);
       box-shadow: var(--shadow); margin-bottom: 10px;
     }
     .hero::after { 
@@ -236,6 +236,14 @@
     }
     .hero .hero-content { 
       position: relative; z-index: 1; text-align: center; padding: 30px 20px; 
+    }
+    
+    .welcome-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
     }
 
     .intro-text {
@@ -414,7 +422,7 @@
     }
     .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37, 211, 102, 0.5); }
 
-    /* مؤشر التحميل */
+ 
     .loader {
       display: none;
       position: fixed;
@@ -731,7 +739,7 @@
   <h3>القائمة الرئيسية</h3>
   <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#" onclick="showSection('fortnite')"><i class="fas fa-gamepad"></i> خدمات فورتنايت</a>
-  <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك تok</a>
+  <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
   <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
   <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
   <a href="#" onclick="showSection('about')"><i class="fas fa-info-circle"></i> عن المتجر</a>
@@ -746,7 +754,7 @@
   <section id="home" class="active">
     <div class="hero">
       <div class="hero-content">
-      <img src="p" alt="مرحبًا بكم في متجر ZiDo" class="welcome-image">
+        <img src="piner.jpg" alt="مرحبًا بكم في متجر ZiDo" class="welcome-image">
         <p style="margin:0;color:#e8f6ff;font-size:20px">أفضل العروض والخدمات الرقمية بين يديك</p>
       </div>
     </div>
@@ -762,7 +770,7 @@
       <button class="filter-btn active" data-filter="all">الكل</button>
       <button class="filter-btn" data-filter="fortnite">فورتنايت</button>
       <button class="filter-btn" data-filter="tiktok">تيك توك</button>
-      <button class="filter-btn" data-filter="instagram">انستغرam</button>
+      <button class="filter-btn" data-filter="instagram">انستغرام</button>
       <button class="filter-btn" data-filter="whatsapp">واتساب</button>
       <button class="filter-btn" data-filter="sale">عروض خاصة</button>
     </div>
@@ -872,7 +880,7 @@
         <img src="حزمه 1 دولار.jpg" alt="1000 فيبوكس">
         <h3>حزمة Chill Vibez مع 600 V-Bucks</h3>
         <p class="price">12 ريال</p>
-        <button class="btn" onclick="addToCart('حزمة فيبوكس 1000',20,'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        <button class="btn" onclick="addToCart('حزمة Chill Vibez مع 600 V-Bucks',20,'حزمه 1 دولار.jpg ')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
       <!-- المنتجات الجديدة لقسم فورتنايت -->
 <div class="item" data-category="vbucks">
@@ -900,7 +908,7 @@
         <h3>حزمة النخبة الذهبية</h3>
         <p class="price">18 ريال</p>
         <p style="color: var(--muted); font-size: 14px; margin: 8px 0;"></p>
-        <button class="btn" onclick="addToCart('حساب فورتنايت مميز',200,'premium-account.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        <button class="btn" onclick="addToCart('حساب فортنايت مميز',200,'premium-account.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
     </div>
   </section>
@@ -914,6 +922,7 @@
       <button class="filter-btn" data-filter="followers">متابعين</button>
       <button class="filter-btn" data-filter="likes">لايكات</button>
       <button class="filter-btn" data-filter="views">مشاهدات</button>
+      <button class="filter-btn" data-filter="user">يوزرات</button>
     </div>
     
     <div class="store">
@@ -963,18 +972,66 @@
       </div>
       
       <!-- المنتجات الجديدة -->
-      <div class="item" data-category="views">
-        <img src="مشاهدات تيك توك.png" alt="1000 مشاهدة تيك توك">
-        <h3>1000 مشاهدة تيك توك</h3>
-        <p class="price">2 ريال</p>
-        <button class="btn" onclick="addToCart('1000 مشاهدة تيك توك', 2, 'مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+
+            <div class="item" data-category="user">
+        <img src="8hoe.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك 8hoe</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك 8hoe', 6, '8hoe.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
-      
-      <div class="item" data-category="views">
-        <img src="مشاهدات تيك توك.png" alt="10000 مشاهدة تيك توك">
-        <h3>10000 مشاهدة تيك توك</h3>
-        <p class="price">7 ريال</p>
-        <button class="btn" onclick="addToCart('10000 مشاهدة تيك توك', 7, 'مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+                  <div class="item" data-category="user">
+        <img src="8mb5.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك 8mb5</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك 8mb5', 6, '8mb5.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+               <div class="item" data-category="user">
+        <img src="cgl4.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك cgl4</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك تook cgl4', 6, 'cgl4.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+               <div class="item" data-category="user">
+        <img src="kxt9.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك kxt9</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك kxt9', 6, 'kxt9.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="o.k2.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك o.k2</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك o.k2', 6, 'o.k2.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="qo5b.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك qo5b</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك qo5b', 6, 'qo5b.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="rei4.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك rei4</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك rei4', 6, 'rei4.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="wnx7.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك wnx7</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك wnx7', 6, 'wnx7.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="ytaz.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك ytaz</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك ytaz', 6, 'ytaz.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+        <div class="item" data-category="user">
+        <img src="jse7.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك jse7</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك jse7', 6, 'jse7.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
     </div>
   </section>
@@ -1128,7 +1185,7 @@
       <div class="total"><strong>المجموع:</strong> <span id="total">0</span> ريال</div>
       <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i>  (فيزا/ماستركارد/ابل بي)</button>
       <button class="payment-btn stc-btn" onclick="checkout('STC Pay')"><i class="fas fa-mobile-alt"></i> الدفع عبر STC Pay</button>
-      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يوربي</button>
+      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يورби</button>
       <button class="payment-btn mada-btn" onclick="checkout('PayPal')"><i class="fab fa-paypal"></i> الدفع عبر PayPal</button>
       <p class="note">⚠️ يوجد رسوم إضافية عند الدفع بالفيزا — برجاء التأكد قبل الإتمام.</p>
       <button class="btn" style="margin-top:10px;background:#2d3647;color:#fff" onclick="toggleCart()"><i class="fas fa-arrow-left"></i> متابعة التسوق</button>
@@ -1491,6 +1548,3 @@ function addCustomProduct(selectId, name, img) {
 </script>
 </body>
 </html>
-
-
-
