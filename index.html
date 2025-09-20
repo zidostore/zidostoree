@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -70,6 +71,27 @@
       z-index: -1;
     }
 
+    /* تأثير Parallax متقدم */
+    .parallax-layer {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .layer-1 {
+      background: radial-gradient(circle at 20% 50%, rgba(0, 207, 255, 0.15) 0%, transparent 50%);
+      transform: translateY(0);
+    }
+    
+    .layer-2 {
+      background: radial-gradient(circle at 80% 20%, rgba(37, 211, 102, 0.1) 0%, transparent 50%);
+      transform: translateY(0);
+    }
+
     /* الهيدر - تصميم زجاجي */
     header {
       position: sticky;
@@ -127,7 +149,7 @@
     /* البحث */
     .search-container {
       position: relative;
-      display: none; /* سيتم إظهاره عبر JavaScript عند الحاجة */
+      display: none;
       margin: 15px 20px;
     }
 
@@ -156,6 +178,17 @@
       top: 50%;
       transform: translateY(-50%);
       color: var(--muted);
+    }
+
+    /* تحسين شريط البحث */
+    .search-container.active {
+      display: block;
+      animation: searchSlide 0.3s ease;
+    }
+    
+    @keyframes searchSlide {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* القائمة الجانبية - تصميم زجاجي */
@@ -215,6 +248,16 @@
     section { display: none; padding: 0; animation: fadeIn 0.5s ease; }
     section.active { display: block; }
 
+    /* تأثيرات الانتقال بين الأقسام */
+    .section-transition {
+      animation: sectionFade 0.5s ease forwards;
+    }
+    
+    @keyframes sectionFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     section h2 {
       text-align: center; margin: 20px 0 28px; color: var(--brand); font-size: 32px; font-weight: 800; position: relative; padding-bottom: 12px;
     }
@@ -258,6 +301,19 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .intro-text p { font-size: 18px; color: var(--muted); margin: 0; }
+
+    /* تأثيرات النص المتحركة */
+    .animate-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: textShine 3s linear infinite;
+    }
+    
+    @keyframes textShine {
+      to { background-position: 200% center; }
+    }
 
     /* المنتجات - تصميم زجاجي */
     .store {
@@ -305,6 +361,82 @@
     .btn:hover { box-shadow: 0 6px 20px rgba(0, 207, 255, 0.5); transform: translateY(-3px); }
     .btn:hover::before { left: 100%; }
     .btn:active { transform: translateY(1px); }
+
+    /* تحسين بطاقات المنتجات */
+    .item {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .item-hover-content {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      background: rgba(22, 26, 37, 0.95);
+      padding: 15px;
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    
+    .item:hover .item-hover-content {
+      bottom: 0;
+      opacity: 1;
+    }
+    
+    .rating {
+      display: flex;
+      gap: 3px;
+      margin: 8px 0;
+      justify-content: center;
+    }
+    
+    .rating i {
+      color: #ffc107;
+      font-size: 14px;
+    }
+
+    /* تحسين العروض الخاصة */
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, #ff5964, #d73640);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      z-index: 2;
+      animation: pulse 2s infinite;
+    }
+
+    /* عداد المنتج عند الإضافة */
+    .item-added-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--brand-gradient);
+      color: #001317;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      opacity: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+    
+    @keyframes itemAdded {
+      0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
 
     /* سلايدر التقييمات - تصميم زجاجي */
     .testimonials { position: relative; overflow: hidden; max-width: 100%; margin: 30px auto; padding: 10px 0; }
@@ -386,6 +518,16 @@
       background: none; border: none; color: #ff6b6b; cursor: pointer; font-size: 18px; padding: 6px; border-radius: 6px; transition: var(--transition);
     }
     .cart-item button.remove-btn:hover { background: rgba(255, 107, 107, 0.1); }
+
+    /* تحسينات السلة */
+    .cart-item-added {
+      animation: cartItemHighlight 1s ease;
+    }
+    
+    @keyframes cartItemHighlight {
+      0% { background-color: rgba(0, 207, 255, 0.1); }
+      100% { background-color: transparent; }
+    }
 
     .cart-footer {
       border-top: 1px solid var(--glass-border); padding: 18px 20px; background: rgba(0, 0, 0, 0.2);
@@ -656,6 +798,14 @@
         flex-direction: column;
         align-items: center;
       }
+      
+      .item-hover-content {
+        display: none;
+      }
+      
+      .item:hover {
+        transform: translateY(-5px);
+      }
     }
     @media (max-width: 480px) {
       .store { grid-template-columns: 1fr; }
@@ -698,6 +848,10 @@
 <body>
 
 <canvas class="bg"></canvas>
+
+<!-- إضافة طبقات Parallax -->
+<div class="parallax-layer layer-1"></div>
+<div class="parallax-layer layer-2"></div>
 
 <!-- مؤشر التحميل -->
 <div class="loader" id="loader">
@@ -766,15 +920,6 @@
 
     <h2>🔥 المنتجات الأكثر مبيعًا</h2>
     
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">الكل</button>
-      <button class="filter-btn" data-filter="fortnite">فورتنايت</button>
-      <button class="filter-btn" data-filter="tiktok">تيك توك</button>
-      <button class="filter-btn" data-filter="instagram">انستغرام</button>
-      <button class="filter-btn" data-filter="whatsapp">واتساب</button>
-      <button class="filter-btn" data-filter="sale">عروض خاصة</button>
-    </div>
-    
     <div class="store" id="featured-products">
       <div class="item" data-category="fortnite sale">
         <span class="featured-badge">🔥 الأكثر مبيعًا</span>
@@ -783,32 +928,22 @@
         <p class="price">25 ريال</p>
         <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
       </div>
-      <div class="item" data-category="tiktok">
-        <span class="featured-badge">عرض خاص</span>
+      
+      <!-- المزيد من المنتجات المميزة -->
+      <div class="item" data-category="fortnite sale">
+        <span class="featured-badge">🔥 الأكثر مبيعًا</span>
+        <img src="5400vb.png" alt="5400 فيبوكس" loading="lazy">
+        <h3>5400 فيبوكس</h3>
+        <p class="price">70 ريال</p>
+        <button class="btn" onclick="addToCart('5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+      </div>
+      
+      <div class="item" data-category="tiktok sale">
+        <span class="featured-badge">🔥 الأكثر مبيعًا</span>
         <img src="متابعين تيك توك.png" alt="متابعين تيك توك" loading="lazy">
         <h3>متابعين تيك توك</h3>
-        <select id="best-followers" aria-label="اختيار عدد المتابعين">
-          <option value="0">اختر العدد</option>
-          <option value="1000-13">1000 متابع - 13 ريال</option>
-          <option value="2000-21">2000 متابع - 21 ريال</option>
-          <option value="3000-29">3000 متابع - 29 ريال</option>
-          <option value="4000-36">4000 متابع - 36 ريال</option>
-          <option value="5000-40">5000 متابع - 40 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('best-followers','متابعين تيك توك','متابعين تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
-      </div>
-      <div class="item" data-category="instagram">
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة متابعين انستغرام</text></svg>" alt="متابعين انستغرام"><h3>متابعين انستغرام</h3>
-        <select id="insta-followers-featured">
-          <option value="0">اختر العدد</option>
-          <option value="1000-15">1000 متابع - 15 ريال</option>
-          <option value="2000-28">2000 متابع - 28 ريال</option>
-          <option value="3000-40">3000 متابع - 40 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('insta-followers-featured','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="whatsapp">
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب"><h3>رقم لتفعيل الواتساب</h3><p class="price">7 ريال</p><button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        <p class="price">من 13 ريال</p>
+        <button class="btn" onclick="showSection('tiktok')"><i class="fas fa-cart-plus"></i> اطلع على العروض</button>
       </div>
     </div>
 
@@ -908,7 +1043,7 @@
         <h3>حزمة النخبة الذهبية</h3>
         <p class="price">18 ريال</p>
         <p style="color: var(--muted); font-size: 14px; margin: 8px 0;"></p>
-        <button class="btn" onclick="addToCart('حساب فортنايت مميز',200,'premium-account.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        <button class="btn" onclick="addToCart('حساب فورتنايت مميز',200,'premium-account.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
     </div>
   </section>
@@ -989,19 +1124,19 @@
         <img src="cgl4.png" alt="10000 مشاهدة تيك توك">
         <h3>يوزر تيك توك cgl4</h3>
         <p class="price">6 ريال</p>
-        <button class="btn" onclick="addToCart('يوزر تيك تook cgl4', 6, 'cgl4.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        <button class="btn" onclick="addToCart('يوزر تيك توك cgl4', 6, 'cgl4.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
                <div class="item" data-category="user">
         <img src="kxt9.png" alt="10000 مشاهدة تيك توك">
         <h3>يوزر تيك توك kxt9</h3>
         <p class="price">6 ريال</p>
-        <button class="btn" onclick="addToCart('يوزر تيك توك kxt9', 6, 'kxt9.png')"><i class="fas fa-cart-plus"></i> مباع</button>
+        <button class="btn" onclick="addToCart('يوزر تيك توك kxt9', 6, 'kxt9.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
       <div class="item" data-category="user">
         <img src="o.k2.png" alt="10000 مشاهدة تيك توك">
         <h3>يوزر تيك توك o.k2</h3>
         <p class="price">6 ريال</p>
-        <button class="btn" onclick="addToCart('يوزر تيك توك o.k2', 6, 'o.k2.png')"><i class="fas fa-cart-plus"></i> مباع</button>
+        <button class="btn" onclick="addToCart('يوزر تيك توك o.k2', 6, 'o.k2.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
       <div class="item" data-category="user">
         <img src="qo5b.png" alt="10000 مشاهدة تيك توك">
@@ -1053,8 +1188,8 @@
           <option value="0">اختر العدد</option>
           <option value="1000-15">1000 متابع - 15 ريال</option>
           <option value="2000-28">2000 متابع - 28 ريال</option>
-          <option value="3000-40">3000 متابع - 40 ريال</option>
-        </select>
+          <option value="3000-40">3000 متابع - 40
+            </select>
         <button class="btn" onclick="addCustomProduct('insta-followers','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
       <div class="item" data-category="likes"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة لايكات انستغرام</text></svg>" alt="لايكات انستغرام"><h3>لايكات انستغرام</h3>
@@ -1548,4 +1683,3 @@ function addCustomProduct(selectId, name, img) {
 </script>
 </body>
 </html>
-
