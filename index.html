@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        /* أنماط CSS الأصلية (نفسها) */
         :root {
             --primary: #00c6ff;
             --primary-dark: #0072ff;
@@ -1108,12 +1107,12 @@
             </nav>
             
             <div class="nav-actions">
-                <div class="cart-icon" id="cartIcon" onclick="toggleCart()">
+                <div class="cart-icon" id="cartIcon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count" id="cartCount">0</span>
                 </div>
                 
-                <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                <div class="menu-toggle" id="menuToggle">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1451,33 +1450,166 @@
                 fortnite: [
                     { 
                         id: 1, 
-                        name: "الطاقم الشهري", 
-                        price: 25, 
-                        image: "crew.png", 
-                        category: "crew", 
-                        badge: "عرض خاص", 
-                        discount: 5,
-                        description: "احصل على الطاقم الشهري لفورتنايت الذي يتضمن:\n• 1000 فيبوكس\n• مجموعة حصرية من المظهر\n• مزايا شهرية إضافية\n• دخول إلى حزم الطاقم القادمة\n\nالخدمة يتم توصيلها خلال 5-15 دقيقة بعد التأكيد."
+                        name: "1000 فيبوكس", 
+                        price: 15, 
+                        image: "https://via.placeholder.com/300x200/0072ff/ffffff?text=1000+VBucks", 
+                        category: "vbucks", 
+                        badge: "الأكثر مبيعاً", 
+                        discount: 0,
+                        description: "حزمة 1000 فيبوكس لفورتنايت:\n• عملة افتراضية للعبة فورتنايت\n• مثالية لشراء العناصر الأساسية\n• صالحة لجميع المنصات\n• توصيل فوري بعد الدفع\n\nتنبيه: هذه الخدمة تتطلب تسجيل الدخول إلى حسابك."
                     },
                     { 
                         id: 2, 
-                        name: "5400 فيبوكس", 
-                        price: 70, 
-                        image: "5400vb.png", 
+                        name: "2800 فيبوكس", 
+                        price: 35, 
+                        image: "https://via.placeholder.com/300x200/0072ff/ffffff?text=2800+VBucks", 
                         category: "vbucks", 
+                        discount: 5,
+                        description: "حزمة 2800 فيبوكس لفورتنايت:\n• كمية متوسطة من العملة الافتراضية\n• مناسبة لشراء عدة عناصر\n• صالحة لجميع المنصات\n• توصيل فوري بعد الدفع\n\nتنبيه: هذه الخدمة تتطلب تسجيل الدخول إلى حسابك."
+                    },
+                    { 
+                        id: 3, 
+                        name: "5000 فيبوكس", 
+                        price: 60, 
+                        image: "https://via.placeholder.com/300x200/0072ff/ffffff?text=5000+VBucks", 
+                        category: "vbucks", 
+                        badge: "عرض خاص", 
                         discount: 10,
-                        description: "حزمة 5400 فيبوكس لفورتنايت:\n• كمية كبيرة من العملة الافتراضية\n• مثالية لشراء أحدث العناصر\n• صالحة لجميع المنصات\n• توصيل فوري بعد الدفع\n\nتنبيه: هذه الخدمة تتطلب تسجيل الدخول إلى حسابك."
+                        description: "حزمة 5000 فيبوكس لفورتنايت:\n• كمية كبيرة من العملة الافتراضية\n• مثالية لشراء الباقات الكبيرة\n• صالحة لجميع المنصات\n• توصيل فوري بعد الدفع\n\nتنبيه: هذه الخدمة تتطلب تسجيل الدخول إلى حسابك."
+                    },
+                    { 
+                        id: 4, 
+                        name: "13500 فيبوكس", 
+                        price: 150, 
+                        image: "https://via.placeholder.com/300x200/0072ff/ffffff?text=13500+VBucks", 
+                        category: "vbucks", 
+                        discount: 15,
+                        description: "حزمة 13500 فيبوكس لفورتنايت:\n• أكبر كمية من العملة الافتراضية\n• مثالية للاعبين المحترفين\n• صالحة لجميع المنصات\n• توصيل فوري بعد الدفع\n\nتنبيه: هذه الخدمة تتطلب تسجيل الدخول إلى حسابك."
+                    },
+                    { 
+                        id: 5, 
+                        name: "الطاقم الشهري", 
+                        price: 25, 
+                        image: "https://via.placeholder.com/300x200/00c6ff/ffffff?text=Fortnite+Crew", 
+                        category: "crew", 
+                        badge: "عرض خاص", 
+                        discount: 5,
+                        description: "الطاقم الشهري لفورتنايت:\n• 1000 فيبوكس شهرياً\n• مجموعة حصرية من المظهر\n• مزايا شهرية إضافية\n• دخول إلى حزم الطاقم القادمة\n\nالخدمة يتم توصيلها خلال 5-15 دقيقة بعد التأكيد."
+                    },
+                    { 
+                        id: 6, 
+                        name: "حساب فورتنايت بريميوم", 
+                        price: 100, 
+                        image: "https://via.placeholder.com/300x200/25d366/ffffff?text=Premium+Account", 
+                        category: "account", 
+                        discount: 20,
+                        description: "حساب فورتنايت بريميوم:\n• يحتوي على سكنات نادرة\n• مستوى عالي في اللعبة\n• عدد كبير من العناصر\n• ضمان استرجاع لمدة 30 يوم\n\nملاحظة: هذا حساب مستقل وليس ربطاً بحسابك الحالي."
                     }
                 ],
                 tiktok: [
                     { 
-                        id: 3, 
-                        name: "متابعين تيك توك", 
-                        price: 13, 
-                        image: "متابعين تيك توك.png", 
+                        id: 7, 
+                        name: "1000 متابع", 
+                        price: 10, 
+                        image: "https://via.placeholder.com/300x200/000000/ffffff?text=1000+Followers", 
                         category: "followers", 
-                        discount: 3,
-                        description: "زيادة متابعين تيك توك بجودة عالية:\n• متابعين حقيقين ونشطين\n• بدء التسليم خلال 24 ساعة\n• ضمان استمرارية المتابعين\n• دعم فني متواصل\n\nملاحظة: يرجى عدم إلغاء متابعة أي حساب خلال فترة التسليم."
+                        discount: 0,
+                        description: "زيادة 1000 متابع لتيك توك:\n• متابعين حقيقين ونشطين\n• بدء التسليم خلال 24 ساعة\n• ضمان استمرارية المتابعين\n• دعم فني متواصل\n\nملاحظة: يرجى عدم إلغاء متابعة أي حساب خلال فترة التسليم."
+                    },
+                    { 
+                        id: 8, 
+                        name: "5000 متابع", 
+                        price: 40, 
+                        image: "https://via.placeholder.com/300x200/000000/ffffff?text=5000+Followers", 
+                        category: "followers", 
+                        badge: "الأفضل", 
+                        discount: 10,
+                        description: "زيادة 5000 متابع لتيك توك:\n• متابعين حقيقين ونشطين\n• بدء التسليم خلال 24-48 ساعة\n• ضمان استمرارية المتابعين\n• دعم فني متواصل\n\nملاحظة: يرجى عدم إلغاء متابعة أي حساب خلال فترة التسليم."
+                    },
+                    { 
+                        id: 9, 
+                        name: "10000 متابع", 
+                        price: 70, 
+                        image: "https://via.placeholder.com/300x200/000000/ffffff?text=10000+Followers", 
+                        category: "followers", 
+                        discount: 15,
+                        description: "زيادة 10000 متابع لتيك توك:\n• متابعين حقيقين ونشطين\n• بدء التسليم خلال 48-72 ساعة\n• ضمان استمرارية المتابعين\n• دعم فني متواصل\n\nملاحظة: يرجى عدم إلغاء متابعة أي حساب خلال فترة التسليم."
+                    },
+                    { 
+                        id: 10, 
+                        name: "1000 لايك", 
+                        price: 5, 
+                        image: "https://via.placeholder.com/300x200/000000/ffffff?text=1000+Likes", 
+                        category: "likes", 
+                        discount: 0,
+                        description: "1000 لايك لتيك توك:\n• لايكات حقيقية\n• بدء التسليم فوري\n• تضاعف فرص الفيديوهات\n• دعم فني متواصل\n\nملاحظة: يرجى إرسال رابط الفيديو بعد الطلب."
+                    },
+                    { 
+                        id: 11, 
+                        name: "10000 لايك", 
+                        price: 40, 
+                        image: "https://via.placeholder.com/300x200/000000/ffffff?text=10000+Likes", 
+                        category: "likes", 
+                        discount: 10,
+                        description: "10000 لايك لتيك توك:\n• لايكات حقيقية\n• بدء التسليم فوري\n• تضاعف فرص الفيديوهات\n• دعم فني متواصل\n\nملاحظة: يرجى إرسال رابط الفيديو بعد الطلب."
+                    },
+                    { 
+                        id: 12, 
+                        name: "10000 مشاهدة", 
+                        price: 8, 
+                        image: "https://via.placeholder.com/300x200/000000/ffffff?text=10000+Views", 
+                        category: "views", 
+                        discount: 5,
+                        description: "10000 مشاهدة لتيك توك:\n• مشاهدات حقيقية\n• بدء التسليم فوري\n• تضاعف فرص الفيديوهات\n• دعم فني متواصل\n\nملاحظة: يرجى إرسال رابط الفيديو بعد الطلب."
+                    }
+                ],
+                instagram: [
+                    { 
+                        id: 13, 
+                        name: "1000 متابع انستغرام", 
+                        price: 12, 
+                        image: "https://via.placeholder.com/300x200/E1306C/ffffff?text=1000+Followers", 
+                        category: "followers", 
+                        discount: 0,
+                        description: "زيادة 1000 متابع لانستغرام:\n• متابعين حقيقين ونشطين\n• بدء التسليم خلال 24 ساعة\n• ضمان استمرارية المتابعين\n• دعم فني متواصل\n\nملاحظة: يرجى عدم إلغاء متابعة أي حساب خلال فترة التسليم."
+                    },
+                    { 
+                        id: 14, 
+                        name: "5000 متابع انستغرام", 
+                        price: 50, 
+                        image: "https://via.placeholder.com/300x200/E1306C/ffffff?text=5000+Followers", 
+                        category: "followers", 
+                        discount: 10,
+                        description: "زيادة 5000 متابع لانستغرام:\n• متابعين حقيقين ونشطين\n• بدء التسليم خلال 24-48 ساعة\n• ضمان استمرارية المتابعين\n• دعم فني متواصل\n\nملاحظة: يرجى عدم إلغاء متابعة أي حساب خلال فترة التسليم."
+                    },
+                    { 
+                        id: 15, 
+                        name: "1000 لايك انستغرام", 
+                        price: 6, 
+                        image: "https://via.placeholder.com/300x200/E1306C/ffffff?text=1000+Likes", 
+                        category: "likes", 
+                        discount: 0,
+                        description: "1000 لايك لانستغرام:\n• لايكات حقيقية\n• بدء التسليم فوري\n• تضاعف فرص المنشورات\n• دعم فني متواصل\n\nملاحظة: يرجى إرسال رابط المنشور بعد الطلب."
+                    }
+                ],
+                whatsapp: [
+                    { 
+                        id: 16, 
+                        name: "رقم واتساب مدفوع", 
+                        price: 50, 
+                        image: "https://via.placeholder.com/300x200/25D366/ffffff?text=WhatsApp+Number", 
+                        category: "number", 
+                        discount: 0,
+                        description: "رقم واتساب مدفوع:\n• رقم جديد تماماً\n• جاهز للاستخدام فوراً\n• مناسب للأعمال والتسويق\n• دعم فني متواصل\n\nملاحظة: الرقم يشمل رسالة التحقق الأولى فقط."
+                    },
+                    { 
+                        id: 17, 
+                        name: "بوت واتساب تجاري", 
+                        price: 200, 
+                        image: "https://via.placeholder.com/300x200/25D366/ffffff?text=WhatsApp+Bot", 
+                        category: "bot", 
+                        discount: 15,
+                        description: "بوت واتساب تجاري:\n• رد آلي على الرسائل\n• إمكانية تخصيص الردود\n• تقارير تفصيلية\n• دعم فني متواصل\n\nملاحظة: يتطلب توفير رقم واتساب مدفوع."
                     }
                 ]
             },
@@ -1533,6 +1665,8 @@
         function initProducts() {
             renderProducts('fortniteProducts', siteSettings.products.fortnite);
             renderProducts('tiktokProducts', siteSettings.products.tiktok);
+            renderProducts('instagramProducts', siteSettings.products.instagram);
+            renderProducts('whatsappProducts', siteSettings.products.whatsapp);
         }
 
         function renderProducts(containerId, productsList) {
@@ -1930,4 +2064,3 @@
     </script>
 </body>
 </html>
-
