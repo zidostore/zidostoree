@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -30,18 +31,13 @@
       --glass-border: rgba(255, 255, 255, 0.15);
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
       height: 100%;
       scroll-behavior: smooth;
       overflow-x: hidden;
       -webkit-text-size-adjust: 100%;
-      width: 100%;
     }
 
     body {
@@ -50,12 +46,6 @@
       color: var(--text);
       position: relative;
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin: 0;
-      padding: 0;
     }
 
     .sr-only {
@@ -116,9 +106,6 @@
       justify-content: space-between;
       box-shadow: var(--shadow);
       border-bottom: 1px solid var(--glass-border);
-      flex-shrink: 0;
-      width: 100%;
-      margin: 0;
     }
 
     header .brand { display: flex; gap: 14px; align-items: center; }
@@ -164,7 +151,6 @@
       position: relative;
       display: none;
       margin: 15px 20px;
-      width: calc(100% - 40px);
     }
 
     .search-box {
@@ -256,22 +242,10 @@
     }
 
     main {
-      flex: 1;
-      display: grid; 
-      gap: 32px; 
-      padding: 26px 18px 50px; 
-      max-width: 1300px; 
-      margin: 0 auto;
-      width: 100%;
+      display: grid; gap: 32px; padding: 26px 18px 50px; max-width: 1300px; margin: 0 auto;
     }
 
-    section { 
-      display: none; 
-      padding: 0; 
-      animation: fadeIn 0.5s ease; 
-      min-height: 60vh;
-      width: 100%;
-    }
+    section { display: none; padding: 0; animation: fadeIn 0.5s ease; }
     section.active { display: block; }
 
     /* تأثيرات الانتقال بين الأقسام */
@@ -285,14 +259,7 @@
     }
 
     section h2 {
-      text-align: center; 
-      margin: 20px 0 28px; 
-      color: var(--brand); 
-      font-size: clamp(24px, 5vw, 32px); 
-      font-weight: 800; 
-      position: relative; 
-      padding-bottom: 12px;
-      width: 100%;
+      text-align: center; margin: 20px 0 28px; color: var(--brand); font-size: 32px; font-weight: 800; position: relative; padding-bottom: 12px;
     }
     section h2::after {
       content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
@@ -301,66 +268,39 @@
 
     /* البانر - تصميم عصري */
     .hero {
-      position: relative; 
-      display: grid; 
-      place-items: center; 
-      border-radius: var(--radius); 
-      overflow: hidden;
-      min-height: clamp(250px, 40vh, 400px);
+      position: relative; display: grid; place-items: center; border-radius: var(--radius); overflow: hidden;
+      min-height: 300px;
       background: linear-gradient(135deg, #0b0e14, #0f1218);
-      box-shadow: var(--shadow); 
-      margin-bottom: 10px;
-      width: 100%;
+      box-shadow: var(--shadow); margin-bottom: 10px;
     }
     .hero::after { 
       content: ""; position: absolute; inset: 0; 
       background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
     }
     .hero .hero-content { 
-      position: relative; 
-      z-index: 1; 
-      text-align: center; 
-      padding: 30px 20px; 
-      width: 100%;
-      max-width: 800px;
+      position: relative; z-index: 1; text-align: center; padding: 30px 20px; 
     }
     
     .welcome-image {
       max-width: 100%;
       height: auto;
-      max-height: 200px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       margin-bottom: 20px;
-      object-fit: contain;
     }
 
     .intro-text {
-      text-align: center; 
-      margin: 20px auto 10px; 
-      padding: 20px; 
-      background: var(--panel);
-      border-radius: var(--radius); 
-      box-shadow: var(--shadow);
+      text-align: center; margin: 20px auto 10px; padding: 20px; background: var(--panel);
+      border-radius: var(--radius); box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--glass-border);
-      max-width: 800px;
-      width: 100%;
     }
     .intro-text h1 {
-      font-size: clamp(24px, 5vw, 36px); 
-      margin: 10px 0; 
-      color: #fff; 
-      background: var(--brand-gradient);
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent;
+      font-size: 36px; margin: 10px 0; color: #fff; background: var(--brand-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .intro-text p { 
-      font-size: clamp(16px, 3vw, 18px); 
-      color: var(--muted); 
-      margin: 0; 
-    }
+    .intro-text p { font-size: 18px; color: var(--muted); margin: 0; }
 
     /* تأثيرات النص المتحركة */
     .animate-text {
@@ -375,68 +315,18 @@
       to { background-position: 200% center; }
     }
 
-    /* شريط الأخبار - تم التعديل */
-    .news-ticker {
-      background: var(--brand-gradient);
-      color: #001317;
-      padding: 12px 0;
-      overflow: hidden;
-      position: relative;
-      font-weight: 700;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      width: 100%;
-    }
-    
-    .news-ticker-content {
-      display: inline-block;
-      white-space: nowrap;
-      animation: ticker 30s linear infinite;
-      padding-left: 100%;
-      box-sizing: content-box;
-    }
-    
-    .news-ticker-content span {
-      margin: 0 20px;
-      display: inline-block;
-      font-size: clamp(14px, 3vw, 16px);
-    }
-    
-    .news-ticker i {
-      margin-left: 10px;
-      color: #e11d48;
-    }
-    
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
     /* المنتجات - تصميم زجاجي */
     .store {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 22px;
-      width: 100%;
     }
 
     .item {
-      border: 1px solid var(--glass-border); 
-      border-radius: var(--radius); 
-      padding: 18px; 
-      text-align: center;
-      background: var(--panel); 
-      box-shadow: var(--shadow); 
-      position: relative; 
-      transition: var(--transition); 
-      overflow: hidden;
+      border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 18px; text-align: center;
+      background: var(--panel); box-shadow: var(--shadow); position: relative; transition: var(--transition); overflow: hidden;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      min-height: 350px;
     }
     .item::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--brand-gradient);
@@ -446,61 +336,23 @@
     .item:hover::before { opacity: 1; }
 
     .item img {
-      width: 140px; 
-      height: 140px; 
-      object-fit: cover; 
-      margin: 12px auto 10px; 
-      display: block; 
-      border-radius: 16px;
-      transition: var(--transition); 
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-      flex-shrink: 0;
+      width: 140px; height: 140px; object-fit: cover; margin: 12px auto 10px; display: block; border-radius: 16px;
+      transition: var(--transition); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
     .item:hover img { transform: scale(1.05); }
 
-    .item h3 { 
-      margin: 12px 0 6px; 
-      font-size: clamp(18px, 4vw, 20px); 
-      font-weight: 700; 
-      color: #fff; 
-      flex-shrink: 0;
-    }
-    .price { 
-      color: var(--brand); 
-      font-weight: 800; 
-      margin: 8px 0 14px; 
-      font-size: clamp(16px, 3vw, 18px); 
-      flex-shrink: 0;
-    }
+    .item h3 { margin: 12px 0 6px; font-size: 20px; font-weight: 700; color: #fff; }
+    .price { color: var(--brand); font-weight: 800; margin: 8px 0 14px; font-size: 18px; }
 
     .item select {
-      width: 100%; 
-      padding: 12px 14px; 
-      border-radius: 12px; 
-      border: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.2); 
-      color: #d7dee9; 
-      margin-bottom: 12px; 
-      transition: var(--transition); 
-      cursor: pointer;
-      flex-shrink: 0;
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.2); color: #d7dee9; margin-bottom: 12px; transition: var(--transition); cursor: pointer;
     }
     .item select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 2px rgba(0, 207, 255, 0.2); }
 
     .btn {
-      padding: 12px 16px; 
-      border: none; 
-      background: var(--brand-gradient); 
-      color: #001317; 
-      border-radius: 12px; 
-      cursor: pointer; 
-      font-weight: 800;
-      width: 100%; 
-      transition: var(--transition); 
-      position: relative; 
-      overflow: hidden;
-      flex-shrink: 0;
-      margin-top: auto;
+      padding: 12px 16px; border: none; background: var(--brand-gradient); color: #001317; border-radius: 12px; cursor: pointer; font-weight: 800;
+      width: 100%; transition: var(--transition); position: relative; overflow: hidden;
     }
     .btn::before {
       content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
@@ -587,29 +439,12 @@
     }
 
     /* سلايدر التقييمات - تصميم زجاجي */
-    .testimonials { 
-      position: relative; 
-      overflow: hidden; 
-      max-width: 100%; 
-      margin: 30px auto; 
-      padding: 10px 0; 
-    }
-    .slider { 
-      display: flex; 
-      transition: transform 0.5s ease; 
-      will-change: transform; 
-    }
+    .testimonials { position: relative; overflow: hidden; max-width: 100%; margin: 30px auto; padding: 10px 0; }
+    .slider { display: flex; transition: transform 0.5s ease; will-change: transform; }
     .testimonial-box {
-      flex: 0 0 33.33%; 
-      max-width: 33.33%;
-      background: var(--panel); 
-      border-radius: var(--radius); 
-      padding: 24px; 
-      margin: 12px; 
-      text-align: center; 
-      box-shadow: var(--shadow);
-      border: 1px solid var(--glass-border); 
-      transition: var(--transition);
+      flex: 0 0 33.33%; max-width: 33.33%;
+      background: var(--panel); border-radius: var(--radius); padding: 24px; margin: 12px; text-align: center; box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border); transition: var(--transition);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -700,89 +535,6 @@
     .cart-footer .total {
       display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 18px; padding: 10px 0;
       border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
-    }
-
-    /* قسم كود الخصم */
-    .discount-section {
-      display: flex;
-      gap: 10px;
-      margin: 15px 0;
-      align-items: center;
-    }
-    
-    .discount-input {
-      flex: 1;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.2);
-      color: var(--text);
-      font-family: inherit;
-      transition: var(--transition);
-    }
-    
-    .discount-input:focus {
-      outline: none;
-      border-color: var(--brand);
-      box-shadow: 0 0 0 2px rgba(0, 207, 255, 0.2);
-    }
-    
-    .apply-discount-btn {
-      padding: 12px 16px;
-      background: var(--success);
-      border: none;
-      border-radius: 12px;
-      color: #001a0b;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    
-    .apply-discount-btn:hover {
-      background: #1aa854;
-      transform: translateY(-2px);
-    }
-    
-    .discount-applied {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid var(--success);
-      border-radius: 12px;
-      padding: 10px 15px;
-      margin: 10px 0;
-    }
-    
-    .discount-remove {
-      background: none;
-      border: none;
-      color: var(--danger);
-      cursor: pointer;
-      font-size: 16px;
-    }
-    
-    .discount-text {
-      color: var(--success);
-      font-weight: 700;
-    }
-    
-    .discount-line {
-      display: flex;
-      justify-content: space-between;
-      margin: 8px 0;
-      padding: 8px 0;
-      border-top: 1px solid var(--glass-border);
-    }
-    
-    .final-total {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--brand);
-      border-top: 2px solid var(--brand);
-      padding-top: 10px;
-      margin-top: 10px;
     }
 
     .payment-btn {
@@ -1008,7 +760,6 @@
     @media (max-width: 1100px) {
       .testimonial-box { flex-basis: 50%; max-width: 50%; }
     }
-    
     @media (max-width: 768px) {
       header { padding: 10px 16px; }
       header h1 { font-size: 20px; }
@@ -1016,18 +767,18 @@
       .menu-btn { font-size: 16px; padding: 6px 10px; }
       .cart-icon { font-size: 18px; padding: 6px; }
 
-      .hero { min-height: 200px; }
-      .hero .hero-content h2 { font-size: 24px !important; margin: 0 0 8px !important; }
+      .hero { min-height: 220px; }
+      .hero .hero-content h2 { font-size: 28px !important; margin: 0 0 8px !important; }
       .hero .hero-content p { font-size: 16px !important; }
 
       .intro-text { padding: 16px; margin: 16px auto 8px; }
-      .intro-text h1 { font-size: 22px; }
+      .intro-text h1 { font-size: 26px; }
       .intro-text p { font-size: 16px; }
 
-      section h2 { font-size: 22px; margin: 16px 0 20px; }
+      section h2 { font-size: 26px; margin: 16px 0 20px; }
 
-      .store { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-      .item { padding: 16px; min-height: 320px; }
+      .store { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+      .item { padding: 16px; }
       .item img { width: 120px; height: 120px; }
       .item h3 { font-size: 18px; }
       .price { font-size: 16px; }
@@ -1055,25 +806,15 @@
       .item:hover {
         transform: translateY(-5px);
       }
-      
-      .discount-section {
-        flex-direction: column;
-      }
-      
-      .news-ticker-content span {
-        margin: 0 10px;
-        font-size: 14px;
-      }
     }
-    
     @media (max-width: 480px) {
       .store { grid-template-columns: 1fr; }
       .hero { min-height: 180px; border-radius: 14px; }
-      .hero .hero-content h2 { font-size: 20px !important; }
+      .hero .hero-content h2 { font-size: 24px !important; }
       .hero .hero-content p { font-size: 14px !important; }
-      .intro-text h1 { font-size: 20px; }
-      section h2 { font-size: 20px; }
-      .item { padding: 14px; min-height: 300px; }
+      .intro-text h1 { font-size: 22px; }
+      section h2 { font-size: 22px; }
+      .item { padding: 14px; }
       .item img { width: 100px; height: 100px; }
       .btn { padding: 10px 12px; font-size: 14px; }
       .whatsapp-float { width: 50px; height: 50px; font-size: 20px; bottom: 18px; right: 18px; }
@@ -1084,16 +825,6 @@
       
       .confirmation-buttons {
         flex-direction: column;
-      }
-      
-      .news-ticker-content span {
-        font-size: 12px;
-        margin: 0 8px;
-      }
-      
-      main {
-        padding: 20px 12px 40px;
-        gap: 24px;
       }
     }
 
@@ -1175,16 +906,6 @@
 <main>
   <!-- الرئيسية -->
   <section id="home" class="active">
-    <!-- شريط الأخبار -->
-    <div class="news-ticker">
-      <div class="news-ticker-content">
-        <span><i class="fas fa-gift"></i>  خصم 9.5 على جميع المنتجات بمناسبة اليوم الوطني KSA95</span>
-        <span><i class="fas fa-bolt"></i> توصيل فوري لجميع الخدمات خلال دقائق</span>
-        <span><i class="fas fa-star"></i> عروض خاصة على خدمات فورتنايت هذا الأسبوع</span>
-        <span><i class="fas fa-users"></i> أكثر من 5000 عميل راضٍ عن خدماتنا</span>
-      </div>
-    </div>
-
     <div class="hero">
       <div class="hero-content">
         <img src="piner.jpg" alt="مرحبًا بكم في متجر ZiDo" class="welcome-image">
@@ -1241,16 +962,6 @@
 
   <!-- فورتنايت -->
   <section id="fortnite">
-    <!-- شريط الأخبار -->
-    <div class="news-ticker">
-      <div class="news-ticker-content">
-        <span><i class="fas fa-gift"></i>  خصم 9.5 على جميع المنتجات بمناسبة اليوم الوطني KSA95</span>
-        <span><i class="fas fa-bolt"></i> توصيل فوري لجميع الخدمات خلال دقائق</span>
-        <span><i class="fas fa-star"></i> عروض خاصة على خدمات فورتنايت هذا الأسبوع</span>
-        <span><i class="fas fa-users"></i> أكثر من 5000 عميل راضٍ عن خدماتنا</span>
-      </div>
-    </div>
-    
     <h2>🕹️ خدمات فورتنايت</h2>
     
     <div class="filters">
@@ -1269,16 +980,327 @@
         <p class="price">25 ريال</p>
         <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
       </div>
+       <div class="item" data-category="sale">
+        <span class="featured-badge">عرض خاص</span>
+        <img src="اهداء فيبوكس.png" alt="إهداء فيبوكس">
+        <h3>إهداء فيبوكس</h3>
+        <select id="profile-pack" aria-label="إهداء فيبوكس">
+          <option value="0">اختر الباقة</option>
+          <option value="basic-15">  800 فيبوكس ب 14 ريال </option>
+          <option value="basic-15">1000 فيبوكس ب 18 ريال </option>
+          <option value="basic-15"> 1200 فيبوكس ب21 ريال</option>
+          <option value="basic-15">1500فيبوكس ب 26 ريال </option>
+          <option value="basic-15"> 1800 فيبوكس ب28 ريال</option>
+        <option value="basic-15">2000 فيبوكس ب34 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('profile-pack','إهداء فيبوكس','profile-pack.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="vbucks">
+        <img src="5400vb.png" alt="حساب 5400 فيبوكس">
+        <h3>حساب 5400 فيبوكس</h3>
+        <p class="price">70 ريال</p>
+        <button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="vbucks">
+           <span class="featured-badge">جديد</span>
+        <img src="حزمه ب 17 ريال.avif" alt="حزمه ب 17 ريال">
+        <h3>حزمة مهام المنفى مع 1000 فيبوكس</h3>
+        <p class="price">17 ريال</p>
+        <button class="btn" onclick="addToCart('حساب 13500 فيبوكس',150,'13500vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
       
-      <!-- باقي المنتجات -->
-      <!-- ... -->
+      <!-- المنتجات الجديدة -->
+      <div class="item" data-category="vbucks">
+           <span class="featured-badge">جديد</span>
+        <img src="حزمه 1 دولار.jpg" alt="1000 فيبوكس">
+        <h3>حزمة Chill Vibez مع 600 V-Bucks</h3>
+        <p class="price">12 ريال</p>
+        <button class="btn" onclick="addToCart('حزمة Chill Vibez مع 600 V-Bucks',20,'حزمه 1 دولار.jpg ')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <!-- المنتجات الجديدة لقسم فورتنايت -->
+<div class="item" data-category="vbucks">
+     <span class="featured-badge">جديد</span>
+  <img src="حزمه 16 ريال.avif" alt="Graffiti Revolution">
+  <h3>حزمة Graffiti Revolution </h3>
+  <p class="price">22 ريال</p>
+  <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+</div>
+
+<div class="item" data-category="vbucks">
+     <span class="featured-badge">جديد</span>
+  <img src="حزمه 20 ريال.avif" alt="حزمة فيبوكس 2500">
+  <h3>حزمة The Wavebreakeمع 600 فيبوكس   </h3>
+  <p class="price">28 ريال</p>
+  <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+</div>
+
+
+     
       
+      <div class="item" data-category="account">
+        <span class="featured-badge">جديد</span>
+        <img src="حزمة 18 ريال.avif" alt="حزمة النخبة الذهبية">
+        <h3>حزمة النخبة الذهبية</h3>
+        <p class="price">18 ريال</p>
+        <p style="color: var(--muted); font-size: 14px; margin: 8px 0;"></p>
+        <button class="btn" onclick="addToCart('حساب فورتنايت مميز',200,'premium-account.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
     </div>
   </section>
 
-  <!-- باقي الأقسام -->
-  <!-- ... -->
+  <!-- تيك توك -->
+  <section id="tiktok">
+    <h2>🎵 خدمات تيك توك</h2>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="followers">متابعين</button>
+      <button class="filter-btn" data-filter="likes">لايكات</button>
+      <button class="filter-btn" data-filter="views">مشاهدات</button>
+      <button class="filter-btn" data-filter="user">يوزرات</button>
+    </div>
+    
+    <div class="store">
+      <div class="item" data-category="followers"><img src="متابعين تيك توك.png"alt="متابعين تيك توك"><h3>متابعين تيك توك</h3>
+        <select id="followers-options">
+          <option value="0">اختر العدد</option>
+          <option value="1000-13">1000 متابع - 13 ريال</option>
+          <option value="2000-21">2000 متابع - 21 ريال</option>
+          <option value="3000-29">3000 متابع - 29 ريال</option>
+          <option value="4000-36">4000 متابع - 36 ريال</option>
+          <option value="5000-40">5000 متابع - 40 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('followers-options','متابعين تيك توك','متابعين تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="likes"><img src="لايكات تيك توك.png" alt="لايكات تيك توك"><h3>لايكات تيك توك</h3>
+        <select id="likes-options">
+          <option value="0">اختر العدد</option>
+          <option value="1000-3">1000 لايك - 3 ريال</option>
+          <option value="2000-5">2000 لايك - 5 ريال</option>
+          <option value="3000-6">3000 لايك - 6 ريال</option>
+          <option value="4000-7">4000 لايك - 7 ريال</option>
+          <option value="5000-8">5000 لايك - 8 ريال</option>
+          <option value="10000-14">10000 لايك - 14 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('likes-options','لايكات تيك توك','لايكات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="views"><img src="مشاهدات تيك توك.png" alt="مشاهدات تيك توك"><h3>مشاهدات تيك توك</h3>
+        <select id="views-options">
+          <option value="0">اختر الباقة</option>
+          <option value="10000-2">10 الاف مشاهدة - 2 ريال</option>
+          <option value="15000-3">15 الف مشاهدة - 3 ريال</option>
+          <option value="20000-4">20 الف مشاهدة - 4 ريال</option>
+          <option value="30000-5">30 الف مشاهدة - 5 ريال</option>
+          <option value="50000-6">50 الف مشاهدة - 6 ريال</option>
+          <option value="100000-7">100 الف مشاهدة - 7 ريال</option>
+          <option value="200000-8">200 الف مشاهدة - 8 ريال</option>
+          <option value="300000-9">300 الف مشاهدة - 9 ريال</option>
+          <option value="400000-10">400 الف مشاهدة - 10 ريال</option>
+          <option value="500000-11">500 الف مشاهدة - 11 ريال</option>
+          <option value="600000-12">600 الف مشاهدة - 12 ريال</option>
+          <option value="700000-13">700 الف مشاهدة - 13 ريال</option>
+          <option value="800000-15">800 الف مشاهدة - 15 ريال</option>
+          <option value="900000-17">900 الف مشاهدة - 17 ريال</option>
+          <option value="1000000-20">1 مليون مشاهدة - 20 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('views-options','مشاهدات تيك توك','مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      
+      <!-- المنتجات الجديدة -->
 
+            <div class="item" data-category="user">
+        <img src="8hoe.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك 8hoe</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك 8hoe', 6, '8hoe.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+                  <div class="item" data-category="user">
+        <img src="8mb5.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك 8mb5</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك 8mb5', 6, '8mb5.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+               <div class="item" data-category="user">
+        <img src="cgl4.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك cgl4</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك cgl4', 6, 'cgl4.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+               <div class="item" data-category="user">
+        <img src="kxt9.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك kxt9</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك kxt9', 6, 'kxt9.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="o.k2.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك o.k2</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك o.k2', 6, 'o.k2.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="qo5b.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك qo5b</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك qo5b', 6, 'qo5b.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="rei4.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك rei4</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك rei4', 6, 'rei4.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="wnx7.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك wnx7</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك wnx7', 6, 'wnx7.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="user">
+        <img src="ytaz.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك ytaz</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك ytaz', 6, 'ytaz.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+        <div class="item" data-category="user">
+        <img src="jse7.png" alt="10000 مشاهدة تيك توك">
+        <h3>يوزر تيك توك jse7</h3>
+        <p class="price">6 ريال</p>
+        <button class="btn" onclick="addToCart('يوزر تيك توك jse7', 6, 'jse7.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- انستغرام -->
+  <section id="instagram">
+    <h2>📸 خدمات انستغرام</h2>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="followers">متابعين</button>
+      <button class="filter-btn" data-filter="likes">لايكات</button>
+      <button class="filter-btn" data-filter="views">مشاهدات</button>
+    </div>
+    
+    <div class="store">
+      <div class="item" data-category="followers"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة متابعين انستغرام</text></svg>" alt="متابعين انستغرام"><h3>متابعين انستغرام</h3>
+        <select id="insta-followers">
+          <option value="0">اختر العدد</option>
+          <option value="1000-15">1000 متابع - 15 ريال</option>
+          <option value="2000-28">2000 متابع - 28 ريال</option>
+          <option value="3000-40">3000 متابع - 40
+            </select>
+        <button class="btn" onclick="addCustomProduct('insta-followers','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="likes"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة لايكات انستغرام</text></svg>" alt="لايكات انستغرام"><h3>لايكات انستغرام</h3>
+        <select id="insta-likes">
+          <option value="0">اختر العدد</option>
+          <option value="1000-5">1000 لايك - 5 ريال</option>
+          <option value="2000-9">2000 لايك - 9 ريال</option>
+          <option value="3000-13">3000 لايك - 13 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('insta-likes','لايكات انستغرام','insta2.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+      <div class="item" data-category="views"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة مشاهدات انستغرام</text></svg>" alt="مشاهدات انستغرام"><h3>مشاهدات انستغرام</h3>
+        <select id="insta-views">
+          <option value="0">اختر الباقة</option>
+          <option value="5000-4">5 الاف مشاهدة - 4 ريال</option>
+          <option value="10000-7">10 الاف مشاهدة - 7 ريال</option>
+          <option value="20000-12">20 الف مشاهدة - 12 ريال</option>
+        </select>
+        <button class="btn" onclick="addCustomProduct('insta-views','مشاهدات انستغرام','insta3.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- واتساب -->
+  <section id="whatsapp">
+    <h2>💬 خدمات واتساب</h2>
+    <div class="store">
+      <div class="item"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب"><h3>رقم لتفعيل الواتساب</h3><p class="price">7 ريال</p><button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button></div>
+      
+      <!-- المنتج الجديد -->
+      <div class="item">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب أمريكي</text></svg>" 
+             alt="رقم أمريكي لتفعيل الواتساب">
+        <h3>رقم أمريكي لتفعيل الواتساب</h3>
+        <p class="price">10 ريال</p>
+        <button class="btn" onclick="addToCart('رقم أمريكي لتفعيل الواتساب', 10, 'whatsapp-us.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- عن المتجر -->
+  <section id="about">
+    <h2>ℹ️ عن متجر ZiDo</h2>
+    
+    <div class="about-section">
+      <h3>من نحن</h3>
+      <p>متجر ZiDo هو وجهتك الأولى لشراء جميع الخدمات الرقمية مثل شحن الألعاب وخدمات وسائل التواصل الاجتماعي. نحن نقدم خدمات عالية الجودة بأسعار تنافسية وبدعم فني على مدار الساعة.</p>
+    </div>
+    
+    <div class="about-section">
+      <h3>لماذا تختارنا؟</h3>
+      <ul style="list-style-type: none; padding: 0;">
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          أسعارنا مناسبة للجميع
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          خدمة عملاء على مدار الساعة
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          تشكيلة واسعة من الخدمات
+        </li>
+        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+          توصيل سريع للخدمات
+        </li>
+      </ul>
+    </div>
+    
+    <div class="about-section">
+      <h3>الأسئلة الشائعة</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          كيف يمكنني الدفع؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          ن خيارات دفع \ STC Pay, Visa/Mastercard, Apple Pay, and PayPal/ راجحي/برق/يوربي.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          كم تستغرق وقت التوصيل؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          معظم الخدمات يتم توصيلها فوراً بعد التأكد من الدفع، وبعضها قد يستغرق حتى 24 ساعة كحد أقصى.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          هل الخدمات آمنة؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          نعم، جميع خدماتنا آمنة ولا تؤثر على حساباتكم بالسلب، ونحن نضمن الخدمة لمدة 30 يومًا.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          كيف أتواصل مع الدعم؟ <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          يمكنك التواصل معنا عبر الواتساب على الرقم الموجود في أسفل الموقع، أو عبر رسائل Instagram.
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- السلة المنبثقة -->
@@ -1295,31 +1317,10 @@
       </div>
     </div>
     <div class="cart-footer">
-      <!-- قسم كود الخصم -->
-      <div id="discount-section">
-        <div class="discount-section">
-          <input type="text" class="discount-input" id="discount-code" placeholder="أدخل كود الخصم">
-          <button class="apply-discount-btn" onclick="applyDiscount()">تطبيق الخصم</button>
-        </div>
-        <div id="discount-message"></div>
-      </div>
-      
       <div class="total"><strong>المجموع:</strong> <span id="total">0</span> ريال</div>
-      
-      <!-- سطور الخصم والمجموع النهائي -->
-      <div id="discount-line" class="discount-line" style="display: none;">
-        <span>الخصم:</span>
-        <span id="discount-amount">0 ريال</span>
-      </div>
-      
-      <div class="final-total">
-        <span>المجموع النهائي:</span>
-        <span id="final-total">0 ريال</span>
-      </div>
-      
       <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i>  (فيزا/ماستركارد/ابل بي)</button>
       <button class="payment-btn stc-btn" onclick="checkout('STC Pay')"><i class="fas fa-mobile-alt"></i> الدفع عبر STC Pay</button>
-      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يوربي</button>
+      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يورби</button>
       <button class="payment-btn mada-btn" onclick="checkout('PayPal')"><i class="fab fa-paypal"></i> الدفع عبر PayPal</button>
       <p class="note">⚠️ يوجد رسوم إضافية عند الدفع بالفيزا — برجاء التأكد قبل الإتمام.</p>
       <button class="btn" style="margin-top:10px;background:#2d3647;color:#fff" onclick="toggleCart()"><i class="fas fa-arrow-left"></i> متابعة التسوق</button>
@@ -1346,9 +1347,6 @@
 <script>
 /* ====== السلة ====== */
 let cart = JSON.parse(localStorage.getItem('zidoCart')) || [];
-let discountApplied = false;
-let discountPercentage = 0;
-let discountCode = '';
 
 function addToCart(name, price, img, quantity = 1) {
   showLoader();
@@ -1406,9 +1404,6 @@ function saveCart() {
 function renderCart() {
   const list = document.getElementById('cart-list');
   const totalEl = document.getElementById('total');
-  const discountLine = document.getElementById('discount-line');
-  const discountAmountEl = document.getElementById('discount-amount');
-  const finalTotalEl = document.getElementById('final-total');
   const countEl = document.getElementById('cart-count');
 
   list.innerHTML = '';
@@ -1417,8 +1412,6 @@ function renderCart() {
   if (cart.length === 0) {
     list.innerHTML = '<div class="empty-cart"><i class="fas fa-shopping-basket"></i><p>سلة التسوق فارغة</p></div>';
     totalEl.textContent = '0';
-    discountLine.style.display = 'none';
-    finalTotalEl.textContent = '0 ريال';
     countEl.textContent = '0';
     return;
   }
@@ -1446,20 +1439,6 @@ function renderCart() {
   });
 
   totalEl.textContent = sum.toFixed(2).replace(/\.00$/, '');
-  
-  // حساب الخصم والمجموع النهائي
-  if (discountApplied) {
-    const discountAmount = (sum * discountPercentage / 100).toFixed(2);
-    const finalTotal = (sum - discountAmount).toFixed(2);
-    
-    discountLine.style.display = 'flex';
-    discountAmountEl.textContent = `-${discountAmount} ريال (${discountPercentage}%)`;
-    finalTotalEl.textContent = `${finalTotal} ريال`;
-  } else {
-    discountLine.style.display = 'none';
-    finalTotalEl.textContent = `${sum.toFixed(2)} ريال`;
-  }
-  
   countEl.textContent = cart.reduce((total, item) => total + item.quantity, 0);
 }
 
@@ -1472,55 +1451,6 @@ function toggleCart() {
     ov.style.display = 'flex';
     setTimeout(() => { ov.classList.add('active'); }, 10);
   }
-}
-
-/* ====== تطبيق الخصم ====== */
-function applyDiscount() {
-  const codeInput = document.getElementById('discount-code');
-  const discountMessage = document.getElementById('discount-message');
-  const code = codeInput.value.trim().toUpperCase();
-  
-  // قائمة أكواد الخصم المتاحة
-  const validCodes = {
-    'KSA95': 9.5,
-    'WELCOME5': 5,
-    'FORTNITE15': 15,
-    'TIKTOK20': 20
-  };
-  
-  if (code === '') {
-    discountMessage.innerHTML = '<div style="color: var(--danger); margin-top: 10px;">يرجى إدخال كود الخصم</div>';
-    return;
-  }
-  
-  if (validCodes[code]) {
-    discountApplied = true;
-    discountPercentage = validCodes[code];
-    discountCode = code;
-    
-    discountMessage.innerHTML = `
-      <div class="discount-applied">
-        <span class="discount-text">تم تطبيق خصم ${discountPercentage}% باستخدام الكود ${code}</span>
-        <button class="discount-remove" onclick="removeDiscount()"><i class="fas fa-times"></i></button>
-      </div>
-    `;
-    
-    codeInput.value = '';
-    renderCart();
-    showNotification(`تم تطبيق خصم ${discountPercentage}% بنجاح`, 'success');
-  } else {
-    discountMessage.innerHTML = '<div style="color: var(--danger); margin-top: 10px;">كود الخصم غير صالح أو منتهي الصلاحية</div>';
-  }
-}
-
-function removeDiscount() {
-  discountApplied = false;
-  discountPercentage = 0;
-  discountCode = '';
-  
-  document.getElementById('discount-message').innerHTML = '';
-  renderCart();
-  showNotification('تم إزالة الخصم', 'error');
 }
 
 /* ====== القائمة ====== */
@@ -1593,29 +1523,19 @@ function checkout(method) {
   }
 
   const items = cart.map(it => `• ${it.name} — ${it.price} ريال × ${it.quantity} = ${(it.price * it.quantity).toFixed(2)} ريال`).join('%0A');
-  
-  let total = document.getElementById('total').textContent;
-  let finalTotal = document.getElementById('final-total').textContent;
-  let discountInfo = '';
-  
-  if (discountApplied) {
-    discountInfo = `%0Aالخصم: ${discountPercentage}% (${discountCode})%0Aالمجموع بعد الخصم: ${finalTotal}`;
-  }
-  
+  const total = document.getElementById('total').textContent;
   let note = '';
+
   if (method.includes('فيزا')) { note = '%0A%0A⚠️ يوجد رسوم إضافية للفيزا.'; }
 
   const orderNumber = 'ZD-' + Math.floor(10000 + Math.random() * 90000);
   document.getElementById('order-number').textContent = orderNumber;
   
-  const msg = `طلب جديد ${method}:%0A%0A${items}%0Aالمجموع: ${total} ريال${discountInfo}%0Aرقم الطلب: ${orderNumber}${note}`;
+  const msg = `طلب جديد ${method}:%0A%0A${items}%0A%0Aالمجموع: ${total} ريال%0Aرقم الطلب: ${orderNumber}${note}`;
   const link = `https://wa.me/966537029503?text=${msg}`;
   
   // تفريغ السلة بعد إتمام الطلب
   cart = [];
-  discountApplied = false;
-  discountPercentage = 0;
-  discountCode = '';
   saveCart();
   renderCart();
   
@@ -1631,7 +1551,7 @@ function closeConfirmation() {
   toggleCart();
 }
 
-/* ====== سلايدر التقييمات ====== */
+/* ====== سلاider التقييمات ====== */
 let currentSlide = 0;
 
 function showSlide(i) {
@@ -1763,4 +1683,3 @@ function addCustomProduct(selectId, name, img) {
 </script>
 </body>
 </html>
-
