@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>متجر ZiDo - شحن الألعاب وخدمات التواصل الاجتماعي</title>
   <meta name="description" content="متجر ZiDo متخصص في شحن الألعاب مثل فورتنايت وخدمات التواصل الاجتماعي مثل تيك توك، انستغرام، واتساب. أسعار تنافسية وخدمة مميزة." />
+  <meta name="keywords" content="شحن فورتنايت, فيبوكس, متابعين تيك توك, يوزرات تيك توك, خدمات انستغرام, رقم واتساب, متجر رقمي, ZiDo" />
+  <meta property="og:title" content="متجر ZiDo - أفضل خدمات الألعاب والتواصل" />
+  <meta property="og:description" content="شحن فورتنايت، متابعين تيك توك، يوزرات، وخدمات رقمية فورية!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zido.example.com" />
+  <meta property="og:image" content="logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -802,6 +808,59 @@
       font-weight: bold;
       z-index: 1;
     }
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .trust-badge {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--glass-border);
+    }
+    .return-policy {
+      background: rgba(34, 197, 94, 0.1);
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 20px 0;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+    .countdown-timer {
+      font-weight: bold;
+      color: var(--danger);
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--panel);
+      border-radius: 0 0 12px 12px;
+      border: 1px solid var(--glass-border);
+      border-top: none;
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+    .search-suggestion {
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-suggestion:hover {
+      background: rgba(0, 207, 255, 0.1);
+    }
     @media (max-width: 1100px) {
       .testimonial-box { flex-basis: 50%; max-width: 50%; }
     }
@@ -873,1031 +932,1306 @@
       80% { transform: translateX(5px); }
       100% { transform: translateX(0); }
     }
+
+    /* الأنماط الجديدة */
+    .flash-sale {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border);
+      text-align: center;
+    }
+    .flash-sale-item {
+      display: inline-block;
+      margin: 10px;
+      text-align: center;
+    }
+    .support-float {
+      position: fixed;
+      bottom: 80px;
+      right: 22px;
+      background: #ff5964;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 28px rgba(255, 89, 100, 0.4);
+      z-index: 2600;
+      animation: pulse 2s infinite;
+    }
+    .order-tracking {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border);
+    }
+    .tracking-steps {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+      flex: 1;
+    }
+    .step.active {
+      color: var(--success);
+    }
+    .step::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: var(--glass-border);
+      z-index: -1;
+    }
+    .step:last-child::after {
+      display: none;
+    }
+    .coupons {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border);
+    }
+    .coupon {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid var(--glass-border);
+    }
   </style>
 </head>
 <body>
-<canvas class="bg"></canvas>
-<div class="parallax-layer layer-1"></div>
-<div class="parallax-layer layer-2"></div>
-<div class="loader" id="loader">
-  <div class="loader-content">
-    <div class="spinner"></div>
-    <p>جاري التحميل...</p>
-  </div>
-</div>
-<div class="notification" id="notification">
-  <i class="fas fa-check-circle"></i>
-  <span id="notification-text"></span>
-</div>
-<header>
-  <div class="brand">
-    <img src="logo.jpg" alt="شعار ZiDo" loading="lazy" />
-    <h1>متجر ZiDo</h1>
-  </div>
-  <div class="top-actions">
-    <span class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i> القائمة</span>
-    <div id="cartIcon" class="cart-icon" onclick="toggleCart()">
-      <i class="fas fa-shopping-cart"></i>
-      <span class="cart-count" id="cart-count">0</span>
+  <canvas class="bg"></canvas>
+  <div class="parallax-layer layer-1"></div>
+  <div class="parallax-layer layer-2"></div>
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p>جاري التحميل...</p>
     </div>
   </div>
-</header>
-<!-- شريط الأخبار -->
-<div class="news-ticker">
-  <div class="news-ticker__content">
-    <i class="fas fa-bullhorn"></i> عرض خاص: خصم 10% على جميع خدمات فورتنايت!
-    <i class="fas fa-star"></i> جديد: يوزرات تيك توك ب 6 ريال فقط!
-    <i class="fas fa-gift"></i> استخدم الكود "ZIDO10" للحصول على خصم 10% عند الدفع!
-    <i class="fas fa-bullhorn"></i> توصيل فوري لجميع الخدمات!
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notification-text"></span>
   </div>
-</div>
-<!-- شريط البحث -->
-<div class="search-container" id="searchContainer">
-  <input type="text" class="search-box" id="searchInput" placeholder="ابحث عن منتج..." aria-label="بحث عن منتج">
-  <i class="fas fa-search search-icon"></i>
-</div>
-<!-- القائمة الجانبية -->
-<nav id="sideMenu" class="side-menu" aria-label="القائمة الجانبية">
-  <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()" aria-label="إغلاق القائمة">×</a>
-  <h3>القائمة الرئيسية</h3>
-  <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</a>
-  <a href="#" onclick="showSection('fortnite')"><i class="fas fa-gamepad"></i> خدمات فورتنايت</a>
-  <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
-  <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
-  <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
-  <a href="#" onclick="showSection('about')"><i class="fas fa-info-circle"></i> عن المتجر</a>
-  <a href="#" onclick="showSection('subscribers')"><i class="fas fa-users"></i> عرض المشتركين</a>
-  <div class="search-menu-btn" onclick="toggleSearch()">
-    <i class="fas fa-search"></i> بحث
+  <header>
+    <div class="brand">
+      <img src="logo.jpg" alt="شعار ZiDo" loading="lazy" />
+      <h1>متجر ZiDo</h1>
+    </div>
+    <div class="top-actions">
+      <span class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i> القائمة</span>
+      <div id="cartIcon" class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+  <!-- شريط الأخبار -->
+  <div class="news-ticker">
+    <div class="news-ticker__content">
+      <i class="fas fa-bullhorn"></i> عرض خاص: خصم 10% على جميع خدمات فورتنايت!
+      <i class="fas fa-star"></i> جديد: يوزرات تيك توك ب 6 ريال فقط!
+      <i class="fas fa-gift"></i> استخدم الكود "ZIDO10" للحصول على خصم 10% عند الدفع!
+      <i class="fas fa-bullhorn"></i> توصيل فوري لجميع الخدمات!
+    </div>
   </div>
-</nav>
-<main>
-  <!-- الرئيسية -->
-  <section id="home" class="active">
-    <div class="hero">
-      <div class="hero-content">
-        <img src="piner.jpg" alt="مرحبًا بكم في متجر ZiDo" class="welcome-image">
-        <p style="margin:0;color:#e8f6ff;font-size:20px">أفضل العروض والخدمات الرقمية بين يديك</p>
-      </div>
+  <!-- عداد العرض المحدود -->
+  <div class="countdown-timer" id="limitedOfferTimer">
+    ⏳ العرض ينتهي خلال: <span id="countdown">02:15:33</span>
+  </div>
+  <!-- شهادات الثقة -->
+  <div class="trust-badges">
+    <div class="trust-badge"><i class="fas fa-lock"></i> دفع آمن</div>
+    <div class="trust-badge"><i class="fas fa-shield-alt"></i> تشفير SSL</div>
+    <div class="trust-badge"><i class="fab fa-whatsapp"></i> دعم فوري</div>
+    <div class="trust-badge"><i class="fas fa-users"></i> +,200 عميل</div>
+  </div>
+  <!-- سياسة الإرجاع -->
+  <div class="return-policy">
+    🛡️ <strong>ضمان استرداد خلال 24 ساعة</strong> إذا لم يتم التوصيل
+  </div>
+  <!-- شريط البحث -->
+  <div class="search-container" id="searchContainer">
+    <input type="text" class="search-box" id="searchInput" placeholder="ابحث عن منتج..." aria-label="بحث عن منتج">
+    <i class="fas fa-search search-icon"></i>
+    <div class="search-suggestions" id="searchSuggestions"></div>
+  </div>
+  <!-- القائمة الجانبية -->
+  <nav id="sideMenu" class="side-menu" aria-label="القائمة الجانبية">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()" aria-label="إغلاق القائمة">×</a>
+    <h3>القائمة الرئيسية</h3>
+    <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</a>
+    <a href="#" onclick="showSection('fortnite')"><i class="fas fa-gamepad"></i> خدمات فورتنايت</a>
+    <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
+    <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
+    <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
+    <a href="#" onclick="showSection('about')"><i class="fas fa-info-circle"></i> عن المتجر</a>
+    <a href="#" onclick="showSection('support')"><i class="fas fa-headset"></i> الدعم الفني</a>
+    <a href="#" onclick="showSection('track-order')"><i class="fas fa-truck"></i> تتبع طلبك</a>
+    <a href="#" onclick="showSection('coupons')"><i class="fas fa-ticket-alt"></i> كوبوناتك</a>
+    <div class="search-menu-btn" onclick="toggleSearch()">
+      <i class="fas fa-search"></i> بحث
     </div>
-    <div class="intro-text">
-      <h1>🎉 لقد وصلت إلى وجهتك</h1>
-      <p>متجر ZiDo — عالم رائع بانتظارك</p>
-    </div>
-    <!-- نموذج الاشتراك -->
-    <div class="subscribe-form">
-      <input type="email" id="subscribe-email" placeholder="بريدك الإلكتروني للاشتراك في العروض">
-      <input type="tel" id="subscribe-phone" placeholder="رقم الهاتف (اختياري)">
-      <button onclick="subscribeToOffers()"><i class="fas fa-paper-plane"></i> اشترك</button>
-    </div>
-    <!-- المنتجات المشاهدة مؤخرًا -->
-    <div class="recently-viewed" id="recently-viewed" style="display: none;">
-      <h3>المنتجات المشاهدة مؤخرًا</h3>
-      <div class="store" id="recently-viewed-products"></div>
-    </div>
-    <h2>🔥 المنتجات الأكثر مبيعًا</h2>
-    <div class="store" id="featured-products">
-      <div class="item" data-category="fortnite sale">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'الطاقم الشهري', 25, 'crew.png')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">🔥 الأكثر مبيعًا</span>
-        <img src="crew.png" alt="الطاقم الشهري" loading="lazy">
-        <h3>الطاقم الشهري</h3>
-        <p class="price">25 ريال</p>
-        <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
-      </div>
-      <div class="item" data-category="fortnite sale">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, '5400 فيبوكس', 70, '5400vb.png')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">🔥 الأكثر مبيعًا</span>
-        <img src="5400vb.png" alt="5400 فيبوكس" loading="lazy">
-        <h3>5400 فيبوكس</h3>
-        <p class="price">70 ريال</p>
-        <button class="btn" onclick="addToCart('5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
-      </div>
-      <div class="item" data-category="tiktok sale">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين تيك توك', 13, 'متابعين تيك توك.png')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">🔥 الأكثر مبيعًا</span>
-        <img src="متابعين تيك توك.png" alt="متابعين تيك توك" loading="lazy">
-        <h3>متابعين تيك توك</h3>
-        <p class="price">من 13 ريال</p>
-        <button class="btn" onclick="showSection('tiktok')"><i class="fas fa-cart-plus"></i> اطلع على العروض</button>
-      </div>
-    </div>
-    <h2>💬 آراء العملاء</h2>
-    <div class="testimonials">
-      <div class="slider" id="slider">
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة سلطان"><h3>سلطان</h3><p>"أفضل متجر!"</p><p>⭐⭐⭐⭐⭐</p></div>
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة عدنان"><h3>عدنان</h3><p>"خدمة ممتازة"</p><p>⭐⭐⭐⭐⭐</p></div>
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة محمد"><h3>محمد</h3><p>"تعامل راقي"</p><p>⭐⭐⭐⭐⭐</p></div>
-        <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة نواف"><h3>نواف</h3><p>"تجربة رائعة"</p><p>⭐⭐⭐⭐⭐</p></div>
-      </div>
-      <button class="slider-btn prev" onclick="prevSlide()" aria-label="السابق">❮</button>
-      <button class="slider-btn next" onclick="nextSlide()" aria-label="التالي">❯</button>
-    </div>
-  </section>
-  <!-- فورتنايت -->
-  <section id="fortnite">
-    <h2>🕹️ خدمات فورتنايت</h2>
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">الكل</button>
-      <button class="filter-btn" data-filter="sale">عروض خاصة</button>
-      <button class="filter-btn" data-filter="vbucks">فيبوكس</button>
-      <button class="filter-btn" data-filter="crew">الطاقم الشهري</button>
-      <button class="filter-btn" data-filter="account">حسابات</button>
-    </div>
-    <div class="store">
-      <div class="item" data-category="crew sale">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'الطاقم الشهري', 25, 'crew.png')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">عرض خاص</span>
-        <img src="crew.png" alt="الطاقم الشهري">
-        <h3>الطاقم الشهري</h3>
-        <p class="price">25 ريال</p>
-        <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="sale">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'إهداء فيبوكس', 14, 'اهداء فيبوكس.png')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">عرض خاص</span>
-        <img src="اهداء فيبوكس.png" alt="إهداء فيبوكس">
-        <h3>إهداء فيبوكس</h3>
-        <select id="profile-pack" aria-label="إهداء فيبوكس">
-          <option value="0">اختر الباقة</option>
-          <option value="800-14">800 فيبوكس ب 14 ريال</option>
-          <option value="1000-18">1000 فيبوكس ب 18 ريال</option>
-          <option value="1200-21">1200 فيبوكس ب 21 ريال</option>
-          <option value="1500-26">1500 فيبوكس ب 26 ريال</option>
-          <option value="1800-28">1800 فيبوكس ب 28 ريال</option>
-          <option value="2000-34">2000 فيبوكس ب 34 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('profile-pack','إهداء فيبوكس','اهداء فيبوكس.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="vbucks">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'حساب 5400 فيبوكس', 70, '5400vb.png')"><i class="far fa-heart"></i></button>
-        <img src="5400vb.png" alt="حساب 5400 فيبوكس">
-        <h3>حساب 5400 فيبوكس</h3>
-        <p class="price">70 ريال</p>
-        <button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="vbucks">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة مهام المنفى مع 1000 فيبوكس', 17, 'حزمه ب 17 ريال.avif')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">جديد</span>
-        <img src="حزمه ب 17 ريال.avif" alt="حزمة مهام المنفى مع 1000 فيبوكس">
-        <h3>حزمة مهام المنفى مع 1000 فيبوكس</h3>
-        <p class="price">17 ريال</p>
-        <button class="btn" onclick="addToCart('حزمة مهام المنفى مع 1000 فيبوكس',17,'حزمه ب 17 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="vbucks">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة Chill Vibez مع 600 فيبوكس', 12, 'حزمه 1 دولار.jpg')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">جديد</span>
-        <img src="حزمه 1 دولار.jpg" alt="حزمة Chill Vibez مع 600 فيبوكس">
-        <h3>حزمة Chill Vibez مع 600 فيبوكس</h3>
-        <p class="price">12 ريال</p>
-        <button class="btn" onclick="addToCart('حزمة Chill Vibez مع 600 فيبوكس',12,'حزمه 1 دولار.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="vbucks">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة Graffiti Revolution', 22, 'حزمه 16 ريال.avif')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">جديد</span>
-        <img src="حزمه 16 ريال.avif" alt="حزمة Graffiti Revolution">
-        <h3>حزمة Graffiti Revolution</h3>
-        <p class="price">22 ريال</p>
-        <button class="btn" onclick="addToCart('حزمة Graffiti Revolution',22,'حزمه 16 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="vbucks">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة The Wavebreaker مع 600 فيبوكس', 28, 'حزمه 20 ريال.avif')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">جديد</span>
-        <img src="حزمه 20 ريال.avif" alt="حزمة The Wavebreaker مع 600 فيبوكس">
-        <h3>حزمة The Wavebreaker مع 600 فيبوكس</h3>
-        <p class="price">28 ريال</p>
-        <button class="btn" onclick="addToCart('حزمة The Wavebreaker مع 600 فيبوكس',28,'حزمه 20 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="account">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة النخبة الذهبية', 18, 'حزمة 18 ريال.avif')"><i class="far fa-heart"></i></button>
-        <span class="featured-badge">جديد</span>
-        <img src="حزمة 18 ريال.avif" alt="حزمة النخبة الذهبية">
-        <h3>حزمة النخبة الذهبية</h3>
-        <p class="price">18 ريال</p>
-        <button class="btn" onclick="addToCart('حزمة النخبة الذهبية',18,'حزمة 18 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-    </div>
-    <!-- المنتجات المرتبطة -->
-    <div class="related-products">
-      <h3>المنتجات المرتبطة</h3>
-      <div class="store">
-        <div class="item">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="far fa-heart"></i></button>
-          <img src="vbucks1000.png" alt="حزمة فيبوكس 1000">
-          <h3>حزمة فيبوكس 1000</h3>
-          <p class="price">10 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+  </nav>
+  <main>
+    <!-- الرئيسية -->
+    <section id="home" class="active">
+      <div class="hero">
+        <div class="hero-content">
+          <img src="piner.jpg" alt="مرحبًا بكم في متجر ZiDo" class="welcome-image">
+          <p style="margin:0;color:#e8f6ff;font-size:20px">أفضل العروض والخدمات الرقمية بين يديك</p>
         </div>
-        <div class="item">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="far fa-heart"></i></button>
-          <img src="vbucks2500.png" alt="حزمة فيبوكس 2500">
-          <h3>حزمة فيبوكس 2500</h3>
+      </div>
+      <div class="intro-text">
+        <h1>🎉 لقد وصلت إلى وجهتك</h1>
+        <p>متجر ZiDo — عالم رائع بانتظارك</p>
+      </div>
+      <!-- نموذج الاشتراك -->
+      <div class="subscribe-form">
+        <input type="email" id="subscribe-email" placeholder="بريدك الإلكتروني للاشتراك في العروض">
+        <input type="tel" id="subscribe-phone" placeholder="رقم الهاتف (اختياري)">
+        <button onclick="subscribeToOffers()"><i class="fas fa-paper-plane"></i> اشترك</button>
+      </div>
+      <!-- المنتجات المشاهدة مؤخرًا -->
+      <div class="recently-viewed" id="recently-viewed" style="display: none;">
+        <h3>المنتجات المشاهدة مؤخرًا</h3>
+        <div class="store" id="recently-viewed-products"></div>
+      </div>
+      <h2>🔥 المنتجات الأكثر مبيعًا</h2>
+      <div class="store" id="featured-products">
+        <div class="item" data-category="fortnite sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'الطاقم الشهري', 25, 'crew.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">🔥 الأكثر مبيعًا</span>
+          <img src="crew.png" alt="الطاقم الشهري" loading="lazy">
+          <h3>الطاقم الشهري</h3>
           <p class="price">25 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+        </div>
+        <div class="item" data-category="fortnite sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, '5400 فيبوكس', 70, '5400vb.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">🔥 الأكثر مبيعًا</span>
+          <img src="5400vb.png" alt="5400 فيبوكس" loading="lazy">
+          <h3>5400 فيبوكس</h3>
+          <p class="price">70 ريال</p>
+          <button class="btn" onclick="addToCart('5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+        </div>
+        <div class="item" data-category="tiktok sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين تيك توك', 13, 'متابعين تيك توك.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">🔥 الأكثر مبيعًا</span>
+          <img src="متابعين تيك توك.png" alt="متابعين تيك توك" loading="lazy">
+          <h3>متابعين تيك توك</h3>
+          <p class="price">من 13 ريال</p>
+          <button class="btn" onclick="showSection('tiktok')"><i class="fas fa-cart-plus"></i> اطلع على العروض</button>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- تيك توك -->
-  <section id="tiktok">
-    <h2>🎵 خدمات تيك توك</h2>
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">الكل</button>
-      <button class="filter-btn" data-filter="followers">متابعين</button>
-      <button class="filter-btn" data-filter="likes">لايكات</button>
-      <button class="filter-btn" data-filter="views">مشاهدات</button>
-      <button class="filter-btn" data-filter="user">يوزرات</button>
-    </div>
-    <div class="store">
-      <div class="item" data-category="followers">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين تيك توك', 13, 'متابعين تيك توك.png')"><i class="far fa-heart"></i></button>
-        <img src="متابعين تيك توك.png" alt="متابعين تيك توك">
-        <h3>متابعين تيك توك</h3>
-        <select id="followers-options">
-          <option value="0">اختر العدد</option>
-          <option value="1000-13">1000 متابع - 13 ريال</option>
-          <option value="2000-21">2000 متابع - 21 ريال</option>
-          <option value="3000-29">3000 متابع - 29 ريال</option>
-          <option value="4000-36">4000 متابع - 36 ريال</option>
-          <option value="5000-40">5000 متابع - 40 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('followers-options','متابعين تيك توك','متابعين تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="likes">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'لايكات تيك توك', 3, 'لايكات تيك توك.png')"><i class="far fa-heart"></i></button>
-        <img src="لايكات تيك توك.png" alt="لايكات تيك توك">
-        <h3>لايكات تيك توك</h3>
-        <select id="likes-options">
-          <option value="0">اختر العدد</option>
-          <option value="1000-3">1000 لايك - 3 ريال</option>
-          <option value="2000-5">2000 لايك - 5 ريال</option>
-          <option value="3000-6">3000 لايك - 6 ريال</option>
-          <option value="4000-7">4000 لايك - 7 ريال</option>
-          <option value="5000-8">5000 لايك - 8 ريال</option>
-          <option value="10000-14">10000 لايك - 14 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('likes-options','لايكات تيك توك','لايكات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="views">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'مشاهدات تيك توك', 2, 'مشاهدات تيك توك.png')"><i class="far fa-heart"></i></button>
-        <img src="مشاهدات تيك توك.png" alt="مشاهدات تيك توك">
-        <h3>مشاهدات تيك توك</h3>
-        <select id="views-options">
-          <option value="0">اختر الباقة</option>
-          <option value="10000-2">10 ألف مشاهدة - 2 ريال</option>
-          <option value="15000-3">15 ألف مشاهدة - 3 ريال</option>
-          <option value="20000-4">20 ألف مشاهدة - 4 ريال</option>
-          <option value="30000-5">30 ألف مشاهدة - 5 ريال</option>
-          <option value="50000-6">50 ألف مشاهدة - 6 ريال</option>
-          <option value="100000-7">100 ألف مشاهدة - 7 ريال</option>
-          <option value="200000-8">200 ألف مشاهدة - 8 ريال</option>
-          <option value="300000-9">300 ألف مشاهدة - 9 ريال</option>
-          <option value="400000-10">400 ألف مشاهدة - 10 ريال</option>
-          <option value="500000-11">500 ألف مشاهدة - 11 ريال</option>
-          <option value="600000-12">600 ألف مشاهدة - 12 ريال</option>
-          <option value="700000-13">700 ألف مشاهدة - 13 ريال</option>
-          <option value="800000-15">800 ألف مشاهدة - 15 ريال</option>
-          <option value="900000-17">900 ألف مشاهدة - 17 ريال</option>
-          <option value="1000000-20">1 مليون مشاهدة - 20 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('views-options','مشاهدات تيك توك','مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="user">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'يوزر تيك توك 8hoe', 6, '8hoe.png')"><i class="far fa-heart"></i></button>
-        <img src="8hoe.png" alt="يوزر تيك توك 8hoe">
-        <h3>يوزر تيك توك 8hoe</h3>
-        <p class="price">6 ريال</p>
-        <button class="btn" onclick="addToCart('يوزر تيك توك 8hoe',6,'8hoe.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-    </div>
-  </section>
-  <!-- انستغرام -->
-  <section id="instagram">
-    <h2>📸 خدمات انستغرام</h2>
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">الكل</button>
-      <button class="filter-btn" data-filter="followers">متابعين</button>
-      <button class="filter-btn" data-filter="likes">لايكات</button>
-      <button class="filter-btn" data-filter="views">مشاهدات</button>
-    </div>
-    <div class="store">
-      <div class="item" data-category="followers">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين انستغرام', 15, 'insta1.jpg')"><i class="far fa-heart"></i></button>
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة متابعين انستغرام</text></svg>" alt="متابعين انستغرام">
-        <h3>متابعين انستغرام</h3>
-        <select id="insta-followers">
-          <option value="0">اختر العدد</option>
-          <option value="1000-15">1000 متابع - 15 ريال</option>
-          <option value="2000-28">2000 متابع - 28 ريال</option>
-          <option value="3000-40">3000 متابع - 40 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('insta-followers','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="likes">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'لايكات انستغرام', 5, 'insta2.jpg')"><i class="far fa-heart"></i></button>
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة لايكات انستغرام</text></svg>" alt="لايكات انستغرام">
-        <h3>لايكات انستغرام</h3>
-        <select id="insta-likes">
-          <option value="0">اختر العدد</option>
-          <option value="1000-5">1000 لايك - 5 ريال</option>
-          <option value="2000-9">2000 لايك - 9 ريال</option>
-          <option value="3000-13">3000 لايك - 13 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('insta-likes','لايكات انستغرام','insta2.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item" data-category="views">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'مشاهدات انستغرام', 4, 'insta3.jpg')"><i class="far fa-heart"></i></button>
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة مشاهدات انستغرام</text></svg>" alt="مشاهدات انستغرام">
-        <h3>مشاهدات انستغرام</h3>
-        <select id="insta-views">
-          <option value="0">اختر الباقة</option>
-          <option value="5000-4">5 آلاف مشاهدة - 4 ريال</option>
-          <option value="10000-7">10 آلاف مشاهدة - 7 ريال</option>
-          <option value="20000-12">20 ألف مشاهدة - 12 ريال</option>
-        </select>
-        <button class="btn" onclick="addCustomProduct('insta-views','مشاهدات انستغرام','insta3.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-    </div>
-  </section>
-  <!-- واتساب -->
-  <section id="whatsapp">
-    <h2>💬 خدمات واتساب</h2>
-    <div class="store">
-      <div class="item">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم لتفعيل الواتساب', 7, 'whatsapp.jpg')"><i class="far fa-heart"></i></button>
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب">
-        <h3>رقم لتفعيل الواتساب</h3>
-        <p class="price">7 ريال</p>
-        <button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-      <div class="item">
-        <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم أمريكي لتفعيل الواتساب', 10, 'whatsapp-us.jpg')"><i class="far fa-heart"></i></button>
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب أمريكي</text></svg>" alt="رقم أمريكي لتفعيل الواتساب">
-        <h3>رقم أمريكي لتفعيل الواتساب</h3>
-        <p class="price">10 ريال</p>
-        <button class="btn" onclick="addToCart('رقم أمريكي لتفعيل الواتساب',10,'whatsapp-us.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-      </div>
-    </div>
-  </section>
-  <!-- عن المتجر -->
-  <section id="about">
-    <h2>ℹ️ عن متجر ZiDo</h2>
-    <div class="about-section">
-      <h3>من نحن</h3>
-      <p>متجر ZiDo هو وجهتك الأولى لشراء جميع الخدمات الرقمية مثل شحن الألعاب وخدمات وسائل التواصل الاجتماعي. نحن نقدم خدمات عالية الجودة بأسعار تنافسية وبدعم فني على مدار الساعة.</p>
-    </div>
-    <div class="about-section">
-      <h3>لماذا تختارنا؟</h3>
-      <ul style="list-style-type: none; padding: 0;">
-        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
-          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
-          أسعارنا مناسبة للجميع
-        </li>
-        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
-          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
-          خدمة عملاء على مدار الساعة
-        </li>
-        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
-          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
-          تشكيلة واسعة من الخدمات
-        </li>
-        <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
-          <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
-          توصيل سريع للخدمات
-        </li>
-      </ul>
-    </div>
-    <div class="about-section">
-      <h3>الأسئلة الشائعة</h3>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          كيف يمكنني الدفع؟ <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          خيارات الدفع المتاحة: STC Pay، فيزا/ماستركارد، Apple Pay، PayPal، راجحي، برق، يوربي.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          كم تستغرق وقت التوصيل؟ <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          معظم الخدمات يتم توصيلها فوراً بعد التأكد من الدفع، وبعضها قد يستغرق حتى 24 ساعة كحد أقصى.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          هل الخدمات آمنة؟ <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          نعم، جميع خدماتنا آمنة ولا تؤثر على حساباتكم بالسلب، ونحن نضمن الخدمة لمدة 30 يومًا.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          كيف أتواصل مع الدعم؟ <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          يمكنك التواصل معنا عبر الواتساب على الرقم الموجود في أسفل الموقع، أو عبر رسائل Instagram.
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- قسم عرض المشتركين -->
-  <section id="subscribers" style="display: none;">
-    <div class="about-section">
-      <h3>قائمة المشتركين في العروض</h3>
-      <div class="password-form">
-        <input type="password" id="admin-password" placeholder="كلمة المرور" />
-        <button onclick="checkAdminPassword()"><i class="fas fa-lock"></i> دخول</button>
-      </div>
-      <div id="subscribers-content" style="display: none;">
-        <table id="subscribers-table">
-          <thead>
-            <tr>
-              <th>البريد الإلكتروني</th>
-              <th>رقم الهاتف</th>
-              <th>تاريخ الاشتراك</th>
-            </tr>
-          </thead>
-          <tbody id="subscribers-list"></tbody>
-        </table>
-        <button class="btn" onclick="exportSubscribersToCSV()" style="margin: 20px auto; display: block;">
-          <i class="fas fa-file-csv"></i> تصدير إلى CSV
-        </button>
-      </div>
-    </div>
-  </section>
-</main>
-<!-- السلة المنبثقة -->
-<div id="cartOverlay" class="cart-overlay">
-  <div class="cart-popup" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
-    <div class="cart-header">
-      <h3 id="cartTitle"><i class="fas fa-shopping-cart"></i> سلة التسوق</h3>
-      <button class="close-cart" onclick="toggleCart()" aria-label="إغلاق السلة">×</button>
-    </div>
-    <div id="cart-list" class="cart-list">
-      <div class="empty-cart" id="empty-cart">
-        <i class="fas fa-shopping-basket"></i>
-        <p>سلة التسوق فارغة</p>
-      </div>
-    </div>
-    <div class="cart-footer">
-      <!-- حقل كود الخصم -->
-      <div style="margin: 12px 0; text-align: center;">
-        <input type="text" id="discount-code" placeholder="أدخل كود الخصم" style="
-          width: 100%;
-          padding: 10px;
-          border-radius: 8px;
-          border: 1px solid var(--glass-border);
-          background: rgba(0, 0, 0, 0.2);
-          color: #fff;
-          text-align: center;
-        ">
-        <button class="btn" style="margin-top: 8px; background: var(--success);" onclick="applyDiscount()">
-          تطبيق الكود
-        </button>
-      </div>
-      <div class="total"><strong>المجموع:</strong> <span id="total">0</span> ريال</div>
-      <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i> (فيزا/ماستركارد/ابل بي)</button>
-      <button class="payment-btn stc-btn" onclick="checkout('STC Pay')"><i class="fas fa-mobile-alt"></i> الدفع عبر STC Pay</button>
-      <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يوربي</button>
-      <button class="payment-btn mada-btn" onclick="checkout('PayPal')"><i class="fab fa-paypal"></i> الدفع عبر PayPal</button>
-      <p class="note">⚠️ يوجد رسوم إضافية عند الدفع بالفيزا — برجاء التأكد قبل الإتمام.</p>
-      <button class="btn" style="margin-top:10px;background:#2d3647;color:#fff" onclick="toggleCart()"><i class="fas fa-arrow-left"></i> متابعة التسوق</button>
-    </div>
-  </div>
-</div>
-<!-- صفحة تأكيد الطلب -->
-<div id="confirmation" class="confirmation">
-  <div class="confirmation-content">
-    <h3>تم إرسال طلبك بنجاح! 🎉</h3>
-    <p>سيتم التواصل معك خلال دقائق لتأكيد الطلب وتفاصيل الدفع.</p>
-    <p>رقم الطلب: <strong id="order-number">ZD-12345</strong></p>
-    <div class="confirmation-buttons">
-      <button class="btn" onclick="closeConfirmation()">مواصلة التسوق</button>
-      <button class="btn" style="background: var(--accent);" onclick="closeConfirmation(); showSection('home');">العودة للرئيسية</button>
-    </div>
-  </div>
-</div>
-<!-- زر واتساب عائم -->
-<a href="https://wa.me/966537029503" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب"><i class="fab fa-whatsapp"></i></a>
-<script>
-  /* ====== المتغيرات العامة ====== */
-  let cart = JSON.parse(localStorage.getItem('zidoCart')) || [];
-  let wishlist = JSON.parse(localStorage.getItem('zidoWishlist')) || [];
-  let recentlyViewed = JSON.parse(localStorage.getItem('zidoRecentlyViewed')) || [];
-  let subscribers = JSON.parse(localStorage.getItem('zidoSubscribers')) || [];
-  let discountApplied = false;
-  let originalTotalBeforeDiscount = 0;
-  const ADMIN_PASSWORD = "zido123"; // كلمة المرور للإدمن
 
-  /* ====== أكواد الخصم ====== */
-  const validDiscountCodes = {
-    "ZIDO10": 0.10,
-    "SAVE15": 0.15,
-    "VIP20": 0.20,
-  };
-
-  /* ====== السلة ====== */
-  function addToCart(name, price, img, quantity = 1) {
-    showLoader();
-    const existingItemIndex = cart.findIndex(item => item.name === name && item.price === price);
-    if (existingItemIndex > -1) {
-      cart[existingItemIndex].quantity += quantity;
-    } else {
-      cart.push({ name, price, img: img || '', quantity });
-    }
-    saveCart();
-    renderCart();
-    showNotification(`تمت إضافة "${name}" إلى السلة`, 'success');
-    const cartIcon = document.getElementById('cartIcon');
-    cartIcon.classList.add('shake');
-    setTimeout(() => {
-      cartIcon.classList.remove('shake');
-      hideLoader();
-    }, 500);
-  }
-
-  function updateQuantity(index, change) {
-    cart[index].quantity += change;
-    if (cart[index].quantity <= 0) {
-      cart.splice(index, 1);
-    }
-    saveCart();
-    renderCart();
-  }
-
-  function removeItem(index) {
-    const itemName = cart[index].name;
-    cart.splice(index, 1);
-    saveCart();
-    renderCart();
-    showNotification(`تمت إزالة "${itemName}" من السلة`, 'error');
-  }
-
-  function saveCart() {
-    localStorage.setItem('zidoCart', JSON.stringify(cart));
-  }
-
-  function renderCart() {
-    const list = document.getElementById('cart-list');
-    const totalEl = document.getElementById('total');
-    const countEl = document.getElementById('cart-count');
-    list.innerHTML = '';
-    let sum = 0;
-    if (cart.length === 0) {
-      list.innerHTML = '<div class="empty-cart"><i class="fas fa-shopping-basket"></i><p>سلة التسوق فارغة</p></div>';
-      totalEl.textContent = '0';
-      countEl.textContent = '0';
-      return;
-    }
-    cart.forEach((it, i) => {
-      const itemTotal = it.price * it.quantity;
-      sum += itemTotal;
-      const row = document.createElement('div');
-      row.className = 'cart-item fade-in';
-      row.innerHTML = `
-        ${it.img ? `<img src="${it.img}" alt="${it.name}" loading="lazy">` : ''}
-        <div class="meta">
-          <div class="name">${it.name}</div>
-          <div class="price">${itemTotal.toFixed(2).replace(/\.00$/, '')} ريال (${it.price} × ${it.quantity})</div>
-          <div class="quantity-controls">
-            <button onclick="updateQuantity(${i}, -1)">-</button>
-            <span>${it.quantity}</span>
-            <button onclick="updateQuantity(${i}, 1)">+</button>
+      <!-- إضافة قسم العروض السريعة -->
+      <section id="flash-sales">
+        <h2>⏳ عروض سريعة!</h2>
+        <div class="flash-sale">
+          <div class="flash-sale-item">
+            <img src="vbucks1000.png" alt="حزمة فيبوكس 1000" loading="lazy">
+            <h3>حزمة فيبوكس 1000</h3>
+            <p class="price">7 ريال <span style="text-decoration: line-through; color: var(--muted);">10 ريال</span></p>
+            <p class="countdown">الوقت المتبقي: <span id="flash-sale-timer-1">23:59:59</span></p>
+            <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 7, 'vbucks1000.png')">
+              اشتري الآن!
+            </button>
           </div>
         </div>
-        <button class="remove-btn" title="حذف" onclick="removeItem(${i})"><i class="fas fa-trash"></i></button>
-      `;
-      list.appendChild(row);
-    });
-    totalEl.textContent = sum.toFixed(2).replace(/\.00$/, '');
-    countEl.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-    originalTotalBeforeDiscount = sum;
-  }
+      </section>
 
-  function toggleCart() {
-    const ov = document.getElementById('cartOverlay');
-    if (ov.classList.contains('active')) {
-      ov.classList.remove('active');
-      setTimeout(() => { ov.style.display = 'none'; }, 300);
-    } else {
-      ov.style.display = 'flex';
-      setTimeout(() => { ov.classList.add('active'); }, 10);
-      discountApplied = false;
-    }
-  }
+      <!-- إضافة قسم التوصيات -->
+      <div class="recommendations">
+        <h3>قد يعجبك أيضًا</h3>
+        <div class="store">
+          <div class="item">
+            <img src="vbucks2500.png" alt="حزمة فيبوكس 2500" loading="lazy">
+            <h3>حزمة فيبوكس 2500</h3>
+            <p class="price">25 ريال</p>
+            <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')">
+              إضافة للسلة
+            </button>
+          </div>
+        </div>
+      </div>
 
-  /* ====== القائمة ====== */
-  function toggleMenu() {
-    document.getElementById('sideMenu').classList.toggle('open');
-  }
+      <!-- إضافة قسم التقييمات -->
+      <div class="reviews">
+        <h3>تقييمات العملاء</h3>
+        <div class="review">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>"خدمة ممتازة وتوصيل سريع!" - أحمد</p>
+        </div>
+        <button class="btn" onclick="leaveReview()">ترك تقييم</button>
+      </div>
 
-  function showSection(id) {
-    showLoader();
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.getElementById('sideMenu').classList.remove('open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id !== 'home' && id !== 'about' && id !== 'subscribers') {
-      setTimeout(applyFilters, 100);
-    }
-    setTimeout(hideLoader, 300);
-  }
+      <h2>💬 آراء العملاء</h2>
+      <div class="testimonials">
+        <div class="slider" id="slider">
+          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة سلطان"><h3>سلطان</h3><p>"أفضل متجر!"</p><p>⭐⭐⭐⭐⭐</p></div>
+          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة عدنان"><h3>عدنان</h3><p>"خدمة ممتازة"</p><p>⭐⭐⭐⭐⭐</p></div>
+          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة محمد"><h3>محمد</h3><p>"تعامل راقي"</p><p>⭐⭐⭐⭐⭐</p></div>
+          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة نواف"><h3>نواف</h3><p>"تجربة رائعة"</p><p>⭐⭐⭐⭐⭐</p></div>
+        </div>
+        <button class="slider-btn prev" onclick="prevSlide()" aria-label="السابق">❮</button>
+        <button class="slider-btn next" onclick="nextSlide()" aria-label="التالي">❯</button>
+      </div>
+    </section>
 
-  /* ====== البحث ====== */
-  function toggleSearch() {
-    const searchContainer = document.getElementById('searchContainer');
-    searchContainer.style.display = searchContainer.style.display === 'block' ? 'none' : 'block';
-    if (searchContainer.style.display === 'block') {
-      document.getElementById('searchInput').focus();
-    }
-    document.getElementById('sideMenu').classList.remove('open');
-  }
+    <!-- فورتنايت -->
+    <section id="fortnite">
+      <h2>🕹️ خدمات فورتنايت</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="sale">عروض خاصة</button>
+        <button class="filter-btn" data-filter="vbucks">فيبوكس</button>
+        <button class="filter-btn" data-filter="crew">الطاقم الشهري</button>
+        <button class="filter-btn" data-filter="account">حسابات</button>
+      </div>
+      <div class="store">
+        <div class="item" data-category="crew sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'الطاقم الشهري', 25, 'crew.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">عرض خاص</span>
+          <img src="crew.png" alt="الطاقم الشهري">
+          <h3>الطاقم الشهري</h3>
+          <p class="price">25 ريال</p>
+          <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'إهداء فيبوكس', 14, 'اهداء فيبوكس.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">عرض خاص</span>
+          <img src="اهداء فيبوكس.png" alt="إهداء فيبوكس">
+          <h3>إهداء فيبوكس</h3>
+          <select id="profile-pack" aria-label="إهداء فيبوكس">
+            <option value="0">اختر الباقة</option>
+            <option value="800-14">800 فيبوكس ب 14 ريال</option>
+            <option value="1000-18">1000 فيبوكس ب 18 ريال</option>
+            <option value="1200-21">1200 فيبوكس ب 21 ريال</option>
+            <option value="1500-26">1500 فيبوكس ب 26 ريال</option>
+            <option value="1800-28">1800 فيبوكس ب 28 ريال</option>
+            <option value="2000-34">2000 فيبوكس ب 34 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('profile-pack','إهداء فيبوكس','اهداء فيبوكس.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="vbucks">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حساب 5400 فيبوكس', 70, '5400vb.png')"><i class="far fa-heart"></i></button>
+          <img src="5400vb.png" alt="حساب 5400 فيبوكس">
+          <h3>حساب 5400 فيبوكس</h3>
+          <p class="price">70 ريال</p>
+          <button class="btn" onclick="addToCart('حساب 5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="vbucks">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة مهام المنفى مع 1000 فيبوكس', 17, 'حزمه ب 17 ريال.avif')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="حزمه ب 17 ريال.avif" alt="حزمة مهام المنفى مع 1000 فيبوكس">
+          <h3>حزمة مهام المنفى مع 1000 فيبوكس</h3>
+          <p class="price">17 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة مهام المنفى مع 1000 فيبوكس',17,'حزمه ب 17 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="vbucks">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة Chill Vibez مع 600 فيبوكس', 12, 'حزمه 1 دولار.jpg')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="حزمه 1 دولار.jpg" alt="حزمة Chill Vibez مع 600 فيبوكس">
+          <h3>حزمة Chill Vibez مع 600 فيبوكس</h3>
+          <p class="price">12 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة Chill Vibez مع 600 فيبوكس',12,'حزمه 1 دولار.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="vbucks">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة Graffiti Revolution', 22, 'حزمه 16 ريال.avif')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="حزمه 16 ريال.avif" alt="حزمة Graffiti Revolution">
+          <h3>حزمة Graffiti Revolution</h3>
+          <p class="price">22 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة Graffiti Revolution',22,'حزمه 16 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="vbucks">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة The Wavebreaker مع 600 فيبوكس', 28, 'حزمه 20 ريال.avif')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="حزمه 20 ريال.avif" alt="حزمة The Wavebreaker مع 600 فيبوكس">
+          <h3>حزمة The Wavebreaker مع 600 فيبوكس</h3>
+          <p class="price">28 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة The Wavebreaker مع 600 فيبوكس',28,'حزمه 20 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="account">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة النخبة الذهبية', 18, 'حزمة 18 ريال.avif')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="حزمة 18 ريال.avif" alt="حزمة النخبة الذهبية">
+          <h3>حزمة النخبة الذهبية</h3>
+          <p class="price">18 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة النخبة الذهبية',18,'حزمة 18 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+      </div>
+      <!-- المنتجات المرتبطة -->
+      <div class="related-products">
+        <h3>المنتجات المرتبطة</h3>
+        <div class="store">
+          <div class="item">
+            <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="far fa-heart"></i></button>
+            <img src="vbucks1000.png" alt="حزمة فيبوكس 1000">
+            <h3>حزمة فيبوكس 1000</h3>
+            <p class="price">10 ريال</p>
+            <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          </div>
+          <div class="item">
+            <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="far fa-heart"></i></button>
+            <img src="vbucks2500.png" alt="حزمة فيبوكس 2500">
+            <h3>حزمة فيبوكس 2500</h3>
+            <p class="price">25 ريال</p>
+            <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  document.getElementById('searchInput').addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') {
-      const query = this.value.toLowerCase().trim();
-      if (query) {
-        filterProducts(query);
-        this.value = '';
-        toggleSearch();
-      }
-    }
-  });
+    <!-- تيك توك -->
+    <section id="tiktok">
+      <h2>🎵 خدمات تيك توك</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="followers">متابعين</button>
+        <button class="filter-btn" data-filter="likes">لايكات</button>
+        <button class="filter-btn" data-filter="views">مشاهدات</button>
+        <button class="filter-btn" data-filter="user">يوزرات</button>
+      </div>
+      <div class="store">
+        <div class="item" data-category="followers">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين تيك توك', 13, 'متابعين تيك توك.png')"><i class="far fa-heart"></i></button>
+          <img src="متابعين تيك توك.png" alt="متابعين تيك توك">
+          <h3>متابعين تيك توك</h3>
+          <select id="followers-options">
+            <option value="0">اختر العدد</option>
+            <option value="1000-13">1000 متابع - 13 ريال</option>
+            <option value="2000-21">2000 متابع - 21 ريال</option>
+            <option value="3000-29">3000 متابع - 29 ريال</option>
+            <option value="4000-36">4000 متابع - 36 ريال</option>
+            <option value="5000-40">5000 متابع - 40 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('followers-options','متابعين تيك توك','متابعين تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="likes">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'لايكات تيك توك', 3, 'لايكات تيك توك.png')"><i class="far fa-heart"></i></button>
+          <img src="لايكات تيك توك.png" alt="لايكات تيك توك">
+          <h3>لايكات تيك توك</h3>
+          <select id="likes-options">
+            <option value="0">اختر العدد</option>
+            <option value="1000-3">1000 لايك - 3 ريال</option>
+            <option value="2000-5">2000 لايك - 5 ريال</option>
+            <option value="3000-6">3000 لايك - 6 ريال</option>
+            <option value="4000-7">4000 لايك - 7 ريال</option>
+            <option value="5000-8">5000 لايك - 8 ريال</option>
+            <option value="10000-14">10000 لايك - 14 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('likes-options','لايكات تيك توك','لايكات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="views">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'مشاهدات تيك توك', 2, 'مشاهدات تيك توك.png')"><i class="far fa-heart"></i></button>
+          <img src="مشاهدات تيك توك.png" alt="مشاهدات تيك توك">
+          <h3>مشاهدات تيك توك</h3>
+          <select id="views-options">
+            <option value="0">اختر الباقة</option>
+            <option value="10000-2">10 ألف مشاهدة - 2 ريال</option>
+            <option value="15000-3">15 ألف مشاهدة - 3 ريال</option>
+            <option value="20000-4">20 ألف مشاهدة - 4 ريال</option>
+            <option value="30000-5">30 ألف مشاهدة - 5 ريال</option>
+            <option value="50000-6">50 ألف مشاهدة - 6 ريال</option>
+            <option value="100000-7">100 ألف مشاهدة - 7 ريال</option>
+            <option value="200000-8">200 ألف مشاهدة - 8 ريال</option>
+            <option value="300000-9">300 ألف مشاهدة - 9 ريال</option>
+            <option value="400000-10">400 ألف مشاهدة - 10 ريال</option>
+            <option value="500000-11">500 ألف مشاهدة - 11 ريال</option>
+            <option value="600000-12">600 ألف مشاهدة - 12 ريال</option>
+            <option value="700000-13">700 ألف مشاهدة - 13 ريال</option>
+            <option value="800000-15">800 ألف مشاهدة - 15 ريال</option>
+            <option value="900000-17">900 ألف مشاهدة - 17 ريال</option>
+            <option value="1000000-20">1 مليون مشاهدة - 20 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('views-options','مشاهدات تيك توك','مشاهدات تيك توك.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="user">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'يوزر تيك توك 8hoe', 6, '8hoe.png')"><i class="far fa-heart"></i></button>
+          <img src="8hoe.png" alt="يوزر تيك توك 8hoe">
+          <h3>يوزر تيك توك 8hoe</h3>
+          <p class="price">6 ريال</p>
+          <button class="btn" onclick="addToCart('يوزر تيك توك 8hoe',6,'8hoe.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+      </div>
+    </section>
 
-  function filterProducts(query) {
-    const items = document.querySelectorAll('.item');
-    let found = false;
-    items.forEach(item => {
-      const name = item.querySelector('h3').textContent.toLowerCase();
-      if (name.includes(query)) {
-        item.style.display = 'block';
-        found = true;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-    if (!found) {
-      showNotification('لم يتم العثور على منتجات تطابق بحثك', 'error');
-      items.forEach(item => item.style.display = 'block');
-    }
-  }
+    <!-- انستغرام -->
+    <section id="instagram">
+      <h2>📸 خدمات انستغرام</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="followers">متابعين</button>
+        <button class="filter-btn" data-filter="likes">لايكات</button>
+        <button class="filter-btn" data-filter="views">مشاهدات</button>
+      </div>
+      <div class="store">
+        <div class="item" data-category="followers">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين انستغرام', 15, 'insta1.jpg')"><i class="far fa-heart"></i></button>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة متابعين انستغرام</text></svg>" alt="متابعين انستغرام">
+          <h3>متابعين انستغرام</h3>
+          <select id="insta-followers">
+            <option value="0">اختر العدد</option>
+            <option value="1000-15">1000 متابع - 15 ريال</option>
+            <option value="2000-28">2000 متابع - 28 ريال</option>
+            <option value="3000-40">3000 متابع - 40 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('insta-followers','متابعين انستغرام','insta1.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="likes">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'لايكات انستغرام', 5, 'insta2.jpg')"><i class="far fa-heart"></i></button>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة لايكات انستغرام</text></svg>" alt="لايكات انستغرام">
+          <h3>لايكات انستغرام</h3>
+          <select id="insta-likes">
+            <option value="0">اختر العدد</option>
+            <option value="1000-5">1000 لايك - 5 ريال</option>
+            <option value="2000-9">2000 لايك - 9 ريال</option>
+            <option value="3000-13">3000 لايك - 13 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('insta-likes','لايكات انستغرام','insta2.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item" data-category="views">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'مشاهدات انستغرام', 4, 'insta3.jpg')"><i class="far fa-heart"></i></button>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة مشاهدات انستغرام</text></svg>" alt="مشاهدات انستغرام">
+          <h3>مشاهدات انستغرام</h3>
+          <select id="insta-views">
+            <option value="0">اختر الباقة</option>
+            <option value="5000-4">5 آلاف مشاهدة - 4 ريال</option>
+            <option value="10000-7">10 آلاف مشاهدة - 7 ريال</option>
+            <option value="20000-12">20 ألف مشاهدة - 12 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('insta-views','مشاهدات انستغرام','insta3.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+      </div>
+    </section>
 
-  /* ====== كود الخصم ====== */
-  function applyDiscount() {
-    if (discountApplied) {
-      showNotification('تم تطبيق الخصم بالفعل على هذا الطلب.', 'error');
-      return;
-    }
+    <!-- واتساب -->
+    <section id="whatsapp">
+      <h2>💬 خدمات واتساب</h2>
+      <div class="store">
+        <div class="item">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم لتفعيل الواتساب', 7, 'whatsapp.jpg')"><i class="far fa-heart"></i></button>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب">
+          <h3>رقم لتفعيل الواتساب</h3>
+          <p class="price">7 ريال</p>
+          <button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+        <div class="item">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم أمريكي لتفعيل الواتساب', 10, 'whatsapp-us.jpg')"><i class="far fa-heart"></i></button>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب أمريكي</text></svg>" alt="رقم أمريكي لتفعيل الواتساب">
+          <h3>رقم أمريكي لتفعيل الواتساب</h3>
+          <p class="price">10 ريال</p>
+          <button class="btn" onclick="addToCart('رقم أمريكي لتفعيل الواتساب',10,'whatsapp-us.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+      </div>
+    </section>
 
-    const code = document.getElementById('discount-code').value.trim();
-    if (validDiscountCodes[code]) {
-      const discount = validDiscountCodes[code];
-      const totalElement = document.getElementById('total');
-      let currentTotal = parseFloat(totalElement.textContent);
-      const discountedTotal = currentTotal * (1 - discount);
+    <!-- عن المتجر -->
+    <section id="about">
+      <h2>ℹ️ عن متجر ZiDo</h2>
+      <div class="about-section">
+        <h3>من نحن</h3>
+        <p>متجر ZiDo هو وجهتك الأولى لشراء جميع الخدمات الرقمية مثل شحن الألعاب وخدمات وسائل التواصل الاجتماعي. نحن نقدم خدمات عالية الجودة بأسعار تنافسية وبدعم فني على مدار الساعة.</p>
+      </div>
+      <div class="about-section">
+        <h3>لماذا تختارنا؟</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+            <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+            أسعارنا مناسبة للجميع
+          </li>
+          <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+            <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+            خدمة عملاء على مدار الساعة
+          </li>
+          <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+            <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+            تشكيلة واسعة من الخدمات
+          </li>
+          <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+            <i class="fas fa-check" style="color: var(--success); position: absolute; right: 0; top: 5px;"></i>
+            توصيل سريع للخدمات
+          </li>
+        </ul>
+      </div>
+      <div class="about-section">
+        <h3>الأسئلة الشائعة</h3>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            كيف يمكنني الدفع؟ <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            خيارات الدفع المتاحة: STC Pay، فيزا/ماستركارد، Apple Pay، PayPal، راجحي، برق، يوربي.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            كم تستغرق وقت التوصيل؟ <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            معظم الخدمات يتم توصيلها فوراً بعد التأكد من الدفع، وبعضها قد يستغرق حتى 24 ساعة كحد أقصى.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            هل الخدمات آمنة؟ <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            نعم، جميع خدماتنا آمنة ولا تؤثر على حساباتكم بالسلب، ونحن نضمن الخدمة لمدة 30 يومًا.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            كيف أتواصل مع الدعم؟ <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            يمكنك التواصل معنا عبر الواتساب على الرقم الموجود في أسفل الموقع، أو عبر رسائل Instagram.
+          </div>
+        </div>
+      </div>
+    </section>
 
-      totalElement.textContent = discountedTotal.toFixed(2).replace(/\.00$/, '');
-      showNotification(`تم تطبيق خصم ${discount * 100}% بنجاح!`, 'success');
-      discountApplied = true;
-      localStorage.setItem('originalTotalBeforeDiscount', originalTotalBeforeDiscount);
-      localStorage.setItem('discountedTotal', discountedTotal);
-    } else {
-      showNotification('الكود غير صالح، حاول مرة أخرى.', 'error');
-    }
-  }
+    <!-- قسم الدعم الفني -->
+    <section id="support">
+      <h2>🛠️ الدعم الفني</h2>
+      <div class="about-section">
+        <h3>كيفية التواصل معنا</h3>
+        <p>يمكنك التواصل معنا عبر القنوات التالية للحصول على الدعم الفني:</p>
+        <ul style="list-style-type: none; padding: 0;">
+          <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+            <i class="fab fa-whatsapp" style="color: var(--accent); position: absolute; right: 0; top: 5px;"></i>
+            واتساب: <a href="https://wa.me/966537029503" target="_blank">966537029503</a>
+          </li>
+          <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
+            <i class="fas fa-envelope" style="color: var(--accent); position: absolute; right: 0; top: 5px;"></i>
+            البريد الإلكتروني: <a href="mailto:support@zido.example.com">support@zido.example.com</a>
+          </li>
+        </ul>
+      </div>
 
-  /* ====== الدفع ====== */
-  function checkout(method) {
-    if (cart.length === 0) {
-      showNotification('سلتك فارغة', 'error');
-      return;
-    }
+      <!-- نموذج تذكرة الدعم -->
+      <div class="about-section">
+        <h3>فتح تذكرة دعم</h3>
+        <form id="support-ticket-form" onsubmit="submitTicket(event)">
+          <input type="text" id="ticket-name" placeholder="اسمك" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); color: #fff;">
+          <input type="email" id="ticket-email" placeholder="بريدك الإلكتروني" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); color: #fff;">
+          <select id="ticket-type" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); color: #fff;">
+            <option value="">اختر نوع المشكلة</option>
+            <option value="payment">مشكلة في الدفع</option>
+            <option value="delivery">تأخر في التوصيل</option>
+            <option value="refund">طلب استرداد</option>
+            <option value="other">أخرى</option>
+          </select>
+          <textarea id="ticket-message" placeholder="وصف المشكلة" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); color: #fff; min-height: 100px;"></textarea>
+          <button type="submit" class="btn" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i> إرسال التذكرة
+          </button>
+        </form>
+      </div>
 
-    const items = cart.map(it => `• ${it.name} — ${it.price} ريال × ${it.quantity} = ${(it.price * it.quantity).toFixed(2)} ريال`).join('%0A');
-    const finalTotal = document.getElementById('total').textContent;
-    const discountCode = document.getElementById('discount-code').value.trim();
-    let note = '';
+      <!-- الأسئلة الشائعة -->
+      <div class="about-section">
+        <h3>الأسئلة الشائعة</h3>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            كيف يمكنني الدفع؟
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            يمكنك الدفع عبر STC Pay، فيزا/ماستركارد، Apple Pay، PayPal، برق، ويوربي.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            كم تستغرق وقت التوصيل؟
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            معظم الخدمات يتم توصيلها فوراً بعد التأكد من الدفع، وبعضها قد يستغرق حتى 24 ساعة كحد أقصى.
+          </div>
+        </div>
+      </div>
+    </section>
 
-    if (method.includes('فيزا')) {
-      note = '%0A%0A⚠️ يوجد رسوم إضافية للفيزا.';
-    }
+    <!-- قسم تتبع الطلبات -->
+    <section id="track-order">
+      <h2>📦 تتبع طلبك</h2>
+      <div class="order-tracking">
+        <input type="text" id="order-id" placeholder="أدخل رقم طلبك">
+        <button class="btn" onclick="trackOrder()">تتبع</button>
+        <div class="tracking-steps">
+          <div class="step active">تم استلام الطلب</div>
+          <div class="step">جاري المعالجة</div>
+          <div class="step">تم التوصيل</div>
+        </div>
+      </div>
+    </section>
 
-    const originalTotal = localStorage.getItem('originalTotalBeforeDiscount');
-    if (originalTotal && discountCode && validDiscountCodes[discountCode]) {
-      note += `%0A%0A🎉 تم تطبيق خصم ${validDiscountCodes[discountCode] * 100}% بكود "${discountCode}"`;
-      note += `%0Aالسعر قبل الخصم: ${originalTotal} ريال`;
-      note += `%0Aالسعر بعد الخصم: ${finalTotal} ريال`;
-    }
+    <!-- قسم الكوبونات -->
+    <section id="coupons">
+      <h2>🎁 كوبوناتك</h2>
+      <div class="coupons">
+        <div class="coupon">
+          <p>كوبون خصم 10%: <strong>WELCOME10</strong></p>
+          <button class="btn" onclick="applyCoupon('WELCOME10')">تطبيق الكوبون</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    const orderNumber = 'ZD-' + Math.floor(10000 + Math.random() * 90000);
-    document.getElementById('order-number').textContent = orderNumber;
+  <!-- زر الدعم الفوري -->
+  <a href="#" class="support-float" onclick="openChat()">
+    <i class="fas fa-headset"></i>
+  </a>
 
-    const msg = `طلب جديد ${method}:%0A%0A${items}%0A%0Aالمجموع النهائي: ${finalTotal} ريال%0Aرقم الطلب: ${orderNumber}${note}`;
-    const link = `https://wa.me/966537029503?text=${msg}`;
+  <!-- السلة المنبثقة -->
+  <div id="cartOverlay" class="cart-overlay">
+    <div class="cart-popup" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-header">
+        <h3 id="cartTitle"><i class="fas fa-shopping-cart"></i> سلة التسوق</h3>
+        <button class="close-cart" onclick="toggleCart()" aria-label="إغلاق السلة">×</button>
+      </div>
+      <div id="cart-list" class="cart-list">
+        <div class="empty-cart" id="empty-cart">
+          <i class="fas fa-shopping-basket"></i>
+          <p>سلة التسوق فارغة</p>
+        </div>
+      </div>
+      <div class="cart-footer">
+        <!-- حقل كود الخصم -->
+        <div style="margin: 12px 0; text-align: center;">
+          <input type="text" id="discount-code" placeholder="أدخل كود الخصم" style="
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-align: center;
+          ">
+          <button class="btn" style="margin-top: 8px; background: var(--success);" onclick="applyDiscount()">
+            تطبيق الكود
+          </button>
+        </div>
+        <div class="total"><strong>المجموع:</strong> <span id="total">0</span> ريال</div>
+        <button class="payment-btn whatsapp-btn" onclick="checkout('عبر فيزا/ماستركارد/ابل بي')"><i class="fab fa-whatsapp"></i> (فيزا/ماستركارد/ابل بي)</button>
+        <button class="payment-btn stc-btn" onclick="checkout('STC Pay')"><i class="fas fa-mobile-alt"></i> الدفع عبر STC Pay</button>
+        <button class="payment-btn visa-btn" onclick="checkout('برق/يوربي')"><i class="fas fa-bolt"></i> الدفع عبر برق / يوربي</button>
+        <button class="payment-btn mada-btn" onclick="checkout('PayPal')"><i class="fab fa-paypal"></i> الدفع عبر PayPal</button>
+        <p class="note">⚠️ يوجد رسوم إضافية عند الدفع بالفيزا — برجاء التأكد قبل الإتمام.</p>
+        <button class="btn" style="margin-top:10px;background:#2d3647;color:#fff" onclick="toggleCart()"><i class="fas fa-arrow-left"></i> متابعة التسوق</button>
+      </div>
+    </div>
+  </div>
 
-    cart = [];
-    saveCart();
-    renderCart();
-    document.getElementById('confirmation').style.display = 'flex';
-    window.open(link, '_blank');
+  <!-- صفحة تأكيد الطلب -->
+  <div id="confirmation" class="confirmation">
+    <div class="confirmation-content">
+      <h3>تم إرسال طلبك بنجاح! 🎉</h3>
+      <p>سيتم التواصل معك خلال دقائق لتأكيد الطلب وتفاصيل الدفع.</p>
+      <p>رقم الطلب: <strong id="order-number">ZD-12345</strong></p>
+      <div class="confirmation-buttons">
+        <button class="btn" onclick="closeConfirmation()">مواصلة التسوق</button>
+        <button class="btn" style="background: var(--accent);" onclick="closeConfirmation(); showSection('home');">العودة للرئيسية</button>
+      </div>
+    </div>
+  </div>
 
-    discountApplied = false;
-    localStorage.removeItem('originalTotalBeforeDiscount');
-    localStorage.removeItem('discountedTotal');
-  }
+  <!-- زر واتساب عائم -->
+  <a href="https://wa.me/966537029503" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب"><i class="fab fa-whatsapp"></i></a>
 
-  function closeConfirmation() {
-    document.getElementById('confirmation').style.display = 'none';
-    toggleCart();
-  }
-
-  /* ====== المفضلة ====== */
-  function toggleWishlist(button, name, price, img) {
-    const index = wishlist.findIndex(item => item.name === name);
-    if (index > -1) {
-      wishlist.splice(index, 1);
-      button.innerHTML = '<i class="far fa-heart"></i>';
-      showNotification(`تمت إزالة "${name}" من المفضلة`, 'error');
-    } else {
-      wishlist.push({ name, price, img });
-      button.innerHTML = '<i class="fas fa-heart"></i>';
-      showNotification(`تمت إضافة "${name}" إلى المفضلة`, 'success');
-    }
-    localStorage.setItem('zidoWishlist', JSON.stringify(wishlist));
-  }
-
-  /* ====== المنتجات المشاهدة مؤخرًا ====== */
-  function addToRecentlyViewed(name, price, img) {
-    const index = recentlyViewed.findIndex(item => item.name === name);
-    if (index > -1) {
-      recentlyViewed.splice(index, 1);
-    }
-    recentlyViewed.unshift({ name, price, img });
-    if (recentlyViewed.length > 4) {
-      recentlyViewed.pop();
-    }
-    localStorage.setItem('zidoRecentlyViewed', JSON.stringify(recentlyViewed));
-    renderRecentlyViewed();
-  }
-
-  function renderRecentlyViewed() {
-    const container = document.getElementById('recently-viewed-products');
-    container.innerHTML = '';
-    if (recentlyViewed.length === 0) {
-      document.getElementById('recently-viewed').style.display = 'none';
-      return;
-    }
-    document.getElementById('recently-viewed').style.display = 'block';
-    recentlyViewed.forEach(item => {
-      const product = document.createElement('div');
-      product.className = 'item';
-      product.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" loading="lazy">
-        <h3>${item.name}</h3>
-        <p class="price">${item.price} ريال</p>
-        <button class="btn" onclick="addToCart('${item.name}', ${item.price}, '${item.img}')">
-          <i class="fas fa-cart-plus"></i> إضافة للسلة
-        </button>
-      `;
-      container.appendChild(product);
-    });
-  }
-
-  /* ====== الاشتراك في العروض ====== */
-  function subscribeToOffers() {
-    const email = document.getElementById('subscribe-email').value.trim();
-    const phone = document.getElementById('subscribe-phone').value.trim();
-
-    if (!email && !phone) {
-      showNotification('يرجى إدخال بريدك الإلكتروني أو رقم هاتفك.', 'error');
-      return;
-    }
-
-    // التحقق من صحة البريد الإلكتروني
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email && !emailRegex.test(email)) {
-      showNotification('يرجى إدخال بريد إلكتروني صحيح.', 'error');
-      return;
-    }
-
-    // التحقق من وجود المشترك مسبقًا
-    const existingSubscriber = subscribers.find(sub => sub.email === email || sub.phone === phone);
-    if (existingSubscriber) {
-      showNotification('أنت مشترك بالفعل في قائمة العروض!', 'error');
-      return;
-    }
-
-    // إضافة المشترك الجديد
-    subscribers.push({ email, phone, date: new Date().toISOString() });
-    localStorage.setItem('zidoSubscribers', JSON.stringify(subscribers));
-
-    // عرض رسالة نجاح
-    showNotification('شكرًا للاشتراك! ستصلك العروض الخاصة قريبًا.', 'success');
-
-    // مسح الحقول
-    document.getElementById('subscribe-email').value = '';
-    document.getElementById('subscribe-phone').value = '';
-  }
-
-  /* ====== عرض المشتركين ====== */
-  function showSubscribersPanel() {
-    showSection('subscribers');
-  }
-
-  function checkAdminPassword() {
-    const password = document.getElementById('admin-password').value;
-    if (password === ADMIN_PASSWORD) {
-      document.querySelector('.password-form').style.display = 'none';
-      document.getElementById('subscribers-content').style.display = 'block';
-      loadSubscribers();
-    } else {
-      showNotification('كلمة المرور غير صحيحة!', 'error');
-    }
-  }
-
-  function loadSubscribers() {
-    const tableBody = document.getElementById('subscribers-list');
-    tableBody.innerHTML = '';
-
-    subscribers.forEach((subscriber, index) => {
-      const row = document.createElement('tr');
-      const date = new Date(subscriber.date).toLocaleDateString('ar-SA');
-      row.innerHTML = `
-        <td>${subscriber.email || '---'}</td>
-        <td>${subscriber.phone || '---'}</td>
-        <td>${date}</td>
-      `;
-      tableBody.appendChild(row);
-    });
-  }
-
-  function exportSubscribersToCSV() {
-    if (subscribers.length === 0) {
-      showNotification('لا يوجد مشتركين للتصدير!', 'error');
-      return;
-    }
-
-    let csv = 'البريد الإلكتروني,رقم الهاتف,تاريخ الاشتراك\n';
-    subscribers.forEach(subscriber => {
-      const date = new Date(subscriber.date).toLocaleDateString('ar-SA');
-      csv += `"${subscriber.email || '---'}", "${subscriber.phone || '---'}", "${date}"\n`;
-    });
-
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'قائمة_المشتركين.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showNotification('تم تصدير القائمة بنجاح!', 'success');
-  }
-
-  /* ====== سلايدر التقييمات ====== */
-  let currentSlide = 0;
-  function showSlide(i) {
-    const slider = document.getElementById('slider');
-    const slides = document.querySelectorAll('.testimonial-box');
-    const perView = window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
-    const maxSlide = Math.max(0, slides.length - perView);
-    if (i > maxSlide) currentSlide = 0;
-    else if (i < 0) currentSlide = maxSlide;
-    else currentSlide = i;
-    slider.style.transform = `translateX(-${currentSlide * (100 / perView)}%)`;
-  }
-
-  function nextSlide() { showSlide(currentSlide + 1); }
-  function prevSlide() { showSlide(currentSlide - 1); }
-  window.addEventListener('resize', () => showSlide(currentSlide));
-
-  /* ====== فلترة المنتجات ====== */
-  function applyFilters() {
-    const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-    const items = document.querySelectorAll('.item');
-    items.forEach(item => {
-      const categories = item.dataset.category ? item.dataset.category.split(' ') : [];
-      if (activeFilter === 'all' || categories.includes(activeFilter)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  }
-
-  document.querySelectorAll('.filter-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-      applyFilters();
-    });
-  });
-
-  /* ====== الأسئلة الشائعة ====== */
-  function toggleFaq(element) {
-    const faqItem = element.parentElement;
-    faqItem.classList.toggle('active');
-  }
-
-  /* ====== الخلفية المتحركة ====== */
-  const canvas = document.querySelector('canvas.bg');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-
-  for (let i = 0; i < 100; i++) {
-    particles.push({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 3 + 1,
-      dx: (Math.random() - 0.5) * 1.2,
-      dy: (Math.random() - 0.5) * 1.2
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      ctx.fillStyle = 'rgba(0, 207, 255, 0.7)';
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = 'rgba(0, 207, 255, 0.5)';
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-      p.x += p.dx;
-      p.y += p.dy;
-      if (p.x < 0 || p.x > W) p.dx *= -1;
-      if (p.y < 0 || p.y > H) p.dy *= -1;
-    });
-    requestAnimationFrame(draw);
-  }
-
-  requestAnimationFrame(draw);
-
-  /* ====== مؤشر التحميل ====== */
-  function showLoader() {
-    document.getElementById('loader').style.display = 'flex';
-  }
-
-  function hideLoader() {
-    document.getElementById('loader').style.display = 'none';
-  }
-
-  /* ====== الإشعارات ====== */
-  function showNotification(message, type = 'success') {
-    const notification = document.getElementById('notification');
-    const notificationText = document.getElementById('notification-text');
-    notificationText.textContent = message;
-    notification.className = `notification ${type}`;
-    notification.classList.add('show');
-    setTimeout(() => {
-      notification.classList.remove('show');
-    }, 3000);
-  }
-
-  /* ====== تتبع المنتجات المشاهدة ====== */
-  document.querySelectorAll('.item img').forEach(img => {
-    img.addEventListener('click', function() {
-      const item = this.closest('.item');
-      const name = item.querySelector('h3').textContent;
-      const price = parseFloat(item.querySelector('.price').textContent);
-      const imgSrc = this.getAttribute('src');
-      addToRecentlyViewed(name, price, imgSrc);
-    });
-  });
-
-  /* ====== تحميل البيانات عند بدء الصفحة ====== */
-  document.addEventListener('DOMContentLoaded', function() {
-    renderCart();
-    renderRecentlyViewed();
-    showSlide(0);
-    window.addEventListener('load', hideLoader);
-  });
-
-  function addCustomProduct(selectId, name, img) {
-    const sel = document.getElementById(selectId);
-    const v = sel.value;
-    if (v === "0") {
-      showNotification("يرجى اختيار العدد/الباقة", 'error');
-      return;
-    }
-    const [label, p] = v.split("-");
-    addToCart(`${name} (${label})`, parseFloat(p), img);
-    sel.value = "0";
-  }
+  <!-- دردشة Tawk.to -->
+ <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68d54563b94923194f7d3caa/1j60he3kl';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
+<!--End of Tawk.to Script-->
+  <!-- JavaScript -->
+  <script>
+    /* ====== المتغيرات العامة ====== */
+    let cart = JSON.parse(localStorage.getItem('zidoCart')) || [];
+    let wishlist = JSON.parse(localStorage.getItem('zidoWishlist')) || [];
+    let recentlyViewed = JSON.parse(localStorage.getItem('zidoRecentlyViewed')) || [];
+    let subscribers = JSON.parse(localStorage.getItem('zidoSubscribers')) || [];
+    let discountApplied = false;
+    let originalTotalBeforeDiscount = 0;
+    const ADMIN_PASSWORD = "zido123";
+
+    /* ====== أكواد الخصم ====== */
+    const validDiscountCodes = {
+      "ZIDO10": 0.10,
+      "SAVE15": 0.15,
+      "VIP20": 0.20,
+    };
+
+    /* ====== عداد العرض المحدود ====== */
+    function startCountdown() {
+      const endTime = new Date();
+      endTime.setHours(endTime.getHours() + 2);
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+        if (distance < 0) {
+          clearInterval(timer);
+          document.getElementById('countdown').textContent = "انتهى!";
+          return;
+        }
+        const hours = Math.floor(distance / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById('countdown').textContent =
+          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    /* ====== عداد العرض السريع ====== */
+    function startFlashSaleTimer() {
+      const timerElement = document.getElementById('flash-sale-timer-1');
+      let timeLeft = 24 * 60 * 60;
+      const timer = setInterval(() => {
+        timeLeft--;
+        const hours = Math.floor(timeLeft / 3600);
+        const minutes = Math.floor((timeLeft % 3600) / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        if (timeLeft <= 0) clearInterval(timer);
+      }, 1000);
+    }
+
+    /* ====== السلة ====== */
+    function addToCart(name, price, img, quantity = 1) {
+      showLoader();
+      const existingItemIndex = cart.findIndex(item => item.name === name && item.price === price);
+      if (existingItemIndex > -1) {
+        cart[existingItemIndex].quantity += quantity;
+      } else {
+        cart.push({ name, price, img: img || '', quantity });
+      }
+      saveCart();
+      renderCart();
+      showNotification(`تمت إضافة "${name}" إلى السلة`, 'success');
+      const cartIcon = document.getElementById('cartIcon');
+      cartIcon.classList.add('shake');
+      setTimeout(() => {
+        cartIcon.classList.remove('shake');
+        hideLoader();
+      }, 500);
+    }
+
+    function updateQuantity(index, change) {
+      cart[index].quantity += change;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function removeItem(index) {
+      const itemName = cart[index].name;
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+      showNotification(`تمت إزالة "${itemName}" من السلة`, 'error');
+    }
+
+    function saveCart() {
+      localStorage.setItem('zidoCart', JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cart-list');
+      const totalEl = document.getElementById('total');
+      const countEl = document.getElementById('cart-count');
+      list.innerHTML = '';
+      let sum = 0;
+      if (cart.length === 0) {
+        list.innerHTML = '<div class="empty-cart"><i class="fas fa-shopping-basket"></i><p>سلة التسوق فارغة</p></div>';
+        totalEl.textContent = '0';
+        countEl.textContent = '0';
+        return;
+      }
+      cart.forEach((it, i) => {
+        const itemTotal = it.price * it.quantity;
+        sum += itemTotal;
+        const row = document.createElement('div');
+        row.className = 'cart-item fade-in';
+        row.innerHTML = `
+          ${it.img ? `<img src="${it.img}" alt="${it.name}" loading="lazy">` : ''}
+          <div class="meta">
+            <div class="name">${it.name}</div>
+            <div class="price">${itemTotal.toFixed(2).replace(/\.00$/, '')} ريال (${it.price} × ${it.quantity})</div>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity(${i}, -1)">-</button>
+              <span>${it.quantity}</span>
+              <button onclick="updateQuantity(${i}, 1)">+</button>
+            </div>
+          </div>
+          <button class="remove-btn" title="حذف" onclick="removeItem(${i})"><i class="fas fa-trash"></i></button>
+        `;
+        list.appendChild(row);
+      });
+      totalEl.textContent = sum.toFixed(2).replace(/\.00$/, '');
+      countEl.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+      originalTotalBeforeDiscount = sum;
+    }
+
+    function toggleCart() {
+      const ov = document.getElementById('cartOverlay');
+      if (ov.classList.contains('active')) {
+        ov.classList.remove('active');
+        setTimeout(() => { ov.style.display = 'none'; }, 300);
+      } else {
+        ov.style.display = 'flex';
+        setTimeout(() => { ov.classList.add('active'); }, 10);
+        discountApplied = false;
+      }
+    }
+
+    /* ====== القائمة ====== */
+    function toggleMenu() {
+      document.getElementById('sideMenu').classList.toggle('open');
+    }
+
+    function showSection(id) {
+      showLoader();
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById('sideMenu').classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (id !== 'home' && id !== 'about' && id !== 'subscribers') {
+        setTimeout(applyFilters, 100);
+      }
+      setTimeout(hideLoader, 300);
+    }
+
+    /* ====== البحث ====== */
+    function toggleSearch() {
+      const searchContainer = document.getElementById('searchContainer');
+      searchContainer.style.display = searchContainer.style.display === 'block' ? 'none' : 'block';
+      if (searchContainer.style.display === 'block') {
+        document.getElementById('searchInput').focus();
+      }
+      document.getElementById('sideMenu').classList.remove('open');
+    }
+
+    function filterProducts(query) {
+      const items = document.querySelectorAll('.item');
+      let found = false;
+      items.forEach(item => {
+        const name = item.querySelector('h3').textContent.toLowerCase();
+        if (name.includes(query)) {
+          item.style.display = 'block';
+          found = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      if (!found) {
+        showNotification('لم يتم العثور على منتجات تطابق بحثك', 'error');
+        items.forEach(item => item.style.display = 'block');
+      }
+    }
+
+    /* ====== كود الخصم ====== */
+    function applyDiscount() {
+      if (discountApplied) {
+        showNotification('تم تطبيق الخصم بالفعل على هذا الطلب.', 'error');
+        return;
+      }
+      const code = document.getElementById('discount-code').value.trim();
+      if (validDiscountCodes[code]) {
+        const discount = validDiscountCodes[code];
+        const totalElement = document.getElementById('total');
+        let currentTotal = parseFloat(totalElement.textContent);
+        const discountedTotal = currentTotal * (1 - discount);
+        totalElement.textContent = discountedTotal.toFixed(2).replace(/\.00$/, '');
+        showNotification(`تم تطبيق خصم ${discount * 100}% بنجاح!`, 'success');
+        discountApplied = true;
+        localStorage.setItem('originalTotalBeforeDiscount', originalTotalBeforeDiscount);
+        localStorage.setItem('discountedTotal', discountedTotal);
+      } else {
+        showNotification('الكود غير صالح، حاول مرة أخرى.', 'error');
+      }
+    }
+
+    /* ====== الدفع ====== */
+    function checkout(method) {
+      if (cart.length === 0) {
+        showNotification('سلتك فارغة', 'error');
+        return;
+      }
+      const items = cart.map(it => `• ${it.name} — ${it.price} ريال × ${it.quantity} = ${(it.price * it.quantity).toFixed(2)} ريال`).join('%0A');
+      const finalTotal = document.getElementById('total').textContent;
+      const discountCode = document.getElementById('discount-code').value.trim();
+      let note = '';
+      if (method.includes('فيزا')) {
+        note = '%0A%0A⚠️ يوجد رسوم إضافية للفيزا.';
+      }
+      const originalTotal = localStorage.getItem('originalTotalBeforeDiscount');
+      if (originalTotal && discountCode && validDiscountCodes[discountCode]) {
+        note += `%0A%0A🎉 تم تطبيق خصم ${validDiscountCodes[discountCode] * 100}% بكود "${discountCode}"`;
+        note += `%0Aالسعر قبل الخصم: ${originalTotal} ريال`;
+        note += `%0Aالسعر بعد الخصم: ${finalTotal} ريال`;
+      }
+      const orderNumber = 'ZD-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('order-number').textContent = orderNumber;
+      const msg = `طلب جديد ${method}:%0A%0A${items}%0A%0Aالمجموع النهائي: ${finalTotal} ريال%0Aرقم الطلب: ${orderNumber}${note}`;
+      const link = `https://wa.me/966537029503?text=${msg}`;
+      cart = [];
+      saveCart();
+      renderCart();
+      document.getElementById('confirmation').style.display = 'flex';
+      window.open(link, '_blank');
+      discountApplied = false;
+      localStorage.removeItem('originalTotalBeforeDiscount');
+      localStorage.removeItem('discountedTotal');
+    }
+
+    function closeConfirmation() {
+      document.getElementById('confirmation').style.display = 'none';
+      toggleCart();
+    }
+
+    /* ====== المفضلة ====== */
+    function toggleWishlist(button, name, price, img) {
+      const index = wishlist.findIndex(item => item.name === name);
+      if (index > -1) {
+        wishlist.splice(index, 1);
+        button.innerHTML = '<i class="far fa-heart"></i>';
+        showNotification(`تمت إزالة "${name}" من المفضلة`, 'error');
+      } else {
+        wishlist.push({ name, price, img });
+        button.innerHTML = '<i class="fas fa-heart"></i>';
+        showNotification(`تمت إضافة "${name}" إلى المفضلة`, 'success');
+      }
+      localStorage.setItem('zidoWishlist', JSON.stringify(wishlist));
+    }
+
+    /* ====== المنتجات المشاهدة مؤخرًا ====== */
+    function addToRecentlyViewed(name, price, img) {
+      const index = recentlyViewed.findIndex(item => item.name === name);
+      if (index > -1) {
+        recentlyViewed.splice(index, 1);
+      }
+      recentlyViewed.unshift({ name, price, img });
+      if (recentlyViewed.length > 4) {
+        recentlyViewed.pop();
+      }
+      localStorage.setItem('zidoRecentlyViewed', JSON.stringify(recentlyViewed));
+      renderRecentlyViewed();
+    }
+
+    function renderRecentlyViewed() {
+      const container = document.getElementById('recently-viewed-products');
+      container.innerHTML = '';
+      if (recentlyViewed.length === 0) {
+        document.getElementById('recently-viewed').style.display = 'none';
+        return;
+      }
+      document.getElementById('recently-viewed').style.display = 'block';
+      recentlyViewed.forEach(item => {
+        const product = document.createElement('div');
+        product.className = 'item';
+        product.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" loading="lazy">
+          <h3>${item.name}</h3>
+          <p class="price">${item.price} ريال</p>
+          <button class="btn" onclick="addToCart('${item.name}', ${item.price}, '${item.img}')">
+            <i class="fas fa-cart-plus"></i> إضافة للسلة
+          </button>
+        `;
+        container.appendChild(product);
+      });
+    }
+
+    /* ====== الاشتراك في العروض ====== */
+    function subscribeToOffers() {
+      const email = document.getElementById('subscribe-email').value.trim();
+      const phone = document.getElementById('subscribe-phone').value.trim();
+      if (!email && !phone) {
+        showNotification('يرجى إدخال بريدك الإلكتروني أو رقم هاتفك.', 'error');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email && !emailRegex.test(email)) {
+        showNotification('يرجى إدخال بريد إلكتروني صحيح.', 'error');
+        return;
+      }
+      const existingSubscriber = subscribers.find(sub => sub.email === email || sub.phone === phone);
+      if (existingSubscriber) {
+        showNotification('أنت مشترك بالفعل في قائمة العروض!', 'error');
+        return;
+      }
+      subscribers.push({ email, phone, date: new Date().toISOString() });
+      localStorage.setItem('zidoSubscribers', JSON.stringify(subscribers));
+      showNotification('شكرًا للاشتراك! ستصلك العروض الخاصة قريبًا.', 'success');
+      document.getElementById('subscribe-email').value = '';
+      document.getElementById('subscribe-phone').value = '';
+    }
+
+    /* ====== عرض المشتركين ====== */
+    function showSubscribersPanel() {
+      showSection('subscribers');
+    }
+
+    function checkAdminPassword() {
+      const password = document.getElementById('admin-password').value;
+      if (password === ADMIN_PASSWORD) {
+        document.querySelector('.password-form').style.display = 'none';
+        document.getElementById('subscribers-content').style.display = 'block';
+        loadSubscribers();
+      } else {
+        showNotification('كلمة المرور غير صحيحة!', 'error');
+      }
+    }
+
+    function loadSubscribers() {
+      const tableBody = document.getElementById('subscribers-list');
+      tableBody.innerHTML = '';
+      subscribers.forEach((subscriber, index) => {
+        const row = document.createElement('tr');
+        const date = new Date(subscriber.date).toLocaleDateString('ar-SA');
+        row.innerHTML = `
+          <td>${subscriber.email || '---'}</td>
+          <td>${subscriber.phone || '---'}</td>
+          <td>${date}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function exportSubscribersToCSV() {
+      if (subscribers.length === 0) {
+        showNotification('لا يوجد مشتركين للتصدير!', 'error');
+        return;
+      }
+      let csv = 'البريد الإلكتروني,رقم الهاتف,تاريخ الاشتراك\n';
+      subscribers.forEach(subscriber => {
+        const date = new Date(subscriber.date).toLocaleDateString('ar-SA');
+        csv += `"${subscriber.email || '---'}", "${subscriber.phone || '---'}", "${date}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'قائمة_المشتركين.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showNotification('تم تصدير القائمة بنجاح!', 'success');
+    }
+
+    /* ====== سلايدر التقييمات ====== */
+    let currentSlide = 0;
+    function showSlide(i) {
+      const slider = document.getElementById('slider');
+      const slides = document.querySelectorAll('.testimonial-box');
+      const perView = window.innerWidth < 768 ? 1 : window.innerWidth < 1100 ? 2 : 3;
+      const maxSlide = Math.max(0, slides.length - perView);
+      if (i > maxSlide) currentSlide = 0;
+      else if (i < 0) currentSlide = maxSlide;
+      else currentSlide = i;
+      slider.style.transform = `translateX(-${currentSlide * (100 / perView)}%)`;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    window.addEventListener('resize', () => showSlide(currentSlide));
+
+    /* ====== فلترة المنتجات ====== */
+    function applyFilters() {
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      const items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        const categories = item.dataset.category ? item.dataset.category.split(' ') : [];
+        if (activeFilter === 'all' || categories.includes(activeFilter)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        applyFilters();
+      });
+    });
+
+    /* ====== الأسئلة الشائعة ====== */
+    function toggleFaq(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
+
+    /* ====== الخلفية المتحركة ====== */
+    const canvas = document.querySelector('canvas.bg');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 3 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        originalX: Math.random() * W,
+        originalY: Math.random() * H
+      });
+    }
+
+    let mouseX = W / 2, mouseY = H / 2;
+    canvas.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        const dx = mouseX - p.x;
+        const dy = mouseY - p.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 150) {
+          const force = (150 - distance) / 150;
+          p.x += dx * force * 0.02;
+          p.y += dy * force * 0.02;
+        } else {
+          p.x += (p.originalX - p.x) * 0.01;
+          p.y += (p.originalY - p.y) * 0.01;
+        }
+        ctx.fillStyle = 'rgba(0, 207, 255, 0.7)';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgba(0, 207, 255, 0.5)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+
+    /* ====== مؤشر التحميل ====== */
+    function showLoader() {
+      document.getElementById('loader').style.display = 'flex';
+    }
+
+    function hideLoader() {
+      document.getElementById('loader').style.display = 'none';
+    }
+
+    /* ====== الإشعارات ====== */
+    function showNotification(message, type = 'success') {
+      const notification = document.getElementById('notification');
+      const notificationText = document.getElementById('notification-text');
+      notificationText.textContent = message;
+      notification.className = `notification ${type}`;
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    /* ====== تتبع المنتجات المشاهدة ====== */
+    document.querySelectorAll('.item img').forEach(img => {
+      img.addEventListener('click', function() {
+        const item = this.closest('.item');
+        const name = item.querySelector('h3').textContent;
+        const price = parseFloat(item.querySelector('.price').textContent);
+        const imgSrc = this.getAttribute('src');
+        addToRecentlyViewed(name, price, imgSrc);
+      });
+    });
+
+    /* ====== تحميل البيانات عند بدء الصفحة ====== */
+    document.addEventListener('DOMContentLoaded', function() {
+      renderCart();
+      renderRecentlyViewed();
+      showSlide(0);
+      startCountdown();
+      startFlashSaleTimer();
+      window.addEventListener('load', hideLoader);
+    });
+
+    function addCustomProduct(selectId, name, img) {
+      const sel = document.getElementById(selectId);
+      const v = sel.value;
+      if (v === "0") {
+        showNotification("يرجى اختيار العدد/الباقة", 'error');
+        return;
+      }
+      const [label, p] = v.split("-");
+      addToCart(`${name} (${label})`, parseFloat(p), img);
+      sel.value = "0";
+    }
+
+    /* ====== وظائف جديدة ====== */
+    function submitTicket(event) {
+      event.preventDefault();
+      const name = document.getElementById('ticket-name').value;
+      const email = document.getElementById('ticket-email').value;
+      const type = document.getElementById('ticket-type').value;
+      const message = document.getElementById('ticket-message').value;
+      showNotification(`شكرًا ${name}! تم إرسال تذكرتك بنجاح.`, 'success');
+      document.getElementById('support-ticket-form').reset();
+    }
+
+    function trackOrder() {
+      const orderId = document.getElementById('order-id').value;
+      if (!orderId) {
+        showNotification('يرجى إدخال رقم الطلب.', 'error');
+        return;
+      }
+      showNotification(`تم تتبع الطلب ${orderId}.`, 'success');
+    }
+
+    function applyCoupon(code) {
+      showNotification(`تم تطبيق الكوبون ${code} بنجاح!`, 'success');
+    }
+
+    function openChat() {
+      Tawk_API.maximize();
+    }
+  </script>
 </body>
 </html>
->
-
