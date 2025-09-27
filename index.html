@@ -1077,6 +1077,7 @@
     <h3>القائمة الرئيسية</h3>
     <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</a>
     <a href="#" onclick="showSection('fortnite')"><i class="fas fa-gamepad"></i> خدمات فورتنايت</a>
+        <a href="#" onclick="showSection('roblox')"><i class="fas fa-gamepad"></i> خدمات روبلكس</a>
     <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
     <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
     <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
@@ -1277,28 +1278,30 @@
           <button class="btn" onclick="addToCart('حزمة النخبة الذهبية',18,'حزمة 18 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
       </div>
-      <!-- المنتجات المرتبطة -->
-      <div class="related-products">
-        <h3>المنتجات المرتبطة</h3>
-        <div class="store">
-          <div class="item">
-            <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="far fa-heart"></i></button>
-            <img src="vbucks1000.png" alt="حزمة فيبوكس 1000">
-            <h3>حزمة فيبوكس 1000</h3>
-            <p class="price">10 ريال</p>
-            <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 10, 'vbucks1000.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-          </div>
-          <div class="item">
-            <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="far fa-heart"></i></button>
-            <img src="vbucks2500.png" alt="حزمة فيبوكس 2500">
-            <h3>حزمة فيبوكس 2500</h3>
-            <p class="price">25 ريال</p>
-            <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
-          </div>
+  
         </div>
       </div>
     </section>
 
+     <section id="roblox">
+      <h2>🕹️ خدمات روبلكس</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="sale">عملات روبلكس</button>
+      <div class="item" data-category="sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'إهداء فيبوكس', 14, 'اهداء فيبوكس.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">عرض خاص</span>
+          <img src="عملات روبلكس.png" alt="عملات روبلكس">
+          <h3>عملات روبلكس</h3>
+          <select id="profile-pack" aria-label="عملات روبلكس">
+            <option value="0">اختر الباقة</option>
+            <option value="800-14">80 روبلكس ب 6 ريال</option>
+            <option value="1000-18">500 روبلكس ب 26 ريال </option>
+            <option value="1200-21">1200 فيبوكس ب 21 ريال</option>
+            <option value="1500-26">1000 روبلكس ب 47 ريال</option>
+            <option value="1800-28">2000 روبلكس ب 86 ريال </option>
+            <option value="2000-34">5250 روبلكس ب 210 ريال</option>
+             </select>
     <!-- تيك توك -->
     <section id="tiktok">
       <h2>🎵 خدمات تيك توك</h2>
