@@ -932,7 +932,6 @@
       80% { transform: translateX(5px); }
       100% { transform: translateX(0); }
     }
-
     /* الأنماط الجديدة */
     .flash-sale {
       background: var(--panel);
@@ -1077,7 +1076,7 @@
     <h3>القائمة الرئيسية</h3>
     <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> الرئيسية</a>
     <a href="#" onclick="showSection('fortnite')"><i class="fas fa-gamepad"></i> خدمات فورتنايت</a>
-        <a href="#" onclick="showSection('roblox')"><i class="fas fa-gamepad"></i> خدمات روبلكس</a>
+    <a href="#" onclick="showSection('roblox')"><i class="fas fa-gamepad"></i> خدمات روبلكس</a>
     <a href="#" onclick="showSection('tiktok')"><i class="fab fa-tiktok"></i> خدمات تيك توك</a>
     <a href="#" onclick="showSection('instagram')"><i class="fab fa-instagram"></i> خدمات انستغرام</a>
     <a href="#" onclick="showSection('whatsapp')"><i class="fab fa-whatsapp"></i> خدمات واتساب</a>
@@ -1140,7 +1139,6 @@
           <button class="btn" onclick="showSection('tiktok')"><i class="fas fa-cart-plus"></i> اطلع على العروض</button>
         </div>
       </div>
-
       <!-- إضافة قسم العروض السريعة -->
       <section id="flash-sales">
         <h2>⏳ عروض سريعة!</h2>
@@ -1156,7 +1154,6 @@
           </div>
         </div>
       </section>
-
       <!-- إضافة قسم التوصيات -->
       <div class="recommendations">
         <h3>قد يعجبك أيضًا</h3>
@@ -1171,7 +1168,6 @@
           </div>
         </div>
       </div>
-
       <!-- إضافة قسم التقييمات -->
       <div class="reviews">
         <h3>تقييمات العملاء</h3>
@@ -1181,7 +1177,6 @@
         </div>
         <button class="btn" onclick="leaveReview()">ترك تقييم</button>
       </div>
-
       <h2>💬 آراء العملاء</h2>
       <div class="testimonials">
         <div class="slider" id="slider">
@@ -1194,7 +1189,6 @@
         <button class="slider-btn next" onclick="nextSlide()" aria-label="التالي">❯</button>
       </div>
     </section>
-
     <!-- فورتنايت -->
     <section id="fortnite">
       <h2>🕹️ خدمات فورتنايت</h2>
@@ -1278,30 +1272,32 @@
           <button class="btn" onclick="addToCart('حزمة النخبة الذهبية',18,'حزمة 18 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
       </div>
-  
-        </div>
-      </div>
     </section>
-
-     <section id="roblox">
+    <!-- روبلكس -->
+    <section id="roblox">
       <h2>🕹️ خدمات روبلكس</h2>
       <div class="filters">
         <button class="filter-btn active" data-filter="all">الكل</button>
         <button class="filter-btn" data-filter="sale">عملات روبلكس</button>
-      <div class="item" data-category="sale">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'إهداء فيبوكس', 14, 'اهداء فيبوكس.png')"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="store">
+        <div class="item" data-category="sale">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'عملات روبلكس', 6, 'عملات روبلكس.png')"><i class="far fa-heart"></i></button>
           <span class="featured-badge">عرض خاص</span>
           <img src="عملات روبلكس.png" alt="عملات روبلكس">
           <h3>عملات روبلكس</h3>
-          <select id="profile-pack" aria-label="عملات روبلكس">
+          <select id="roblox-coins" aria-label="عملات روبلكس">
             <option value="0">اختر الباقة</option>
-            <option value="800-14">80 روبلكس ب 6 ريال</option>
-            <option value="1000-18">500 روبلكس ب 26 ريال </option>
-            <option value="1200-21">1200 فيبوكس ب 21 ريال</option>
-            <option value="1500-26">1000 روبلكس ب 47 ريال</option>
-            <option value="1800-28">2000 روبلكس ب 86 ريال </option>
-            <option value="2000-34">5250 روبلكس ب 210 ريال</option>
-             </select>
+            <option value="80-6">80 روبلكس ب 6 ريال</option>
+            <option value="500-26">500 روبلكس ب 26 ريال</option>
+            <option value="1000-47">1000 روبلكس ب 47 ريال</option>
+            <option value="2000-86">2000 روبلكس ب 86 ريال</option>
+            <option value="5250-210">5250 روبلكس ب 210 ريال</option>
+          </select>
+          <button class="btn" onclick="addCustomProduct('roblox-coins','عملات روبلكس','عملات روبلكس.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+        </div>
+      </div>
+    </section>
     <!-- تيك توك -->
     <section id="tiktok">
       <h2>🎵 خدمات تيك توك</h2>
@@ -1375,7 +1371,6 @@
         </div>
       </div>
     </section>
-
     <!-- انستغرام -->
     <section id="instagram">
       <h2>📸 خدمات انستغرام</h2>
@@ -1424,28 +1419,20 @@
         </div>
       </div>
     </section>
-
     <!-- واتساب -->
     <section id="whatsapp">
       <h2>💬 خدمات واتساب</h2>
       <div class="store">
         <div class="item">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم لتفعيل الواتساب', 7, 'whatsapp.jpg')"><i class="far fa-heart"></i></button>
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب</text></svg>" alt="رقم لتفعيل الواتساب">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم لتفعيل واتساب', 7, 'لوقو رقم واتساب.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="لوقو رقم واتساب.png" alt="رقم لتفعيل الواتساب">
           <h3>رقم لتفعيل الواتساب</h3>
           <p class="price">7 ريال</p>
-          <button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'whatsapp.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
-        </div>
-        <div class="item">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'رقم أمريكي لتفعيل الواتساب', 10, 'whatsapp-us.jpg')"><i class="far fa-heart"></i></button>
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><rect width='140' height='140' fill='%23161a25' rx='16'/><text x='70' y='75' font-family='Arial' font-size='14' fill='%23a0abc0' text-anchor='middle'>صورة رقم واتساب أمريكي</text></svg>" alt="رقم أمريكي لتفعيل الواتساب">
-          <h3>رقم أمريكي لتفعيل الواتساب</h3>
-          <p class="price">10 ريال</p>
-          <button class="btn" onclick="addToCart('رقم أمريكي لتفعيل الواتساب',10,'whatsapp-us.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <button class="btn" onclick="addToCart('رقم لتفعيل الواتساب',7,'لوقو رقم واتساب.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
       </div>
     </section>
-
     <!-- عن المتجر -->
     <section id="about">
       <h2>ℹ️ عن متجر ZiDo</h2>
@@ -1510,7 +1497,6 @@
         </div>
       </div>
     </section>
-
     <!-- قسم الدعم الفني -->
     <section id="support">
       <h2>🛠️ الدعم الفني</h2>
@@ -1528,7 +1514,6 @@
           </li>
         </ul>
       </div>
-
       <!-- نموذج تذكرة الدعم -->
       <div class="about-section">
         <h3>فتح تذكرة دعم</h3>
@@ -1548,7 +1533,6 @@
           </button>
         </form>
       </div>
-
       <!-- الأسئلة الشائعة -->
       <div class="about-section">
         <h3>الأسئلة الشائعة</h3>
@@ -1572,7 +1556,6 @@
         </div>
       </div>
     </section>
-
     <!-- قسم تتبع الطلبات -->
     <section id="track-order">
       <h2>📦 تتبع طلبك</h2>
@@ -1586,7 +1569,6 @@
         </div>
       </div>
     </section>
-
     <!-- قسم الكوبونات -->
     <section id="coupons">
       <h2>🎁 كوبوناتك</h2>
@@ -1598,12 +1580,10 @@
       </div>
     </section>
   </main>
-
   <!-- زر الدعم الفوري -->
   <a href="#" class="support-float" onclick="openChat()">
     <i class="fas fa-headset"></i>
   </a>
-
   <!-- السلة المنبثقة -->
   <div id="cartOverlay" class="cart-overlay">
     <div class="cart-popup" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
@@ -1643,7 +1623,6 @@
       </div>
     </div>
   </div>
-
   <!-- صفحة تأكيد الطلب -->
   <div id="confirmation" class="confirmation">
     <div class="confirmation-content">
@@ -1656,24 +1635,22 @@
       </div>
     </div>
   </div>
-
   <!-- زر واتساب عائم -->
   <a href="https://wa.me/966537029503" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب"><i class="fab fa-whatsapp"></i></a>
-
   <!-- دردشة Tawk.to -->
- <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/68d54563b94923194f7d3caa/1j60he3kl';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/68d54563b94923194f7d3caa/1j60he3kl';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
   <!-- JavaScript -->
   <script>
     /* ====== المتغيرات العامة ====== */
@@ -1684,14 +1661,12 @@ s0.parentNode.insertBefore(s1,s0);
     let discountApplied = false;
     let originalTotalBeforeDiscount = 0;
     const ADMIN_PASSWORD = "zido123";
-
     /* ====== أكواد الخصم ====== */
     const validDiscountCodes = {
       "ZIDO10": 0.10,
       "SAVE15": 0.15,
       "VIP20": 0.20,
     };
-
     /* ====== عداد العرض المحدود ====== */
     function startCountdown() {
       const endTime = new Date();
@@ -1711,7 +1686,6 @@ s0.parentNode.insertBefore(s1,s0);
           `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       }, 1000);
     }
-
     /* ====== عداد العرض السريع ====== */
     function startFlashSaleTimer() {
       const timerElement = document.getElementById('flash-sale-timer-1');
@@ -1725,7 +1699,6 @@ s0.parentNode.insertBefore(s1,s0);
         if (timeLeft <= 0) clearInterval(timer);
       }, 1000);
     }
-
     /* ====== السلة ====== */
     function addToCart(name, price, img, quantity = 1) {
       showLoader();
@@ -1745,7 +1718,6 @@ s0.parentNode.insertBefore(s1,s0);
         hideLoader();
       }, 500);
     }
-
     function updateQuantity(index, change) {
       cart[index].quantity += change;
       if (cart[index].quantity <= 0) {
@@ -1754,7 +1726,6 @@ s0.parentNode.insertBefore(s1,s0);
       saveCart();
       renderCart();
     }
-
     function removeItem(index) {
       const itemName = cart[index].name;
       cart.splice(index, 1);
@@ -1762,11 +1733,9 @@ s0.parentNode.insertBefore(s1,s0);
       renderCart();
       showNotification(`تمت إزالة "${itemName}" من السلة`, 'error');
     }
-
     function saveCart() {
       localStorage.setItem('zidoCart', JSON.stringify(cart));
     }
-
     function renderCart() {
       const list = document.getElementById('cart-list');
       const totalEl = document.getElementById('total');
@@ -1803,7 +1772,6 @@ s0.parentNode.insertBefore(s1,s0);
       countEl.textContent = cart.reduce((total, item) => total + item.quantity, 0);
       originalTotalBeforeDiscount = sum;
     }
-
     function toggleCart() {
       const ov = document.getElementById('cartOverlay');
       if (ov.classList.contains('active')) {
@@ -1815,12 +1783,10 @@ s0.parentNode.insertBefore(s1,s0);
         discountApplied = false;
       }
     }
-
     /* ====== القائمة ====== */
     function toggleMenu() {
       document.getElementById('sideMenu').classList.toggle('open');
     }
-
     function showSection(id) {
       showLoader();
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
@@ -1832,7 +1798,6 @@ s0.parentNode.insertBefore(s1,s0);
       }
       setTimeout(hideLoader, 300);
     }
-
     /* ====== البحث ====== */
     function toggleSearch() {
       const searchContainer = document.getElementById('searchContainer');
@@ -1842,7 +1807,6 @@ s0.parentNode.insertBefore(s1,s0);
       }
       document.getElementById('sideMenu').classList.remove('open');
     }
-
     function filterProducts(query) {
       const items = document.querySelectorAll('.item');
       let found = false;
@@ -1860,7 +1824,6 @@ s0.parentNode.insertBefore(s1,s0);
         items.forEach(item => item.style.display = 'block');
       }
     }
-
     /* ====== كود الخصم ====== */
     function applyDiscount() {
       if (discountApplied) {
@@ -1882,7 +1845,6 @@ s0.parentNode.insertBefore(s1,s0);
         showNotification('الكود غير صالح، حاول مرة أخرى.', 'error');
       }
     }
-
     /* ====== الدفع ====== */
     function checkout(method) {
       if (cart.length === 0) {
@@ -1915,12 +1877,10 @@ s0.parentNode.insertBefore(s1,s0);
       localStorage.removeItem('originalTotalBeforeDiscount');
       localStorage.removeItem('discountedTotal');
     }
-
     function closeConfirmation() {
       document.getElementById('confirmation').style.display = 'none';
       toggleCart();
     }
-
     /* ====== المفضلة ====== */
     function toggleWishlist(button, name, price, img) {
       const index = wishlist.findIndex(item => item.name === name);
@@ -1935,7 +1895,6 @@ s0.parentNode.insertBefore(s1,s0);
       }
       localStorage.setItem('zidoWishlist', JSON.stringify(wishlist));
     }
-
     /* ====== المنتجات المشاهدة مؤخرًا ====== */
     function addToRecentlyViewed(name, price, img) {
       const index = recentlyViewed.findIndex(item => item.name === name);
@@ -1949,7 +1908,6 @@ s0.parentNode.insertBefore(s1,s0);
       localStorage.setItem('zidoRecentlyViewed', JSON.stringify(recentlyViewed));
       renderRecentlyViewed();
     }
-
     function renderRecentlyViewed() {
       const container = document.getElementById('recently-viewed-products');
       container.innerHTML = '';
@@ -1972,7 +1930,6 @@ s0.parentNode.insertBefore(s1,s0);
         container.appendChild(product);
       });
     }
-
     /* ====== الاشتراك في العروض ====== */
     function subscribeToOffers() {
       const email = document.getElementById('subscribe-email').value.trim();
@@ -1997,12 +1954,10 @@ s0.parentNode.insertBefore(s1,s0);
       document.getElementById('subscribe-email').value = '';
       document.getElementById('subscribe-phone').value = '';
     }
-
     /* ====== عرض المشتركين ====== */
     function showSubscribersPanel() {
       showSection('subscribers');
     }
-
     function checkAdminPassword() {
       const password = document.getElementById('admin-password').value;
       if (password === ADMIN_PASSWORD) {
@@ -2013,7 +1968,6 @@ s0.parentNode.insertBefore(s1,s0);
         showNotification('كلمة المرور غير صحيحة!', 'error');
       }
     }
-
     function loadSubscribers() {
       const tableBody = document.getElementById('subscribers-list');
       tableBody.innerHTML = '';
@@ -2028,7 +1982,6 @@ s0.parentNode.insertBefore(s1,s0);
         tableBody.appendChild(row);
       });
     }
-
     function exportSubscribersToCSV() {
       if (subscribers.length === 0) {
         showNotification('لا يوجد مشتركين للتصدير!', 'error');
@@ -2050,7 +2003,6 @@ s0.parentNode.insertBefore(s1,s0);
       document.body.removeChild(link);
       showNotification('تم تصدير القائمة بنجاح!', 'success');
     }
-
     /* ====== سلايدر التقييمات ====== */
     let currentSlide = 0;
     function showSlide(i) {
@@ -2063,12 +2015,9 @@ s0.parentNode.insertBefore(s1,s0);
       else currentSlide = i;
       slider.style.transform = `translateX(-${currentSlide * (100 / perView)}%)`;
     }
-
     function nextSlide() { showSlide(currentSlide + 1); }
     function prevSlide() { showSlide(currentSlide - 1); }
-
     window.addEventListener('resize', () => showSlide(currentSlide));
-
     /* ====== فلترة المنتجات ====== */
     function applyFilters() {
       const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
@@ -2082,7 +2031,6 @@ s0.parentNode.insertBefore(s1,s0);
         }
       });
     }
-
     document.querySelectorAll('.filter-btn').forEach(button => {
       button.addEventListener('click', function() {
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -2090,26 +2038,21 @@ s0.parentNode.insertBefore(s1,s0);
         applyFilters();
       });
     });
-
     /* ====== الأسئلة الشائعة ====== */
     function toggleFaq(element) {
       const faqItem = element.parentElement;
       faqItem.classList.toggle('active');
     }
-
     /* ====== الخلفية المتحركة ====== */
     const canvas = document.querySelector('canvas.bg');
     const ctx = canvas.getContext('2d');
     let W, H, particles = [];
-
     function resize() {
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
     }
-
     window.addEventListener('resize', resize);
     resize();
-
     for (let i = 0; i < 100; i++) {
       particles.push({
         x: Math.random() * W,
@@ -2121,13 +2064,11 @@ s0.parentNode.insertBefore(s1,s0);
         originalY: Math.random() * H
       });
     }
-
     let mouseX = W / 2, mouseY = H / 2;
     canvas.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
-
     function draw() {
       ctx.clearRect(0, 0, W, H);
       particles.forEach(p => {
@@ -2151,18 +2092,14 @@ s0.parentNode.insertBefore(s1,s0);
       });
       requestAnimationFrame(draw);
     }
-
     requestAnimationFrame(draw);
-
     /* ====== مؤشر التحميل ====== */
     function showLoader() {
       document.getElementById('loader').style.display = 'flex';
     }
-
     function hideLoader() {
       document.getElementById('loader').style.display = 'none';
     }
-
     /* ====== الإشعارات ====== */
     function showNotification(message, type = 'success') {
       const notification = document.getElementById('notification');
@@ -2174,7 +2111,6 @@ s0.parentNode.insertBefore(s1,s0);
         notification.classList.remove('show');
       }, 3000);
     }
-
     /* ====== تتبع المنتجات المشاهدة ====== */
     document.querySelectorAll('.item img').forEach(img => {
       img.addEventListener('click', function() {
@@ -2185,7 +2121,6 @@ s0.parentNode.insertBefore(s1,s0);
         addToRecentlyViewed(name, price, imgSrc);
       });
     });
-
     /* ====== تحميل البيانات عند بدء الصفحة ====== */
     document.addEventListener('DOMContentLoaded', function() {
       renderCart();
@@ -2195,9 +2130,12 @@ s0.parentNode.insertBefore(s1,s0);
       startFlashSaleTimer();
       window.addEventListener('load', hideLoader);
     });
-
     function addCustomProduct(selectId, name, img) {
       const sel = document.getElementById(selectId);
+      if (!sel) {
+        showNotification("لم يتم العثور على القائمة المنسدلة!", 'error');
+        return;
+      }
       const v = sel.value;
       if (v === "0") {
         showNotification("يرجى اختيار العدد/الباقة", 'error');
@@ -2207,7 +2145,6 @@ s0.parentNode.insertBefore(s1,s0);
       addToCart(`${name} (${label})`, parseFloat(p), img);
       sel.value = "0";
     }
-
     /* ====== وظائف جديدة ====== */
     function submitTicket(event) {
       event.preventDefault();
@@ -2218,7 +2155,6 @@ s0.parentNode.insertBefore(s1,s0);
       showNotification(`شكرًا ${name}! تم إرسال تذكرتك بنجاح.`, 'success');
       document.getElementById('support-ticket-form').reset();
     }
-
     function trackOrder() {
       const orderId = document.getElementById('order-id').value;
       if (!orderId) {
@@ -2227,11 +2163,9 @@ s0.parentNode.insertBefore(s1,s0);
       }
       showNotification(`تم تتبع الطلب ${orderId}.`, 'success');
     }
-
     function applyCoupon(code) {
       showNotification(`تم تطبيق الكوبون ${code} بنجاح!`, 'success');
     }
-
     function openChat() {
       Tawk_API.maximize();
     }
