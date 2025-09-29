@@ -1011,6 +1011,34 @@
       margin: 10px 0;
       border: 1px solid var(--glass-border);
     }
+    /* نافذة الترحيب */
+    #welcome-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 5000;
+      justify-content: center;
+      align-items: center;
+    }
+    #welcome-modal .confirmation-content {
+      max-width: 400px;
+      text-align: center;
+      padding: 25px;
+    }
+    #welcome-modal img {
+      margin: 10px auto;
+      display: block;
+    }
+    @media (max-width: 480px) {
+      #welcome-modal .confirmation-content {
+        padding: 15px;
+        max-width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1026,6 +1054,29 @@
   <div class="notification" id="notification">
     <i class="fas fa-check-circle"></i>
     <span id="notification-text"></span>
+  </div>
+  <!-- نافذة الترحيب وكود السحب -->
+  <div id="welcome-modal" class="confirmation">
+    <div class="confirmation-content">
+      <h3>🎉 مرحبا بك في متجر ZiDo! 🎉</h3>
+      <p>احصل على فرصة للفوز بجائزة من 3 جوائز قيمة!</p>
+      <p>كود الايتم شوب الخاص بنا: <strong id="user-draw-code">ْZD_1</strong></p>
+      <div style="margin: 15px 0; text-align: center;">
+        <img id="code-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ZD_1234" alt="QR Code" style="width: 100px; height: 100px; border-radius: 8px;">
+      </div>
+      <p>الجوائز:</p>
+      <ul style="text-align: right; margin: 10px 0;">
+        <li>🥇 الجائزة الأولى: هدية بقمية 500 فيبوكس من الايتم شوب</li>
+        <li>🥈 الجائزة الثانية: 5000 الاف لايك تيك توك</li>
+        <li>🥉 الجائزة الثالثة: 2000 لايك تيك توك</li>
+      </ul>
+      <p>قم بتصوير شرائك بواسطة الكود وإرساله إلى <a href="https://wa.me/966537029503" target="_blank" style="color: var(--brand);">الدعم على واتساب</a> للمشاركة في السحب.</p>
+      <div class="confirmation-buttons">
+        <button class="btn" onclick="closeWelcomeModal()">مواصلة التسوق</button>
+        <button class="btn" style="background: var(--accent);" onclick="copyDrawCode()">نسخ الكود</button>
+      </div>
+      <p style="font-size: 12px; color: var(--muted); margin-top: 10px;">* سيتم تسجيل استخدام الكود تلقائيًا عند إرسال الصورة.</p>
+    </div>
   </div>
   <header>
     <div class="brand">
@@ -1157,16 +1208,6 @@
       <!-- إضافة قسم التوصيات -->
       <div class="recommendations">
         <h3>قد يعجبك أيضًا</h3>
-        <div class="store">
-          <div class="item">
-            <img src="vbucks2500.png" alt="حزمة فيبوكس 2500" loading="lazy">
-            <h3>حزمة فيبوكس 2500</h3>
-            <p class="price">25 ريال</p>
-            <button class="btn" onclick="addToCart('حزمة فيبوكس 2500', 25, 'vbucks2500.png')">
-              إضافة للسلة
-            </button>
-          </div>
-        </div>
       </div>
       <!-- إضافة قسم التقييمات -->
       <div class="reviews">
@@ -1282,9 +1323,9 @@
       </div>
       <div class="store">
         <div class="item" data-category="sale">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'عملات روبلكس', 6, 'عملات روبلكس.png')"><i class="far fa-heart"></i></button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'عملات روبلكس', 6, 'roblox.png')"><i class="far fa-heart"></i></button>
           <span class="featured-badge">عرض خاص</span>
-          <img src="عملات روبلكس.png" alt="عملات روبلكس">
+          <img src="roblox.png" alt="عملات روبلكس">
           <h3>عملات روبلكس</h3>
           <select id="roblox-coins" aria-label="عملات روبلكس">
             <option value="0">اختر الباقة</option>
@@ -1294,7 +1335,7 @@
             <option value="2000-86">2000 روبلكس ب 86 ريال</option>
             <option value="5250-210">5250 روبلكس ب 210 ريال</option>
           </select>
-          <button class="btn" onclick="addCustomProduct('roblox-coins','عملات روبلكس','عملات روبلكس.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <button class="btn" onclick="addCustomProduct('roblox-coins','','roblox.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
       </div>
     </section>
@@ -1510,7 +1551,7 @@
           </li>
           <li style="margin-bottom: 10px; padding-right: 20px; position: relative;">
             <i class="fas fa-envelope" style="color: var(--accent); position: absolute; right: 0; top: 5px;"></i>
-            البريد الإلكتروني: <a href="mailto:support@zido.example.com">support@zido.example.com</a>
+            البريد الإلكتروني: <a href="mailto:support@zido.example.com">com</a>
           </li>
         </ul>
       </div>
@@ -1667,6 +1708,21 @@
       "SAVE15": 0.15,
       "VIP20": 0.20,
     };
+    /* ====== عرض نافذة الترحيب ====== */
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('welcome-modal').style.display = 'flex';
+    });
+    /* ====== إغلاق نافذة الترحيب ====== */
+    function closeWelcomeModal() {
+      document.getElementById('welcome-modal').style.display = 'none';
+    }
+    /* نسخ كود السحب */
+    function copyDrawCode() {
+      const code = "ZD_1";
+      navigator.clipboard.writeText(code).then(() => {
+        showNotification('تم نسخ الكود بنجاح!', 'success');
+      });
+    }
     /* ====== عداد العرض المحدود ====== */
     function startCountdown() {
       const endTime = new Date();
