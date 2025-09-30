@@ -932,87 +932,8 @@
       80% { transform: translateX(5px); }
       100% { transform: translateX(0); }
     }
-    /* الأنماط الجديدة */
-    .flash-sale {
-      background: var(--panel);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--glass-border);
-      text-align: center;
-    }
-    .flash-sale-item {
-      display: inline-block;
-      margin: 10px;
-      text-align: center;
-    }
-    .support-float {
-      position: fixed;
-      bottom: 80px;
-      right: 22px;
-      background: #ff5964;
-      color: #fff;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 8px 28px rgba(255, 89, 100, 0.4);
-      z-index: 2600;
-      animation: pulse 2s infinite;
-    }
-    .order-tracking {
-      background: var(--panel);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--glass-border);
-    }
-    .tracking-steps {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0;
-    }
-    .step {
-      text-align: center;
-      position: relative;
-      flex: 1;
-    }
-    .step.active {
-      color: var(--success);
-    }
-    .step::after {
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background: var(--glass-border);
-      z-index: -1;
-    }
-    .step:last-child::after {
-      display: none;
-    }
-    .coupons {
-      background: var(--panel);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--glass-border);
-    }
-    .coupon {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 12px;
-      padding: 15px;
-      margin: 10px 0;
-      border: 1px solid var(--glass-border);
-    }
-    /* نافذة الترحيب */
-    #welcome-modal {
+    /* نافذة العرض الخاص */
+    #special-offer-modal {
       display: none;
       position: fixed;
       top: 0;
@@ -1024,17 +945,39 @@
       justify-content: center;
       align-items: center;
     }
-    #welcome-modal .confirmation-content {
+    #special-offer-modal .confirmation-content {
       max-width: 400px;
       text-align: center;
       padding: 25px;
-    }
-    #welcome-modal img {
-      margin: 10px auto;
-      display: block;
+      position: relative;
     }
     @media (max-width: 480px) {
-      #welcome-modal .confirmation-content {
+      #special-offer-modal .confirmation-content {
+        padding: 15px;
+        max-width: 90%;
+      }
+    }
+    /* نافذة كود الايتم شوب */
+    #item-shop-code-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 5000;
+      justify-content: center;
+      align-items: center;
+    }
+    #item-shop-code-modal .confirmation-content {
+      max-width: 400px;
+      text-align: center;
+      padding: 25px;
+      position: relative;
+    }
+    @media (max-width: 480px) {
+      #item-shop-code-modal .confirmation-content {
         padding: 15px;
         max-width: 90%;
       }
@@ -1055,14 +998,15 @@
     <i class="fas fa-check-circle"></i>
     <span id="notification-text"></span>
   </div>
-  <!-- نافذة الترحيب وكود السحب -->
-  <div id="welcome-modal" class="confirmation">
+  <!-- نافذة كود الايتم شوب -->
+  <div id="item-shop-code-modal" class="confirmation">
     <div class="confirmation-content">
-      <h3>🎉 مرحبا بك في متجر ZiDo! 🎉</h3>
+      <button class="close-modal" onclick="closeItemShopCodeModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
+      <h3 style="color: var(--brand);">🎉 مرحبا بك في متجر ZiDo! 🎉</h3>
       <p>احصل على فرصة للفوز بجائزة من 3 جوائز قيمة!</p>
-      <p>كود الايتم شوب الخاص بنا: <strong id="user-draw-code">ْZD_1</strong></p>
+      <p>كود الايتم شوب الخاص بنا: <strong id="user-draw-code">ZD_1</strong></p>
       <div style="margin: 15px 0; text-align: center;">
-        <img id="code-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ZD_1234" alt="QR Code" style="width: 100px; height: 100px; border-radius: 8px;">
+        <img id="code-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ZD_1" alt="QR Code" style="width: 100px; height: 100px; border-radius: 8px;">
       </div>
       <p>الجوائز:</p>
       <ul style="text-align: right; margin: 10px 0;">
@@ -1072,10 +1016,26 @@
       </ul>
       <p>قم بتصوير شرائك بواسطة الكود وإرساله إلى <a href="https://wa.me/966537029503" target="_blank" style="color: var(--brand);">الدعم على واتساب</a> للمشاركة في السحب.</p>
       <div class="confirmation-buttons">
-        <button class="btn" onclick="closeWelcomeModal()">مواصلة التسوق</button>
+        <button class="btn" onclick="closeItemShopCodeModal()">مواصلة التسوق</button>
         <button class="btn" style="background: var(--accent);" onclick="copyDrawCode()">نسخ الكود</button>
       </div>
       <p style="font-size: 12px; color: var(--muted); margin-top: 10px;">* سيتم تسجيل استخدام الكود تلقائيًا عند إرسال الصورة.</p>
+    </div>
+  </div>
+  <!-- نافذة العرض الخاص -->
+  <div id="special-offer-modal" class="confirmation">
+    <div class="confirmation-content">
+      <button class="close-modal" onclick="closeSpecialOfferModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
+      <h3 style="color: var(--brand);">🔥 عرض خاص لمدة محدودة! 🔥</h3>
+      <img src="لايكات تيك توك.png" alt="10000 لايك تيك توك" style="width: 100px; height: 100px; margin: 10px auto; display: block; border-radius: 8px;">
+      <p style="font-size: 18px; font-weight: bold;">10,000 لايك تيك توك ب 7 ريال فقط!</p>
+      <p style="color: var(--danger); font-weight: bold;">العرض ينتهي خلال: <span id="offer-countdown">02:00:00</span></p>
+      <div class="confirmation-buttons">
+        <button class="btn" onclick="goToSpecialOfferProduct(); closeSpecialOfferModal();">
+          <i class="fas fa-eye"></i> عرض المنتج
+        </button>
+        <button class="btn" style="background: var(--danger);" onclick="closeSpecialOfferModal()">اغلق</button>
+      </div>
     </div>
   </div>
   <header>
@@ -1094,7 +1054,7 @@
   <!-- شريط الأخبار -->
   <div class="news-ticker">
     <div class="news-ticker__content">
-      <i class="fas fa-bullhorn"></i> عرض خاص: خصم 10% على جميع خدمات فورتنايت!
+      <i class="fas fa-bullhorn"></i> عرض خاص: 10,000 لايك تيك توك ب 7 ريال فقط!
       <i class="fas fa-star"></i> جديد: يوزرات تيك توك ب 6 ريال فقط!
       <i class="fas fa-gift"></i> استخدم الكود "ZIDO10" للحصول على خصم 10% عند الدفع!
       <i class="fas fa-bullhorn"></i> توصيل فوري لجميع الخدمات!
@@ -1189,45 +1149,6 @@
           <p class="price">من 13 ريال</p>
           <button class="btn" onclick="showSection('tiktok')"><i class="fas fa-cart-plus"></i> اطلع على العروض</button>
         </div>
-      </div>
-      <!-- إضافة قسم العروض السريعة -->
-      <section id="flash-sales">
-        <h2>⏳ عروض سريعة!</h2>
-        <div class="flash-sale">
-          <div class="flash-sale-item">
-            <img src="vbucks1000.png" alt="حزمة فيبوكس 1000" loading="lazy">
-            <h3>حزمة فيبوكس 1000</h3>
-            <p class="price">7 ريال <span style="text-decoration: line-through; color: var(--muted);">10 ريال</span></p>
-            <p class="countdown">الوقت المتبقي: <span id="flash-sale-timer-1">23:59:59</span></p>
-            <button class="btn" onclick="addToCart('حزمة فيبوكس 1000', 7, 'vbucks1000.png')">
-              اشتري الآن!
-            </button>
-          </div>
-        </div>
-      </section>
-      <!-- إضافة قسم التوصيات -->
-      <div class="recommendations">
-        <h3>قد يعجبك أيضًا</h3>
-      </div>
-      <!-- إضافة قسم التقييمات -->
-      <div class="reviews">
-        <h3>تقييمات العملاء</h3>
-        <div class="review">
-          <div class="rating">⭐⭐⭐⭐⭐</div>
-          <p>"خدمة ممتازة وتوصيل سريع!" - أحمد</p>
-        </div>
-        <button class="btn" onclick="leaveReview()">ترك تقييم</button>
-      </div>
-      <h2>💬 آراء العملاء</h2>
-      <div class="testimonials">
-        <div class="slider" id="slider">
-          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة سلطان"><h3>سلطان</h3><p>"أفضل متجر!"</p><p>⭐⭐⭐⭐⭐</p></div>
-          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة عدنان"><h3>عدنان</h3><p>"خدمة ممتازة"</p><p>⭐⭐⭐⭐⭐</p></div>
-          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة محمد"><h3>محمد</h3><p>"تعامل راقي"</p><p>⭐⭐⭐⭐⭐</p></div>
-          <div class="testimonial-box"><img src="avatar_3781973.png" alt="صورة نواف"><h3>نواف</h3><p>"تجربة رائعة"</p><p>⭐⭐⭐⭐⭐</p></div>
-        </div>
-        <button class="slider-btn prev" onclick="prevSlide()" aria-label="السابق">❮</button>
-        <button class="slider-btn next" onclick="nextSlide()" aria-label="التالي">❯</button>
       </div>
     </section>
     <!-- فورتنايت -->
@@ -1350,6 +1271,15 @@
         <button class="filter-btn" data-filter="user">يوزرات</button>
       </div>
       <div class="store">
+        <!-- عرض 10,000 لايك الخاص -->
+        <div class="item" data-category="likes">
+          <button class="wishlist-btn" onclick="toggleWishlist(this, '10000 لايك تيك توك', 7, 'لايكات تيك توك.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">عرض خاص</span>
+          <img src="لايكات تيك توك.png" alt="10000 لايك تيك توك">
+          <h3>10000 لايك تيك توك</h3>
+          <p class="price">7 ريال</p>
+          <button class="btn" onclick="addToCart('10000 لايك تيك توك', 7, 'لايكات تيك توك.png', true)"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+        </div>
         <div class="item" data-category="followers">
           <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين تيك توك', 13, 'متابعين تيك توك.png')"><i class="far fa-heart"></i></button>
           <img src="متابعين تيك توك.png" alt="متابعين تيك توك">
@@ -1708,61 +1638,74 @@
       "SAVE15": 0.15,
       "VIP20": 0.20,
     };
-    /* ====== عرض نافذة الترحيب ====== */
+    /* ====== عرض نافذة كود الايتم شوب ====== */
     document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('welcome-modal').style.display = 'flex';
+      setTimeout(() => {
+        document.getElementById('item-shop-code-modal').style.display = 'flex';
+      }, 1000);
+      setTimeout(() => {
+        document.getElementById('special-offer-modal').style.display = 'flex';
+        startSpecialOfferCountdown();
+      }, 2000);
     });
-    /* ====== إغلاق نافذة الترحيب ====== */
-    function closeWelcomeModal() {
-      document.getElementById('welcome-modal').style.display = 'none';
+    /* إغلاق نافذة كود الايتم شوب */
+    function closeItemShopCodeModal() {
+      document.getElementById('item-shop-code-modal').style.display = 'none';
     }
     /* نسخ كود السحب */
     function copyDrawCode() {
-      const code = "ZD_1";
+      const code = document.getElementById('user-draw-code').textContent;
       navigator.clipboard.writeText(code).then(() => {
         showNotification('تم نسخ الكود بنجاح!', 'success');
       });
     }
-    /* ====== عداد العرض المحدود ====== */
-    function startCountdown() {
-      const endTime = new Date();
-      endTime.setHours(endTime.getHours() + 2);
-      const timer = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = endTime - now;
-        if (distance < 0) {
-          clearInterval(timer);
-          document.getElementById('countdown').textContent = "انتهى!";
-          return;
-        }
-        const hours = Math.floor(distance / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById('countdown').textContent =
-          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      }, 1000);
+    /* إغلاق نافذة العرض الخاص */
+    function closeSpecialOfferModal() {
+      document.getElementById('special-offer-modal').style.display = 'none';
     }
-    /* ====== عداد العرض السريع ====== */
-    function startFlashSaleTimer() {
-      const timerElement = document.getElementById('flash-sale-timer-1');
-      let timeLeft = 24 * 60 * 60;
+    /* عداد العرض الخاص */
+    function startSpecialOfferCountdown() {
+      let timeLeft = 2 * 60 * 60; // 2 ساعة
+      const timerElement = document.getElementById('offer-countdown');
       const timer = setInterval(() => {
         timeLeft--;
         const hours = Math.floor(timeLeft / 3600);
         const minutes = Math.floor((timeLeft % 3600) / 60);
         const seconds = timeLeft % 60;
         timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        if (timeLeft <= 0) clearInterval(timer);
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          timerElement.textContent = "انتهى العرض!";
+          closeSpecialOfferModal();
+        }
       }, 1000);
     }
+    /* توجيه العميل إلى المنتج الخاص */
+    function goToSpecialOfferProduct() {
+      showSection('tiktok');
+      setTimeout(() => {
+        const specialOfferProduct = document.querySelector('.item h3:contains("10000 لايك تيك توك")').closest('.item');
+        if (specialOfferProduct) {
+          specialOfferProduct.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          specialOfferProduct.style.boxShadow = '0 0 0 3px var(--brand)';
+          setTimeout(() => {
+            specialOfferProduct.style.boxShadow = 'var(--shadow)';
+          }, 3000);
+        }
+      }, 500);
+    }
+    /* دالة مساعدة للبحث عن نص داخل العنصر */
+    HTMLElement.prototype.contains = function(text) {
+      return this.textContent.includes(text);
+    };
     /* ====== السلة ====== */
-    function addToCart(name, price, img, quantity = 1) {
+    function addToCart(name, price, img, isSpecialOffer = false, quantity = 1) {
       showLoader();
       const existingItemIndex = cart.findIndex(item => item.name === name && item.price === price);
       if (existingItemIndex > -1) {
         cart[existingItemIndex].quantity += quantity;
       } else {
-        cart.push({ name, price, img: img || '', quantity });
+        cart.push({ name, price, img: img || '', quantity, isSpecialOffer });
       }
       saveCart();
       renderCart();
@@ -1882,8 +1825,9 @@
     }
     /* ====== كود الخصم ====== */
     function applyDiscount() {
-      if (discountApplied) {
-        showNotification('تم تطبيق الخصم بالفعل على هذا الطلب.', 'error');
+      const hasSpecialOffer = cart.some(item => item.isSpecialOffer);
+      if (hasSpecialOffer) {
+        showNotification('لا يمكن تطبيق كود الخصم على المنتجات الخاصة بالعروض.', 'error');
         return;
       }
       const code = document.getElementById('discount-code').value.trim();
@@ -2182,8 +2126,6 @@
       renderCart();
       renderRecentlyViewed();
       showSlide(0);
-      startCountdown();
-      startFlashSaleTimer();
       window.addEventListener('load', hideLoader);
     });
     function addCustomProduct(selectId, name, img) {
