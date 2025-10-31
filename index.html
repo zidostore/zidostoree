@@ -1023,20 +1023,7 @@
     </div>
   </div>
   <!-- نافذة العرض الخاص -->
-  <div id="special-offer-modal" class="confirmation">
-    <div class="confirmation-content">
-      <button class="close-modal" onclick="closeSpecialOfferModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
-      <h3 style="color: var(--brand);">🔥 عرض خاص لمدة محدودة! 🔥</h3>
-      <img src="لايكات تيك توك.png" alt="10000 لايك تيك توك" style="width: 100px; height: 100px; margin: 10px auto; display: block; border-radius: 8px;">
-      <p style="font-size: 18px; font-weight: bold;">10,000 لايك تيك توك ب 7 ريال فقط!</p>
-      <p style="color: var(--danger); font-weight: bold;">العرض ينتهي خلال: <span id="offer-countdown">02:00:00</span></p>
-      <div class="confirmation-buttons">
-        <button class="btn" onclick="goToSpecialOfferProduct(); closeSpecialOfferModal();">
-          <i class="fas fa-eye"></i> عرض المنتج
-        </button>
-        <button class="btn" style="background: var(--danger);" onclick="closeSpecialOfferModal()">اغلق</button>
-      </div>
-    </div>
+
   </div>
   <header>
     <div class="brand">
@@ -1060,10 +1047,7 @@
       <i class="fas fa-bullhorn"></i> توصيل فوري لجميع الخدمات!
     </div>
   </div>
-  <!-- عداد العرض المحدود -->
-  <div class="countdown-timer" id="limitedOfferTimer">
-    ⏳ العرض ينتهي خلال: <span id="countdown">02:15:33</span>
-  </div>
+  
   <!-- شهادات الثقة -->
   <div class="trust-badges">
     <div class="trust-badge"><i class="fas fa-lock"></i> دفع آمن</div>
@@ -1134,12 +1118,12 @@
           <button class="btn" onclick="addToCart('الطاقم الشهري',25,'crew.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
         </div>
         <div class="item" data-category="fortnite sale">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, '5400 فيبوكس', 70, '5400vb.png')"><i class="far fa-heart"></i></button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة مسحور ومسكون فورت نايت', 50, 'حزمة مسحور ومسكون فورت نايت.png')"><i class="far fa-heart"></i></button>
           <span class="featured-badge">🔥 الأكثر مبيعًا</span>
-          <img src="5400vb.png" alt="5400 فيبوكس" loading="lazy">
-          <h3>5400 فيبوكس</h3>
-          <p class="price">70 ريال</p>
-          <button class="btn" onclick="addToCart('5400 فيبوكس',70,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
+          <img src="حزمة مسحور ومسكون فورت نايت.png" alt="حزمة مسحور ومسكون فورت نايت" loading="lazy">
+          <h3>حزمة مسحور ومسكون فورت نايت</h3>
+          <p class="price">50 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة مسحور ومسكون فورت نايت',50,'حزمة مسحور ومسكون فورت نايت.png')"><i class="fas fa-cart-plus"></i> إضافة للسلة</button>
         </div>
         <div class="item" data-category="tiktok sale">
           <button class="wishlist-btn" onclick="toggleWishlist(this, 'متابعين تيك توك', 13, 'متابعين تيك توك.png')"><i class="far fa-heart"></i></button>
@@ -1186,52 +1170,46 @@
           </select>
           <button class="btn" onclick="addCustomProduct('profile-pack','إهداء فيبوكس','اهداء فيبوكس.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
+       
         <div class="item" data-category="vbucks">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حساب 5400 فيبوكس', 70, '5400vb.png')"><i class="far fa-heart"></i></button>
-          <img src="5400vb.png" alt="حساب 5400 فيبوكس">
-          <h3>حساب 1000 فيبوكس</h3>
-          <p class="price">6 ريال</p>
-          <button class="btn" onclick="addToCart('حساب 1000 فيبوكس',6,'5400vb.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حقيبة صحوة الظلال فورت نايت', 34, 'حقيبة صحوة الظلال فورت نايت.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">جديد</span>
+          <img src="حقيبة صحوة الظلال فورت نايت.png" alt="حقيبة صحوة الظلال فورت نايت">
+          <h3>حقيبة صحوة الظلال فورت نايت</h3>
+          <p class="price">34 ريال</p>
+          <button class="btn" onclick="addToCart('حقيبة صحوة الظلال فورت نايت',34,'حقيبة صحوة الظلال فورت نايت.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
         <div class="item" data-category="vbucks">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة مهام المنفى مع 1000 فيبوكس', 17, 'حزمه ب 17 ريال.avif')"><i class="far fa-heart"></i></button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, ' حزمة مهام حارسة غولدنباين', 12, 'حزمة مهام حارسة غولدنباين.png')"><i class="far fa-heart"></i></button>
           <span class="featured-badge">جديد</span>
-          <img src="حزمه ب 17 ريال.avif" alt="حزمة مهام المنفى مع 1000 فيبوكس">
-          <h3>حزمة مهام المنفى مع 1000 فيبوكس</h3>
-          <p class="price">17 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة مهام المنفى مع 1000 فيبوكس',17,'حزمه ب 17 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <img src="حزمة مهام حارسة غولدنباين.png" alt="حزمة مهام حارسة غولدنباين ">
+          <h3>حزمة مهام حارسة غولدنباين</h3>
+          <p class="price">38 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة مهام حارسة غولدنباين ',38,'حزمة مهام حارسة غولدنباين.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
         <div class="item" data-category="vbucks">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة Chill Vibez مع 600 فيبوكس', 12, 'حزمه 1 دولار.jpg')"><i class="far fa-heart"></i></button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة التحلي بالايجابية فورت نايت', 16, 'حزمة التحلي بالايجابية فورت نايت.png')"><i class="far fa-heart"></i></button>
           <span class="featured-badge">جديد</span>
-          <img src="حزمه 1 دولار.jpg" alt="حزمة Chill Vibez مع 600 فيبوكس">
-          <h3>حزمة Chill Vibez مع 600 فيبوكس</h3>
-          <p class="price">12 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة Chill Vibez مع 600 فيبوكس',12,'حزمه 1 دولار.jpg')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <img src="حزمة التحلي بالايجابية فورت نايت.png" alt="حزمة التحلي بالايجابية فورت نايت">
+          <h3>حزمة التحلي بالايجابية فورت نايت</h3>
+          <p class="price">16 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة التحلي بالايجابية فورت نايت',16,'حزمة التحلي بالايجابية فورت نايت.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
         <div class="item" data-category="vbucks">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة Graffiti Revolution', 22, 'حزمه 16 ريال.avif')"><i class="far fa-heart"></i></button>
-          <span class="featured-badge">جديد</span>
-          <img src="حزمه 16 ريال.avif" alt="حزمة Graffiti Revolution">
-          <h3>حزمة Graffiti Revolution</h3>
-          <p class="price">22 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة Graffiti Revolution',22,'حزمه 16 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
-        </div>
-        <div class="item" data-category="vbucks">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة The Wavebreaker مع 600 فيبوكس', 28, 'حزمه 20 ريال.avif')"><i class="far fa-heart"></i></button>
-          <span class="featured-badge">جديد</span>
-          <img src="حزمه 20 ريال.avif" alt="حزمة The Wavebreaker مع 600 فيبوكس">
-          <h3>حزمة The Wavebreaker مع 600 فيبوكس</h3>
-          <p class="price">28 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة The Wavebreaker مع 600 فيبوكس',28,'حزمه 20 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة فرقة الجماجم فورت نايت ', 38, 'حزمة فرقة الجماجم فورت نايت.png')"><i class="far fa-heart"></i></button>
+          <span class="featured-badge">حصري</span>
+          <img src="حزمة فرقة الجماجم فورت نايت.png" alt="حزمة فرقة الجماجم فورت نايت ">
+          <h3>حزمة فرقة الجماجم فورت نايت</h3>
+          <p class="price">38 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة فرقة الجماجم فورت نايت',38,'حزمة فرقة الجماجم فورت نايت.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
         <div class="item" data-category="account">
-          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة النخبة الذهبية', 18, 'حزمة 18 ريال.avif')"><i class="far fa-heart"></i></button>
+          <button class="wishlist-btn" onclick="toggleWishlist(this, 'حزمة مسحور ومسكون فورت نايت', 50, 'حزمة مسحور ومسكون فورت نايت.png')"><i class="far fa-heart"></i></button>
           <span class="featured-badge">جديد</span>
-          <img src="حزمة 18 ريال.avif" alt="حزمة النخبة الذهبية">
-          <h3>حزمة النخبة الذهبية</h3>
-          <p class="price">18 ريال</p>
-          <button class="btn" onclick="addToCart('حزمة النخبة الذهبية',18,'حزمة 18 ريال.avif')"><i class="fas fa-cart-plus"></i> إضافة</button>
+          <img src="حزمة مسحور ومسكون فورت نايت.png" alt="حزمة مسحور ومسكون فورت نايت">
+          <h3>حزمة مسحور ومسكون فورت نايت</h3>
+          <p class="price">50 ريال</p>
+          <button class="btn" onclick="addToCart('حزمة مسحور ومسكون فورت نايت',50,'حزمة مسحور ومسكون فورت نايت.png')"><i class="fas fa-cart-plus"></i> إضافة</button>
         </div>
       </div>
     </section>
@@ -2170,3 +2148,4 @@
   </script>
 </body>
 </html>
+
